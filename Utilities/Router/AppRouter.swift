@@ -19,8 +19,10 @@ final class AppRouter: Router {
     
     func makeWindow(from windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
+        window.makeKeyAndVisible()
         self.window = window
-        self.present(UIHostingController(rootView: Text("Welcome ")))
+
+        self.present(UIHostingController(rootView: TabBarView()))
     }
     
     func present(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
@@ -29,7 +31,6 @@ final class AppRouter: Router {
             return
         }
         window.rootViewController = viewController
-        window.makeKeyAndVisible()
     }
     
     func dismiss(animated: Bool = true, completion: @escaping () -> Void = {}) {
