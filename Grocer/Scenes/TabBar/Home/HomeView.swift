@@ -13,18 +13,12 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack {
-                Button("Click Me") {
-                    router.present(UIHostingController(rootView: Text("Hello").primaryDesignStyle()))
-                }
+               
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .primaryDesignStyle()
-        .toolbar {
-            ToolbarItem {
-                Text("Hi ahmed")
-            }
-        }
+        .toolbarTitle("Home")
     }
 }
 

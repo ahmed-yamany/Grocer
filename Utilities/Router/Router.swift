@@ -9,23 +9,40 @@ import UIKit
 
 /// Protocol definition for a Router, which is an AnyObject (class) protocol
 public protocol Router: AnyObject {
-    // Property to hold the parent view controller
-    var parentViewController: UIViewController? { get set }
-    
-    // Method to present a view controller with animation and completion closure
-    func present(_ viewController: UIViewController, animated: Bool, completion: @escaping () -> Void)
-    
-    // Method to dismiss the currently presented view controller with animation and completion closure
-    func dismiss(animated: Bool, completion: @escaping () -> Void)
+    var navigationController: UINavigationController { get }
+    init(navigationController: UINavigationController)        
 }
 
-// Extension to provide default implementations for the present and dismiss methods
 public extension Router {
     func present(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
-        present(viewController, animated: animated, completion: completion)
+        navigationController.present(viewController, animated: animated, completion: completion)
+    }
+    
+    func presentFullScreen(_ viewController: UIViewController, animated: Bool, completion: @escaping () -> Void = {}) {
+        viewController.modalPresentationStyle = .fullScreen
+        self.present(viewController, animated: animated, completion: completion)
     }
     
     func dismiss(animated: Bool = true, completion: @escaping () -> Void = {}) {
-        dismiss(animated: animated, completion: completion)
+        navigationController.dismiss(animated: animated, completion: completion)
+    }
+    
+    func push(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
+        navigationController.pushViewController(viewController, animated: animated)
+        completion()
+    }
+    
+    func pop(animated: Bool = true, completion: @escaping () -> Void = {}) {
+        navigationController.popViewController(animated: animated)
+        completion()
+    }
+    
+    func popToViewController(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
+        navigationController.popToViewController(viewController, animated: animated)
+        completion()
+    }
+    func popToRoot(animated: Bool = true, completion: @escaping () -> Void = {}) {
+        navigationController.popToRootViewController(animated: animated)
+        completion()
     }
 }

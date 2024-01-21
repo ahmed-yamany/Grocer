@@ -11,13 +11,17 @@ struct CartView: View {
     let router: Router
     @StateObject private var viewModel = CartViewModel()
     var body: some View {
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack {
+                
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .primaryDesignStyle()
+        .toolbarTitle("Cart")
     }
 }
 
 #Preview {
-    CartView(router: ModalRouter())
+    CartView(router: NavigationRouter(navigationController: .init()))
 }

@@ -14,9 +14,12 @@ struct TabBarView: View {
         ZStack(alignment: .bottom) {
             tabView
             TabBar(viewModel: viewModel)
+                .transition(.move(edge: .bottom))
+                .isHidden(viewModel.tabBarIsHidden)
         }
         .ignoresSafeArea()
-        .animation(.interpolatingSpring, value: viewModel.selectedTab)
+        .animation(.interactiveSpring(dampingFraction: 0.7, blendDuration: 0.3), value: viewModel.selectedTab)
+        .animation(.interactiveSpring(dampingFraction: 0.6, blendDuration: 0.7), value: viewModel.tabBarIsHidden)
     }
     
     private var tabView: some View {
@@ -26,6 +29,7 @@ struct TabBarView: View {
                     .tag(tabBarType)
                     .ignoresSafeArea()
                     .tint(Color.grTextSecondary)
+                    .accentColor(Color.grTextSecondary)
             }
         }
     }

@@ -7,20 +7,10 @@
 
 import UIKit
 
-public class NavigationRouter: Router {
-    public var parentViewController: UIViewController?
-    let navigationController: UINavigationController
+public final class NavigationRouter: Router {
+    public let navigationController: UINavigationController
         
-    init(navigationController: UINavigationController) {
+    public required init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.parentViewController = navigationController
-    }
-    
-    public func present(_ viewController: UIViewController, animated: Bool, completion: @escaping () -> Void) {
-        navigationController.pushViewController(viewController, animated: animated)
-    }
-    
-    public func dismiss(animated: Bool = true, completion: @escaping () -> Void = {}) {
-        navigationController.popViewController(animated: animated)
     }
 }

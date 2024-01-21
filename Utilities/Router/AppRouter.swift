@@ -8,8 +8,8 @@
 import UIKit
 import SwiftUI
 import Combine
-
-final class AppRouter: Router {
+// TODO: - Convert App Router to Coordinator
+final class AppRouter {
     public static let shared = AppRouter()
     
     var window: UIWindow?
@@ -21,7 +21,7 @@ final class AppRouter: Router {
         let window = UIWindow(windowScene: windowScene)
         window.makeKeyAndVisible()
         self.window = window
-
+        
         self.present(UIHostingController(rootView: TabBarView()))
     }
     
