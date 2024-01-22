@@ -13,7 +13,6 @@ final class AppRouter {
     public static let shared = AppRouter()
     
     var window: UIWindow?
-    var parentViewController: UIViewController?
     
     private init() { }
     

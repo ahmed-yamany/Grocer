@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "filename" : "undraw_going_up_re_86kg.svg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "undraw_going_up_re_86kg (1).svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

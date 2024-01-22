@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct AddProductView: View {
-    let router: Router
-    @StateObject private var viewModel = AddProductViewModel()
+    @ObservedObject private var viewModel: AddProductViewModel
+    
+    init(router: Router) {
+        self.viewModel = AddProductViewModel(router: router)
+    }
     
     var body: some View {
         ScrollView {
@@ -24,57 +27,55 @@ struct AddProductView: View {
                     unitField
                 }
                 barcodeField
+                productImagesView
             }
             .padding(24)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .primaryDesignStyle()
         .toolbarTitle("Add Product")
-        .onAppear {
-//            TabBarViewModel.shared.tabBarIsHidden = true
-        }
     }
     
     private var nameField: some View {
-        PrimaryTextField(title: "Name", text: $viewModel.productName) {
-            TextField("", text: $viewModel.productName)
+        PrimaryTextField(title: "Name", text: $viewModel.name) {
+            TextField("", text: $viewModel.name)
         }
         .keyboardType(.default)
     }
     
     private var quantityField: some View {
-        PrimaryTextField(title: "Quantity", text: $viewModel.productName, fieldView: {
-            TextField("", text: $viewModel.productName)
+        PrimaryTextField(title: "Quantity", text: $viewModel.quantity, fieldView: {
+            TextField("", text: $viewModel.quantity)
         })
         .keyboardType(.numberPad)
     }
     
     private var priceField: some View {
-        PrimaryTextField(title: "Price", text: $viewModel.productName, fieldView: {
-            TextField("", text: $viewModel.productName)
+        PrimaryTextField(title: "Price", text: $viewModel.price, fieldView: {
+            TextField("", text: $viewModel.price)
         })
         .keyboardType(.decimalPad)
     }
     
     private var categoryField: some View {
-        PrimaryTextField(title: "Category", text: $viewModel.productName) {
-            PickerTextField(selectedItem: $viewModel.productName, items: ["Ahmed", "Ali", "Saad"])
+        PrimaryTextField(title: "Category", text: $viewModel.category) {
+            PickerTextField(selectedItem: $viewModel.category, items: ["Ahmed", "Ali", "Saad"])
         }
     }
     
     private var unitField: some View {
-        PrimaryTextField(title: "Unit", text: $viewModel.productName) {
-            PickerTextField(selectedItem: $viewModel.productName, items: ["Ahmed", "Ali", "Saad"])
+        PrimaryTextField(title: "Unit", text: $viewModel.unit) {
+            PickerTextField(selectedItem: $viewModel.unit, items: ["Ahmed", "Ali", "Saad"])
         }
     }
     
     private var barcodeField: some View {
-        PrimaryTextField(title: "Bar Code", text: $viewModel.productName, fieldView: {
+        PrimaryTextField(title: "Bar Code", text: $viewModel.barcode, fieldView: {
             HStack {
-                TextField("", text: $viewModel.productName)
+                TextField("", text: $viewModel.barcode)
                 
                 Button {
-                    router.present(BarCodeScannerViewController())
+                    viewModel.startBarCodeScanner()
                 } label: {
                     Image(systemName: "barcode.viewfinder")
                         .font(.custom(size: 20, weight: .semibold))
@@ -82,6 +83,33 @@ struct AddProductView: View {
             }
         })
         .keyboardType(.numberPad)
+    }
+    
+    private var productImagesView: some View {
+        Group {
+            if viewModel.images.isEmpty {
+                uploadImageView
+            } else {
+                HStack {
+                    
+                }
+            }
+        }
+        .frame(height: 180)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.grInputField)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+    
+    private var uploadImageView: some View {
+        Button {
+            
+        } label: {
+            Image(.assetProductImageAdd)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding().padding()
+        }
     }
 }
 

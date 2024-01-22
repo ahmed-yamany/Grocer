@@ -16,6 +16,7 @@ public protocol Logging {
              function: StaticString,
              line: UInt)
 }
+
 @available(iOS 14.0, *)
 public class SystemLogger: Logging {
     public func log(_ message: String,
@@ -30,6 +31,7 @@ public class SystemLogger: Logging {
         os.Logger(subsystem: "\(bundleID).Logger", category: categoryString).log(level: level, "\(logMessage)")
     }
 }
+
 @available(iOS 14.0, *)
 public final class Logger {
     private static let loggers: [Logging] = {
@@ -37,6 +39,7 @@ public final class Logger {
         if NSClassFromString("XCTest") != nil { return [] }
         return [ SystemLogger() ]
     }()
+    
     public static func log(_ message: String,
                     category: KeyPath<LoggingCategories, String>,
                     level: OSLogType,

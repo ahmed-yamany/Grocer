@@ -22,8 +22,6 @@
 		EE1712662B49723F0008AEF1 /* SFPRODISPLAY-SEMIBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = EE1712612B49723F0008AEF1 /* SFPRODISPLAY-SEMIBOLD.OTF */; };
 		EE1712692B49727F0008AEF1 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1712682B49727F0008AEF1 /* Strings+Generated.swift */; };
 		EE17126E2B4972B90008AEF1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE1712702B4972B90008AEF1 /* Localizable.strings */; };
-		EE17127B2B4974730008AEF1 /* ModalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1712782B4974730008AEF1 /* ModalRouter.swift */; };
-		EE17127C2B4974730008AEF1 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1712792B4974730008AEF1 /* NavigationRouter.swift */; };
 		EE17127D2B4974730008AEF1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE17127A2B4974730008AEF1 /* Router.swift */; };
 		EE17127F2B49747B0008AEF1 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE17127E2B49747B0008AEF1 /* AppRouter.swift */; };
 		EE1712822B4976A20008AEF1 /* +topMostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1712812B4976A20008AEF1 /* +topMostViewController.swift */; };
@@ -39,6 +37,7 @@
 		EE2F21142B4ADF7300EC9D8F /* isHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F21132B4ADF7300EC9D8F /* isHidden.swift */; };
 		EE2F21182B4AE43700EC9D8F /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F21162B4AE43700EC9D8F /* AddProductView.swift */; };
 		EE2F21192B4AE43700EC9D8F /* AddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F21172B4AE43700EC9D8F /* AddProductViewModel.swift */; };
+		EE3BBBF72B5E787300B169CD /* CodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BBBF62B5E787300B169CD /* CodeScanner.swift */; };
 		EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */; };
 		EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96530F2B4C587700FEB62E /* PickerTextField.swift */; };
 		EE9B9B9D2B5D09A400A7D12A /* MakeConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = EE9B9B9C2B5D09A400A7D12A /* MakeConstraints */; };
@@ -46,7 +45,7 @@
 		EEDE86F52B4C06D000E485F0 /* ToolbarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F42B4C06D000E485F0 /* ToolbarTitle.swift */; };
 		EEDE86F72B4C07E200E485F0 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F62B4C07E200E485F0 /* PrimaryTextField.swift */; };
 		EEDE86FA2B4C086400E485F0 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F92B4C086400E485F0 /* TextFieldState.swift */; };
-		EEE527702B5BDEF700ACBEA0 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5276F2B5BDEF700ACBEA0 /* ScannerViewController.swift */; };
+		EEE527702B5BDEF700ACBEA0 /* BarCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5276F2B5BDEF700ACBEA0 /* BarCodeScannerViewController.swift */; };
 		EEF59C6B2B4ACD2000415050 /* mainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF59C6A2B4ACD2000415050 /* mainWindow.swift */; };
 		EEF59C6D2B4ACE8A00415050 /* TabBarType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF59C6C2B4ACE8A00415050 /* TabBarType.swift */; };
 		EEFA4D922B4BFD8D0048F884 /* PrimaryDesignStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFA4D912B4BFD8D0048F884 /* PrimaryDesignStyle.swift */; };
@@ -83,8 +82,6 @@
 		EE17126B2B4972AB0008AEF1 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EE17126F2B4972B90008AEF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EE1712712B4972BA0008AEF1 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EE1712782B4974730008AEF1 /* ModalRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalRouter.swift; sourceTree = "<group>"; };
-		EE1712792B4974730008AEF1 /* NavigationRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		EE17127A2B4974730008AEF1 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		EE17127E2B49747B0008AEF1 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		EE1712812B4976A20008AEF1 /* +topMostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+topMostViewController.swift"; sourceTree = "<group>"; };
@@ -100,13 +97,14 @@
 		EE2F21132B4ADF7300EC9D8F /* isHidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isHidden.swift; sourceTree = "<group>"; };
 		EE2F21162B4AE43700EC9D8F /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		EE2F21172B4AE43700EC9D8F /* AddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
+		EE3BBBF62B5E787300B169CD /* CodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScanner.swift; sourceTree = "<group>"; };
 		EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentViewController.swift; sourceTree = "<group>"; };
 		EE96530F2B4C587700FEB62E /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		EE9DF31A2B5D14F7007223E3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		EEDE86F42B4C06D000E485F0 /* ToolbarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTitle.swift; sourceTree = "<group>"; };
 		EEDE86F62B4C07E200E485F0 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		EEDE86F92B4C086400E485F0 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
-		EEE5276F2B5BDEF700ACBEA0 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		EEE5276F2B5BDEF700ACBEA0 /* BarCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeScannerViewController.swift; sourceTree = "<group>"; };
 		EEF59C6A2B4ACD2000415050 /* mainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainWindow.swift; sourceTree = "<group>"; };
 		EEF59C6C2B4ACE8A00415050 /* TabBarType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarType.swift; sourceTree = "<group>"; };
 		EEFA4D912B4BFD8D0048F884 /* PrimaryDesignStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryDesignStyle.swift; sourceTree = "<group>"; };
@@ -266,8 +264,6 @@
 			children = (
 				EE17127A2B4974730008AEF1 /* Router.swift */,
 				EE17127E2B49747B0008AEF1 /* AppRouter.swift */,
-				EE1712782B4974730008AEF1 /* ModalRouter.swift */,
-				EE1712792B4974730008AEF1 /* NavigationRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -283,9 +279,9 @@
 		EE1712832B49AD2E0008AEF1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EEE5276E2B5BDEEA00ACBEA0 /* Scanner */,
 				EE1712842B49B0370008AEF1 /* TabBar */,
 				EE2F21152B4AE37F00EC9D8F /* AddProduct */,
+				EEE5276E2B5BDEEA00ACBEA0 /* Scanner */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -385,7 +381,8 @@
 		EEE5276E2B5BDEEA00ACBEA0 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
-				EEE5276F2B5BDEF700ACBEA0 /* ScannerViewController.swift */,
+				EEE5276F2B5BDEF700ACBEA0 /* BarCodeScannerViewController.swift */,
+				EE3BBBF62B5E787300B169CD /* CodeScanner.swift */,
 			);
 			path = Scanner;
 			sourceTree = "<group>";
@@ -565,17 +562,16 @@
 				EE2F21122B4AD89400EC9D8F /* StoreViewModel.swift in Sources */,
 				EE2F21182B4AE43700EC9D8F /* AddProductView.swift in Sources */,
 				EE2F21112B4AD89400EC9D8F /* StoreView.swift in Sources */,
-				EE17127B2B4974730008AEF1 /* ModalRouter.swift in Sources */,
 				EE17128F2B49BC200008AEF1 /* HomeView.swift in Sources */,
-				EE17127C2B4974730008AEF1 /* NavigationRouter.swift in Sources */,
 				EEDE86F52B4C06D000E485F0 /* ToolbarTitle.swift in Sources */,
 				EE1712692B49727F0008AEF1 /* Strings+Generated.swift in Sources */,
 				EEF59C6D2B4ACE8A00415050 /* TabBarType.swift in Sources */,
-				EEE527702B5BDEF700ACBEA0 /* ScannerViewController.swift in Sources */,
+				EEE527702B5BDEF700ACBEA0 /* BarCodeScannerViewController.swift in Sources */,
 				EE17127F2B49747B0008AEF1 /* AppRouter.swift in Sources */,
 				EEF59C6B2B4ACD2000415050 /* mainWindow.swift in Sources */,
 				EE2F210E2B4AD88D00EC9D8F /* CartViewModel.swift in Sources */,
 				EE2F21192B4AE43700EC9D8F /* AddProductViewModel.swift in Sources */,
+				EE3BBBF72B5E787300B169CD /* CodeScanner.swift in Sources */,
 				EE1712152B496DE30008AEF1 /* AppDelegate.swift in Sources */,
 				EE2F210D2B4AD88D00EC9D8F /* CartView.swift in Sources */,
 				EE1712822B4976A20008AEF1 /* +topMostViewController.swift in Sources */,

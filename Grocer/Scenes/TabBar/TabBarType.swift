@@ -36,22 +36,21 @@ enum TabBarType: String, CaseIterable, Hashable {
     }
     
     private func homeView() -> some View {
-        let router = NavigationRouter(navigationController: UINavigationController())
-        
+        let router = Router(navigationController: UINavigationController())
         let controller = UIHostingController(rootView: HomeView(router: router))
         router.push(controller)
         return HostingView(rootController: router.navigationController)
     }
     
     private func cartView() -> some View {
-        let router = NavigationRouter(navigationController: UINavigationController())
+        let router = Router(navigationController: UINavigationController())
         let controller = UIHostingController(rootView: CartView(router: router))
         router.push(controller)
         return HostingView(rootController: router.navigationController)
     }
     
     private func storeView() -> some View {
-        let router = NavigationRouter(navigationController: UINavigationController())
+        let router = Router(navigationController: UINavigationController())
         let controller = UIHostingController(rootView: StoreView(router: router))
         router.push(controller)
         return HostingView(rootController: router.navigationController)

@@ -23,5 +23,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(router: NavigationRouter(navigationController: .init()))
+    HomeView(router: Router(navigationController: .init()))
 }

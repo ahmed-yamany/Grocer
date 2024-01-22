@@ -23,5 +23,5 @@ struct CartView: View {
 }
 
 #Preview {
-    CartView(router: NavigationRouter(navigationController: .init()))
+    CartView(router: Router(navigationController: .init()))
 }
