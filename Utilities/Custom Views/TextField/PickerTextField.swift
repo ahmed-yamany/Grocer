@@ -16,14 +16,15 @@ struct PickerTextField: UIViewRepresentable {
 
     func makeUIView(context: Context) -> UITextField {
         let textField = ProtectedTextField()
-        textField.inputView = CustomPickerView(items: items, didSelect: { item in
-            selectedItem = item
-        })
+        
         return textField
     }
 
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = selectedItem
+        uiView.inputView = CustomPickerView(items: items, didSelect: { item in
+            selectedItem = item
+        })
     }
 }
 

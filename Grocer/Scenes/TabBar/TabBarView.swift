@@ -10,6 +10,10 @@ import SwiftUI
 struct TabBarView: View {
     @StateObject private var viewModel = TabBarViewModel.shared
     
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             tabView
@@ -59,9 +63,9 @@ private struct TabBar: View {
     
     @ViewBuilder
     private func item(for tabBarType: TabBarType) -> some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 4) {
             Image(imageResource(for: tabBarType))
-            Text(tabBarType.rawValue.capitalized)
+            Text(tabBarType.title)
                 .font(.XSmall(weight: .semibold))
         }
         .onTapGesture {

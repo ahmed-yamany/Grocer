@@ -10,6 +10,14 @@ import SwiftUI
 enum TabBarType: String, CaseIterable, Hashable {
     case home, cart, store
     
+    var title: String {
+        switch self {
+            case .home: L10n.TabBar.home
+            case .cart: L10n.TabBar.cart
+            case .store: L10n.TabBar.store
+        }
+    }
+    
     var icon: ImageResource {
         switch self {
             case .home: .tabBarHome

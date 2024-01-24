@@ -25,6 +25,7 @@ struct StoreView: View {
             }
         }
         .onAppear {
+//            viewModel.showAddProducts()
             TabBarViewModel.shared.tabBarIsHidden = false
         }
     }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,8 +40,12 @@
 		EE3BBBF72B5E787300B169CD /* CodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3BBBF62B5E787300B169CD /* CodeScanner.swift */; };
 		EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */; };
 		EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96530F2B4C587700FEB62E /* PickerTextField.swift */; };
-		EE9B9B9D2B5D09A400A7D12A /* MakeConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = EE9B9B9C2B5D09A400A7D12A /* MakeConstraints */; };
 		EE9DF31B2B5D14F7007223E3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9DF31A2B5D14F7007223E3 /* Logger.swift */; };
+		EEB00C9E2B5FCE3E000DFDA2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */; };
+		EEC3E9B02B61239600913AF4 /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3E9AF2B61239600913AF4 /* XButton.swift */; };
+		EEC3E9B22B61273400913AF4 /* BarCodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3E9B12B61273400913AF4 /* BarCodeField.swift */; };
+		EEC3E9B62B61291700913AF4 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3E9B52B61291700913AF4 /* Products.swift */; };
+		EEC3E9B82B61292B00913AF4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3E9B72B61292B00913AF4 /* Category.swift */; };
 		EEDE86F52B4C06D000E485F0 /* ToolbarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F42B4C06D000E485F0 /* ToolbarTitle.swift */; };
 		EEDE86F72B4C07E200E485F0 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F62B4C07E200E485F0 /* PrimaryTextField.swift */; };
 		EEDE86FA2B4C086400E485F0 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F92B4C086400E485F0 /* TextFieldState.swift */; };
@@ -101,6 +105,11 @@
 		EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentViewController.swift; sourceTree = "<group>"; };
 		EE96530F2B4C587700FEB62E /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		EE9DF31A2B5D14F7007223E3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EEC3E9AF2B61239600913AF4 /* XButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
+		EEC3E9B12B61273400913AF4 /* BarCodeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeField.swift; sourceTree = "<group>"; };
+		EEC3E9B52B61291700913AF4 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		EEC3E9B72B61292B00913AF4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		EEDE86F42B4C06D000E485F0 /* ToolbarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTitle.swift; sourceTree = "<group>"; };
 		EEDE86F62B4C07E200E485F0 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		EEDE86F92B4C086400E485F0 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
@@ -115,7 +124,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE9B9B9D2B5D09A400A7D12A /* MakeConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +182,7 @@
 		EE1712492B496FFE0008AEF1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EEC3E9B42B61290E00913AF4 /* Models */,
 				EE9DF3192B5D14E6007223E3 /* Logger */,
 				EE1712772B4973C40008AEF1 /* Router */,
 				EE1712762B4973BD0008AEF1 /* CoreData Manager */,
@@ -247,6 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				EE1712922B49BD770008AEF1 /* HostingView.swift */,
+				EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */,
+				EEC3E9AE2B61237D00913AF4 /* Button */,
 				EEDE86F82B4C084A00E485F0 /* TextField */,
 			);
 			path = "Custom Views";
@@ -361,12 +372,30 @@
 			path = Logger;
 			sourceTree = "<group>";
 		};
+		EEC3E9AE2B61237D00913AF4 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				EEC3E9AF2B61239600913AF4 /* XButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		EEC3E9B42B61290E00913AF4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EEC3E9B52B61291700913AF4 /* Products.swift */,
+				EEC3E9B72B61292B00913AF4 /* Category.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EEDE86F82B4C084A00E485F0 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
 				EEDE86F92B4C086400E485F0 /* TextFieldState.swift */,
 				EEDE86F62B4C07E200E485F0 /* PrimaryTextField.swift */,
 				EE96530F2B4C587700FEB62E /* PickerTextField.swift */,
+				EEC3E9B12B61273400913AF4 /* BarCodeField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -414,7 +443,6 @@
 			);
 			name = Grocer;
 			packageProductDependencies = (
-				EE9B9B9C2B5D09A400A7D12A /* MakeConstraints */,
 			);
 			productName = Grocer;
 			productReference = EE1712112B496DE30008AEF1 /* Grocer.app */;
@@ -468,8 +496,6 @@
 			);
 			mainGroup = EE1712082B496DE30008AEF1;
 			packageReferences = (
-				EE96530A2B4C369400FEB62E /* XCLocalSwiftPackageReference "Packages/Extensions" */,
-				EE9B9B9B2B5D09A400A7D12A /* XCLocalSwiftPackageReference "Packages/MakeConstraints" */,
 			);
 			productRefGroup = EE1712122B496DE30008AEF1 /* Products */;
 			projectDirPath = "";
@@ -560,6 +586,7 @@
 				EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */,
 				EE2F21142B4ADF7300EC9D8F /* isHidden.swift in Sources */,
 				EE2F21122B4AD89400EC9D8F /* StoreViewModel.swift in Sources */,
+				EEC3E9B82B61292B00913AF4 /* Category.swift in Sources */,
 				EE2F21182B4AE43700EC9D8F /* AddProductView.swift in Sources */,
 				EE2F21112B4AD89400EC9D8F /* StoreView.swift in Sources */,
 				EE17128F2B49BC200008AEF1 /* HomeView.swift in Sources */,
@@ -577,10 +604,14 @@
 				EE1712822B4976A20008AEF1 /* +topMostViewController.swift in Sources */,
 				EE1712622B49723F0008AEF1 /* Font+Style.swift in Sources */,
 				EE1712902B49BC200008AEF1 /* HomeViewModel.swift in Sources */,
+				EEC3E9B62B61291700913AF4 /* Products.swift in Sources */,
+				EEB00C9E2B5FCE3E000DFDA2 /* ImagePicker.swift in Sources */,
 				EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */,
+				EEC3E9B22B61273400913AF4 /* BarCodeField.swift in Sources */,
 				EE1712872B49B0440008AEF1 /* TabBarView.swift in Sources */,
 				EE1712882B49B0440008AEF1 /* TabBarViewModel.swift in Sources */,
 				EE1712932B49BD770008AEF1 /* HostingView.swift in Sources */,
+				EEC3E9B02B61239600913AF4 /* XButton.swift in Sources */,
 				EEDE86F72B4C07E200E485F0 /* PrimaryTextField.swift in Sources */,
 				EEFA4D922B4BFD8D0048F884 /* PrimaryDesignStyle.swift in Sources */,
 				EE1712172B496DE30008AEF1 /* SceneDelegate.swift in Sources */,
@@ -877,24 +908,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCLocalSwiftPackageReference section */
-		EE96530A2B4C369400FEB62E /* XCLocalSwiftPackageReference "Packages/Extensions" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/Extensions;
-		};
-		EE9B9B9B2B5D09A400A7D12A /* XCLocalSwiftPackageReference "Packages/MakeConstraints" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = Packages/MakeConstraints;
-		};
-/* End XCLocalSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		EE9B9B9C2B5D09A400A7D12A /* MakeConstraints */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MakeConstraints;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EE1712092B496DE30008AEF1 /* Project object */;
 }

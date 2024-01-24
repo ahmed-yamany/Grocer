@@ -22,7 +22,7 @@ public final class CodeScanner: NSObject {
     var captureSession: AVCaptureSession?
     let previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
     var delegate: CodeScannerDelegate?
-
+    
     let viewController: UIViewController
     let metadataObjectTypes: [AVMetadataObject.ObjectType]
     
@@ -125,10 +125,8 @@ public final class CodeScanner: NSObject {
     
     private func removeExistingLayers() {
         if let sublayers = self.viewController.view.layer.sublayers {
-            for sublayer in sublayers {
-                if sublayer.isKind(of: AVCaptureVideoPreviewLayer.self) {
-                    sublayer.removeFromSuperlayer()
-                }
+            for sublayer in sublayers where sublayer.isKind(of: AVCaptureVideoPreviewLayer.self) {
+                sublayer.removeFromSuperlayer()
             }
         }
     }

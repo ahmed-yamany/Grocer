@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct AddProductView: View {
     @ObservedObject private var viewModel: AddProductViewModel
-    
+        
     init(router: Router) {
         self.viewModel = AddProductViewModel(router: router)
     }
@@ -29,73 +30,67 @@ struct AddProductView: View {
                 barcodeField
                 productImagesView
             }
-            .padding(24)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 80)
+            .padding(.top, 40)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .primaryDesignStyle()
-        .toolbarTitle("Add Product")
+        .toolbarTitle(L10n.AddProduct.title)
+        .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: viewModel.images)
+        .onAppear {
+            viewModel.onAppear()
+        }
     }
     
     private var nameField: some View {
-        PrimaryTextField(title: "Name", text: $viewModel.name) {
+        PrimaryTextField(title: L10n.Field.name, text: $viewModel.name) {
             TextField("", text: $viewModel.name)
         }
         .keyboardType(.default)
     }
     
     private var quantityField: some View {
-        PrimaryTextField(title: "Quantity", text: $viewModel.quantity, fieldView: {
+        PrimaryTextField(title: L10n.Field.quantity, text: $viewModel.quantity, fieldView: {
             TextField("", text: $viewModel.quantity)
         })
         .keyboardType(.numberPad)
     }
     
     private var priceField: some View {
-        PrimaryTextField(title: "Price", text: $viewModel.price, fieldView: {
+        PrimaryTextField(title: L10n.Field.price, text: $viewModel.price, fieldView: {
             TextField("", text: $viewModel.price)
         })
         .keyboardType(.decimalPad)
     }
     
     private var categoryField: some View {
-        PrimaryTextField(title: "Category", text: $viewModel.category) {
-            PickerTextField(selectedItem: $viewModel.category, items: ["Ahmed", "Ali", "Saad"])
+        PrimaryTextField(title: L10n.Field.category, text: $viewModel.category) {
+            PickerTextField(selectedItem: $viewModel.category, items: viewModel.categories)
         }
     }
     
     private var unitField: some View {
-        PrimaryTextField(title: "Unit", text: $viewModel.unit) {
-            PickerTextField(selectedItem: $viewModel.unit, items: ["Ahmed", "Ali", "Saad"])
+        PrimaryTextField(title: L10n.Field.unit, text: $viewModel.unit) {
+            PickerTextField(selectedItem: $viewModel.unit, items: viewModel.units)
         }
     }
     
     private var barcodeField: some View {
-        PrimaryTextField(title: "Bar Code", text: $viewModel.barcode, fieldView: {
-            HStack {
-                TextField("", text: $viewModel.barcode)
-                
-                Button {
-                    viewModel.startBarCodeScanner()
-                } label: {
-                    Image(systemName: "barcode.viewfinder")
-                        .font(.custom(size: 20, weight: .semibold))
-                }
-            }
-        })
-        .keyboardType(.numberPad)
+        BarCodeField(barcode: $viewModel.barcode, router: viewModel.router)
     }
-    
+
     private var productImagesView: some View {
-        Group {
-            if viewModel.images.isEmpty {
-                uploadImageView
-            } else {
-                HStack {
-                    
+        VStack {
+            VStack(spacing: 0) {
+                ForEach(viewModel.images, id: \.self) { image in
+                    productImageCell(image)
                 }
             }
+            
+            uploadImageView
+                .frame(height: 180)
         }
-        .frame(height: 180)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.grInputField)
         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -103,13 +98,43 @@ struct AddProductView: View {
     
     private var uploadImageView: some View {
         Button {
-            
+            viewModel.showAddImageActionSheet = true
         } label: {
             Image(.assetProductImageAdd)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding().padding()
         }
+        .actionSheet(isPresented: $viewModel.showAddImageActionSheet) {
+            uploadImageActionSheet
+        }
+    }
+    
+    private var uploadImageActionSheet: ActionSheet {
+        ActionSheet(
+            title: Text(L10n.AddProduct.AddImage.title),
+            buttons: [
+                .default(Text(L10n.AddProduct.AddImage.Picker.camera)) {
+                    viewModel.showCameraImagePicker()
+                },
+                .default(Text(L10n.AddProduct.AddImage.Picker.image)) {
+                    viewModel.showPhotoLibraryImagePicker()
+                },
+                .destructive(Text(L10n.cancel))
+            ]
+        )
+    }
+    
+    @ViewBuilder
+    private func productImageCell(_ image: UIImage) -> some View {
+        Image(uiImage: image)
+            .resizable()
+            .mask(RoundedRectangle(cornerRadius: 12))
+            .frame(height: 200)
+            .overlay(alignment: .topTrailing) {
+              XButton(action: { viewModel.remove(image) })
+            }
+            .padding(8)
     }
 }
 
