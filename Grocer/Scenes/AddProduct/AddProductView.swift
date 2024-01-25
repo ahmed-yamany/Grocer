@@ -29,6 +29,11 @@ struct AddProductView: View {
                 }
                 barcodeField
                 productImagesView
+                
+                Button("Save") {
+                    viewModel.saveProduct()
+                }
+                .buttonStyle(.primaryButton())
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 80)
@@ -115,10 +120,10 @@ struct AddProductView: View {
             title: Text(L10n.AddProduct.AddImage.title),
             buttons: [
                 .default(Text(L10n.AddProduct.AddImage.Picker.camera)) {
-                    viewModel.showCameraImagePicker()
+                    viewModel.showImagePicker(forType: .camera)
                 },
                 .default(Text(L10n.AddProduct.AddImage.Picker.image)) {
-                    viewModel.showPhotoLibraryImagePicker()
+                    viewModel.showImagePicker(forType: .photoLibrary)
                 },
                 .destructive(Text(L10n.cancel))
             ]

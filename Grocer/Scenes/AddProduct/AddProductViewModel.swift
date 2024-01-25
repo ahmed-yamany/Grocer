@@ -28,6 +28,8 @@ final class AddProductViewModel: ObservableObject {
     @Published var showImagePicker = false
     @Published var showAddImageActionSheet: Bool = false
     
+    let productContextManager = ProductContextManager()
+    
     // MARK: - Initializer
     let router: Router
     init(router: Router) {
@@ -37,18 +39,12 @@ final class AddProductViewModel: ObservableObject {
     func onAppear() {
         categories = Category.samples.map { $0.name }
         units = ["Ahmed", "Ali", "Saad"]
+        print(try? productContextManager.filterProducts(by: \.quantity, value: 123))
+
     }
     
     // MARK: - State Methods
-    func showCameraImagePicker() {
-        showImagePicker(forType: .camera)
-    }
-    
-    func showPhotoLibraryImagePicker() {
-        showImagePicker(forType: .photoLibrary)
-    }
-    
-    private func showImagePicker(forType type: UIImagePickerController.SourceType) {
+    func showImagePicker(forType type: UIImagePickerController.SourceType) {
         let view = ImagePicker(sourceType: type, selectedImage: .init(get: {
             self.selectedImage
         }, set: {
@@ -62,17 +58,37 @@ final class AddProductViewModel: ObservableObject {
         images.removeAll(where: { $0 === image })
     }
     
-//    public func createProduct() -> Product? {
-//        guard let quantity = Int(quantity) else {
-//            
-//        }
-//        
-//        guard let price = Double(price) else {
-//            
-//        }
-//        
-//        guard let category = Category(name: category)
-//
-//        Product(name: name, quantity: quantity, price: price, category: <#T##String#>, unit: <#T##String#>, barcode: <#T##String#>, imagesData: <#T##[Data]#>)
-//    }
+    // TODO: - Convert Logs to error alert
+    // TODO: - save product category && unit
+    public func saveProduct() {
+        guard !name.isEmpty && name.count > 3 else {
+            Logger.log("name", category: \.coreData, level: .fault)
+            return
+        }
+        
+        guard let quantity = Int32(quantity) else {
+            Logger.log("quantity", category: \.coreData, level: .fault)
+            return
+        }
+        
+        guard let price = Double(price) else {
+            Logger.log("price", category: \.coreData, level: .fault)
+            return
+        }
+        
+        guard !barcode.isEmpty else {
+            Logger.log("barcode", category: \.coreData, level: .fault)
+            return
+        }
+        
+        productContextManager.save(
+            name: name,
+            quantity: quantity,
+            price: price,
+            barcode: barcode,
+            // swiftlint: disable all
+            images: images.map { $0.pngData() }.filter { $0 != nil }.map { $0! }
+            // swiftlint: enable all
+        )
+    }
 }
