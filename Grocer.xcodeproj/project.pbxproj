@@ -66,12 +66,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EE1712112B496DE30008AEF1 /* Grocer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grocer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE1712112B496DE30008AEF1 /* Grocer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Grocer.app; path = "/Users/ahmed-yamany/Desktop/Grocer/build/Debug-iphoneos/Grocer.app"; sourceTree = "<absolute>"; };
 		EE1712142B496DE30008AEF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE1712162B496DE30008AEF1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EE1712202B496DE40008AEF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE1712222B496DE40008AEF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE1712272B496DE40008AEF1 /* GrocerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GrocerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE1712272B496DE40008AEF1 /* GrocerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = GrocerTests.xctest; path = "/Users/ahmed-yamany/Desktop/Grocer/build/Debug-iphoneos/GrocerTests.xctest"; sourceTree = "<absolute>"; };
 		EE17122B2B496DE40008AEF1 /* GrocerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocerTests.swift; sourceTree = "<group>"; };
 		EE1712442B496FCD0008AEF1 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		EE1712452B496FCD0008AEF1 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -146,18 +146,7 @@
 				EE1712492B496FFE0008AEF1 /* Utilities */,
 				EE17124A2B4970130008AEF1 /* Resources */,
 				EE17122A2B496DE40008AEF1 /* GrocerTests */,
-				EE1712122B496DE30008AEF1 /* Products */,
-				EEDE86FB2B4C303F00E485F0 /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		EE1712122B496DE30008AEF1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EE1712112B496DE30008AEF1 /* Grocer.app */,
-				EE1712272B496DE40008AEF1 /* GrocerTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		EE1712132B496DE30008AEF1 /* Grocer */ = {
@@ -400,13 +389,6 @@
 			path = TextField;
 			sourceTree = "<group>";
 		};
-		EEDE86FB2B4C303F00E485F0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		EEE5276E2B5BDEEA00ACBEA0 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,7 +479,7 @@
 			mainGroup = EE1712082B496DE30008AEF1;
 			packageReferences = (
 			);
-			productRefGroup = EE1712122B496DE30008AEF1 /* Products */;
+			productRefGroup = EE1712082B496DE30008AEF1;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

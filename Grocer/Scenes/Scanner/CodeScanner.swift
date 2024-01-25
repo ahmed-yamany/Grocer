@@ -136,8 +136,10 @@ public final class CodeScanner: NSObject {
 //
 extension CodeScanner: AVCaptureMetadataOutputObjectsDelegate {
     
-    public func metadataOutput( _ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject],
+    public func metadataOutput( _ output: AVCaptureMetadataOutput,
+                                didOutput metadataObjects: [AVMetadataObject],
                                 from connection: AVCaptureConnection) {
+        
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else {
                 Logger.log("failed to wrap metadataObject", category: \.codeScanner, level: .fault)

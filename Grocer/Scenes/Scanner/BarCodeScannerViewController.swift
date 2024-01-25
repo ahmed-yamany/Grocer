@@ -7,7 +7,6 @@
 
 import AVFoundation
 import UIKit
-import MakeConstraints
 
 protocol BarCodeScannerDelegate {
     func scanned(_ barcode: String)

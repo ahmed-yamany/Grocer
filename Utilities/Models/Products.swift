@@ -9,9 +9,9 @@ import UIKit
 
 struct Product: Codable {
     var name: String
-    var quantity: String
-    var price: String
-    var category: String
+    var quantity: Int
+    var price: Double
+    var category: Category
     var unit: String
     var barcode: String
     var imagesData: [Data]

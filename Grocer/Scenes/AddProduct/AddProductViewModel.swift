@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class AddProductViewModel: ObservableObject {
-    // product Model
+    // MARK: - product Model
     @Published var name: String = ""
     @Published var quantity: String = ""
     @Published var price: String = ""
@@ -17,7 +17,7 @@ final class AddProductViewModel: ObservableObject {
     @Published var barcode: String = ""
     @Published var images: [UIImage] = []
     
-    // View State
+    // MARK: - View State
     @Published var categories: [String] = []
     @Published var units: [String] = []
     @Published var selectedImage = UIImage() {
@@ -28,6 +28,7 @@ final class AddProductViewModel: ObservableObject {
     @Published var showImagePicker = false
     @Published var showAddImageActionSheet: Bool = false
     
+    // MARK: - Initializer
     let router: Router
     init(router: Router) {
         self.router = router
@@ -38,7 +39,7 @@ final class AddProductViewModel: ObservableObject {
         units = ["Ahmed", "Ali", "Saad"]
     }
     
-    // State Methods
+    // MARK: - State Methods
     func showCameraImagePicker() {
         showImagePicker(forType: .camera)
     }
@@ -56,8 +57,22 @@ final class AddProductViewModel: ObservableObject {
         router.present(UIHostingController(rootView: view))
     }
     
-    // Action Methods
+    // MARK: - Action Methods
     public func remove(_ image: UIImage) {
         images.removeAll(where: { $0 === image })
     }
+    
+//    public func createProduct() -> Product? {
+//        guard let quantity = Int(quantity) else {
+//            
+//        }
+//        
+//        guard let price = Double(price) else {
+//            
+//        }
+//        
+//        guard let category = Category(name: category)
+//
+//        Product(name: name, quantity: quantity, price: price, category: <#T##String#>, unit: <#T##String#>, barcode: <#T##String#>, imagesData: <#T##[Data]#>)
+//    }
 }
