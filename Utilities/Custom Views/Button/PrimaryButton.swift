@@ -62,7 +62,7 @@ struct PrimaryButton: ButtonStyle {
         } else if !isEnabled {
             return Color.grInputLabel
         }
-        return Color.grPrimary
+        return Color.grOtherSecondaryToPrimary
     }
 }
 

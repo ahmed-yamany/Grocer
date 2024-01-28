@@ -11,8 +11,8 @@ import Combine
 struct AddProductView: View {
     @ObservedObject private var viewModel: AddProductViewModel
         
-    init(router: Router) {
-        self.viewModel = AddProductViewModel(router: router)
+    init(viewModel: AddProductViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -30,7 +30,7 @@ struct AddProductView: View {
                 barcodeField
                 productImagesView
                 
-                Button("Save") {
+                Button(L10n.save) {
                     viewModel.saveProduct()
                 }
                 .buttonStyle(.primaryButton())
@@ -49,9 +49,9 @@ struct AddProductView: View {
     }
     
     private var nameField: some View {
-        PrimaryTextField(title: L10n.Field.name, text: $viewModel.name) {
+        PrimaryTextField(title: L10n.Field.name, text: $viewModel.name, fieldView: {
             TextField("", text: $viewModel.name)
-        }
+        })
         .keyboardType(.default)
     }
     
@@ -70,19 +70,26 @@ struct AddProductView: View {
     }
     
     private var categoryField: some View {
-        PrimaryTextField(title: L10n.Field.category, text: $viewModel.category) {
-            PickerTextField(selectedItem: $viewModel.category, items: viewModel.categories)
-        }
+        CategoryField(
+            category: $viewModel.category,
+            categories: viewModel.categories,
+            router: viewModel.router
+        )
     }
     
     private var unitField: some View {
-        PrimaryTextField(title: L10n.Field.unit, text: $viewModel.unit) {
-            PickerTextField(selectedItem: $viewModel.unit, items: viewModel.units)
-        }
+        UnitField(
+            unit: $viewModel.unit,
+            units: viewModel.units,
+            router: viewModel.router
+        )
     }
     
     private var barcodeField: some View {
-        BarCodeField(barcode: $viewModel.barcode, router: viewModel.router)
+        BarCodeField(
+            barcode: $viewModel.barcode,
+            router: viewModel.router
+        )
     }
 
     private var productImagesView: some View {

@@ -6,6 +6,11 @@
   
 */
 "cancel" = "Cancel";
+"save" = "Save";
+//
+"coredata.error.createObject" = "Failed To Create";
+"coredata.error.getAll" = "Failed to get all objects of type";
+"coredata.error.exists" = "already exits";
 //
 "tabBar.home" = "Home";
 "tabBar.cart" = "Cart";
@@ -16,10 +21,16 @@
 "addProduct.addImage.picker.camera" = "Open Camera";
 "addProduct.addImage.picker.image" = "Choose from image Library";
 //
+"addProduct.error.name.empty" = "Product Name: mustn't be empty";
+"addProduct.error.name.count" = "Product Name: must be greater than 3 characters";
+"addProduct.error.quantity.cast" = "Product Quantity: must be an Integer";
+"addProduct.error.price.cast" = "Product Price: Must be a Decimal Number";
+"addProduct.error.barcode.empty" = "Product BarCode: mustn't be empty";
+"addProduct.error.barcode.count" = "Product BarCode: must be greater than 8 characters";
+//
 "field.name" = "Name";
 "field.quantity" = "Quantity";
 "field.price" = "Price";
 "field.category" = "Category";
 "field.unit" = "Unit";
 "field.barCode" = "Bar Code";
-
