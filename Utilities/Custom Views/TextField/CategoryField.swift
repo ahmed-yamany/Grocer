@@ -10,20 +10,29 @@ import SwiftUI
 struct CategoryField: View {
     @Binding var category: String
     let categories: [String]
-    let router: Router
-    
+    @ObservedObject var viewModel: AddCategoryViewModel
+
     var body: some View {
         PrimaryTextField(title: L10n.Field.category, text: $category) {
             HStack {
                 PickerTextField(selectedItem: $category, items: categories)
-                
-                Button {
-                    
-                } label: {
-                    Image(systemName: "plus.app")
-                        .font(.custom(size: 20, weight: .semibold))
-                }
+                addCategoryButton
             }
         }
+    }
+    
+    private var addCategoryButton: some View {
+        Button {
+           showAddCategory()
+        } label: {
+            Image(systemName: "plus.app")
+                .font(.custom(size: 20, weight: .medium))
+        }
+
+    }
+    
+    private func showAddCategory() {
+        let viewController = UIHostingController(rootView: AddCategoryView(viewModel: viewModel))
+        viewModel.router.presentOverFullScreen(viewController)
     }
 }

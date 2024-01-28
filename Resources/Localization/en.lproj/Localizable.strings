@@ -21,8 +21,8 @@
 "addProduct.addImage.picker.camera" = "Open Camera";
 "addProduct.addImage.picker.image" = "Choose from image Library";
 //
-"addProduct.error.name.empty" = "Product Name: mustn't be empty";
-"addProduct.error.name.count" = "Product Name: must be greater than 3 characters";
+"addProduct.error.name.empty" = "Name: mustn't be empty";
+"addProduct.error.name.count" = "Name: must be greater than 3 characters";
 "addProduct.error.quantity.cast" = "Product Quantity: must be an Integer";
 "addProduct.error.price.cast" = "Product Price: Must be a Decimal Number";
 "addProduct.error.barcode.empty" = "Product BarCode: mustn't be empty";

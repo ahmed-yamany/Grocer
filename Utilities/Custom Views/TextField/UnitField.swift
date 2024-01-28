@@ -21,7 +21,7 @@ struct UnitField: View {
                     
                 } label: {
                     Image(systemName: "plus.app")
-                        .font(.custom(size: 20, weight: .semibold))
+                        .font(.custom(size: 20, weight: .medium))
                 }
             }
         }

@@ -19,9 +19,9 @@ class CategoryContextManager: ContextManager<Category> {
         guard try filter(by: \.name, value: name).isEmpty else {
             throw ContextManagerError<Category>.exits
         }
+        let builder = CategoryBuilder(name: name)
         let category = try createObject()
-        category.id = UUID()
-        category.name = name
+        try builder.build(category)
         try context.save()
     }
     

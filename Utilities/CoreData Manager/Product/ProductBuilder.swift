@@ -10,14 +10,12 @@ import UIKit
 class ProductBuilder {
     
     enum ProductBuilderError: Error, LocalizedError {
-        case name(String)
         case quantity(String)
         case price(String)
         case barcode(String)
         
         var errorDescription: String? {
             switch self {
-                case .name(let message): message
                 case .quantity(let message): message
                 case .price(let message): message
                 case .barcode(let message): message
@@ -69,11 +67,11 @@ class ProductBuilder {
     
     private func buildName() throws -> String {
         guard !name.isEmpty else {
-            throw ProductBuilderError.name(L10n.AddProduct.Error.Name.empty)
+            throw ContextManagerError<Product>.name(L10n.AddProduct.Error.Name.empty)
         }
         
         guard name.count > 3 else {
-            throw ProductBuilderError.name(L10n.AddProduct.Error.Name.count)
+            throw ContextManagerError<Product>.name(L10n.AddProduct.Error.Name.count)
         }
         
         return name

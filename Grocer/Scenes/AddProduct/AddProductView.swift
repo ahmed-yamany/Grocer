@@ -70,11 +70,9 @@ struct AddProductView: View {
     }
     
     private var categoryField: some View {
-        CategoryField(
-            category: $viewModel.category,
-            categories: viewModel.categories,
-            router: viewModel.router
-        )
+        CategoryField(category: $viewModel.category,
+                      categories: viewModel.categories,
+                      viewModel: viewModel.createAddCategoryViewModel())
     }
     
     private var unitField: some View {

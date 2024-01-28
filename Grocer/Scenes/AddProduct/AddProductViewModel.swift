@@ -77,4 +77,8 @@ final class AddProductViewModel: ObservableObject {
             Logger.log(error.localizedDescription, category: \.coreData, level: .fault)
         }
     }
+    
+    public func createAddCategoryViewModel() -> AddCategoryViewModel {
+        AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
+    }
 }

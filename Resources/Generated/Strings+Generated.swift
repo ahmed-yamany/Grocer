@@ -38,10 +38,10 @@ internal enum L10n {
         internal static let empty = L10n.tr("Localizable", "addProduct.error.barcode.empty", fallback: "Product BarCode: mustn't be empty")
       }
       internal enum Name {
-        /// Product Name: must be greater than 3 characters
-        internal static let count = L10n.tr("Localizable", "addProduct.error.name.count", fallback: "Product Name: must be greater than 3 characters")
-        /// Product Name: mustn't be empty
-        internal static let empty = L10n.tr("Localizable", "addProduct.error.name.empty", fallback: "Product Name: mustn't be empty")
+        /// Name: must be greater than 3 characters
+        internal static let count = L10n.tr("Localizable", "addProduct.error.name.count", fallback: "Name: must be greater than 3 characters")
+        /// Name: mustn't be empty
+        internal static let empty = L10n.tr("Localizable", "addProduct.error.name.empty", fallback: "Name: mustn't be empty")
       }
       internal enum Price {
         /// Product Price: Must be a Decimal Number
