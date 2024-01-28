@@ -23,6 +23,12 @@ public final class Router {
         self.present(viewController, animated: animated, completion: completion)
     }
     
+    func presentOverFullScreen(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
+        viewController.modalPresentationStyle = .overFullScreen
+        viewController.view.backgroundColor = .clear
+        self.present(viewController, animated: animated, completion: completion)
+    }
+    
     func dismiss(animated: Bool = true, completion: @escaping () -> Void = {}) {
         if navigationController.presentedViewController != nil {
             navigationController.dismiss(animated: animated, completion: completion)

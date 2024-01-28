@@ -15,6 +15,8 @@ internal enum L10n {
   /// 
   ///   Created by Ahmed Yamany on 06/01/2024.
   internal static let cancel = L10n.tr("Localizable", "cancel", fallback: "Cancel")
+  /// Save
+  internal static let save = L10n.tr("Localizable", "save", fallback: "Save")
   internal enum AddProduct {
     /// Add Product
     internal static let title = L10n.tr("Localizable", "addProduct.title", fallback: "Add Product")
@@ -27,6 +29,38 @@ internal enum L10n {
         /// Choose from image Library
         internal static let image = L10n.tr("Localizable", "addProduct.addImage.picker.image", fallback: "Choose from image Library")
       }
+    }
+    internal enum Error {
+      internal enum Barcode {
+        /// Product BarCode: must be greater than 8 characters
+        internal static let count = L10n.tr("Localizable", "addProduct.error.barcode.count", fallback: "Product BarCode: must be greater than 8 characters")
+        /// Product BarCode: mustn't be empty
+        internal static let empty = L10n.tr("Localizable", "addProduct.error.barcode.empty", fallback: "Product BarCode: mustn't be empty")
+      }
+      internal enum Name {
+        /// Name: must be greater than 3 characters
+        internal static let count = L10n.tr("Localizable", "addProduct.error.name.count", fallback: "Name: must be greater than 3 characters")
+        /// Name: mustn't be empty
+        internal static let empty = L10n.tr("Localizable", "addProduct.error.name.empty", fallback: "Name: mustn't be empty")
+      }
+      internal enum Price {
+        /// Product Price: Must be a Decimal Number
+        internal static let cast = L10n.tr("Localizable", "addProduct.error.price.cast", fallback: "Product Price: Must be a Decimal Number")
+      }
+      internal enum Quantity {
+        /// Product Quantity: must be an Integer
+        internal static let cast = L10n.tr("Localizable", "addProduct.error.quantity.cast", fallback: "Product Quantity: must be an Integer")
+      }
+    }
+  }
+  internal enum Coredata {
+    internal enum Error {
+      /// Failed To Create
+      internal static let createObject = L10n.tr("Localizable", "coredata.error.createObject", fallback: "Failed To Create")
+      /// already exits
+      internal static let exists = L10n.tr("Localizable", "coredata.error.exists", fallback: "already exits")
+      /// Failed to get all objects of type
+      internal static let getAll = L10n.tr("Localizable", "coredata.error.getAll", fallback: "Failed to get all objects of type")
     }
   }
   internal enum Field {

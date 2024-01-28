@@ -5,20 +5,3 @@
   Created by Ahmed Yamany on 06/01/2024.
   
 */
-"cancel" = "إلغاء";
-//
-"tabBar.home" = "الصفحة الرئيسية";
-"tabBar.cart" = "عربة التسوق";
-"tabBar.store" = "المتجر";
-//
-"addProduct.title" = "إضافة منتج";
-"addProduct.addImage.title" = "أضف صورة المنتج";
-"addProduct.addImage.picker.camera" = "افتح الكاميرا";
-"addProduct.addImage.picker.image" = "اختر من مكتبة الصور";
-//
-"field.name" = "الاسم";
-"field.quantity" = "الكمية";
-"field.price" = "السعر";
-"field.category" = "الفئة";
-"field.unit" = "الوحدة";
-"field.barCode" = "الرمز الشريطي";

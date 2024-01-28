@@ -11,8 +11,8 @@ import Combine
 struct AddProductView: View {
     @ObservedObject private var viewModel: AddProductViewModel
         
-    init(router: Router) {
-        self.viewModel = AddProductViewModel(router: router)
+    init(viewModel: AddProductViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -29,6 +29,11 @@ struct AddProductView: View {
                 }
                 barcodeField
                 productImagesView
+                
+                Button(L10n.save) {
+                    viewModel.saveProduct()
+                }
+                .buttonStyle(.primaryButton())
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 80)
@@ -44,9 +49,9 @@ struct AddProductView: View {
     }
     
     private var nameField: some View {
-        PrimaryTextField(title: L10n.Field.name, text: $viewModel.name) {
+        PrimaryTextField(title: L10n.Field.name, text: $viewModel.name, fieldView: {
             TextField("", text: $viewModel.name)
-        }
+        })
         .keyboardType(.default)
     }
     
@@ -65,19 +70,24 @@ struct AddProductView: View {
     }
     
     private var categoryField: some View {
-        PrimaryTextField(title: L10n.Field.category, text: $viewModel.category) {
-            PickerTextField(selectedItem: $viewModel.category, items: viewModel.categories)
-        }
+        CategoryField(category: $viewModel.category,
+                      categories: viewModel.categories,
+                      viewModel: viewModel.createAddCategoryViewModel())
     }
     
     private var unitField: some View {
-        PrimaryTextField(title: L10n.Field.unit, text: $viewModel.unit) {
-            PickerTextField(selectedItem: $viewModel.unit, items: viewModel.units)
-        }
+        UnitField(
+            unit: $viewModel.unit,
+            units: viewModel.units,
+            router: viewModel.router
+        )
     }
     
     private var barcodeField: some View {
-        BarCodeField(barcode: $viewModel.barcode, router: viewModel.router)
+        BarCodeField(
+            barcode: $viewModel.barcode,
+            router: viewModel.router
+        )
     }
 
     private var productImagesView: some View {
@@ -115,10 +125,10 @@ struct AddProductView: View {
             title: Text(L10n.AddProduct.AddImage.title),
             buttons: [
                 .default(Text(L10n.AddProduct.AddImage.Picker.camera)) {
-                    viewModel.showCameraImagePicker()
+                    viewModel.showImagePicker(forType: .camera)
                 },
                 .default(Text(L10n.AddProduct.AddImage.Picker.image)) {
-                    viewModel.showPhotoLibraryImagePicker()
+                    viewModel.showImagePicker(forType: .photoLibrary)
                 },
                 .destructive(Text(L10n.cancel))
             ]

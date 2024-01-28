@@ -60,6 +60,7 @@ struct PrimaryTextField<FieldView: View>: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
+        .shadow(radius: 0.5)
         .animation(.smooth, value: label)
     }
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 final class AddProductViewModel: ObservableObject {
     // MARK: - product Model
@@ -30,49 +31,54 @@ final class AddProductViewModel: ObservableObject {
     
     // MARK: - Initializer
     let router: Router
-    init(router: Router) {
+    let productContextManager: ProductContextManager
+    init(router: Router, productContextManager: ProductContextManager) {
         self.router = router
+        self.productContextManager = productContextManager
     }
     
     func onAppear() {
-        categories = Category.samples.map { $0.name }
-        units = ["Ahmed", "Ali", "Saad"]
-    }
-    
-    // MARK: - State Methods
-    func showCameraImagePicker() {
-        showImagePicker(forType: .camera)
-    }
-    
-    func showPhotoLibraryImagePicker() {
-        showImagePicker(forType: .photoLibrary)
-    }
-    
-    private func showImagePicker(forType type: UIImagePickerController.SourceType) {
-        let view = ImagePicker(sourceType: type, selectedImage: .init(get: {
-            self.selectedImage
-        }, set: {
-            self.selectedImage = $0
-        }))
-        router.present(UIHostingController(rootView: view))
+        // TODO: - Convert Logs to error alert
+        do {
+            self.categories = try productContextManager.categoryManager.getAll().allNames()
+            self.units = try productContextManager.unitManager.getAll().allNames()
+        } catch {
+            Logger.log(error.localizedDescription, category: \.default, level: .fault)
+        }
     }
     
     // MARK: - Action Methods
+    func showImagePicker(forType type: UIImagePickerController.SourceType) {
+        let imagePickerView = ImagePicker(sourceType: type, selectedImage: .init(get: {
+            return self.selectedImage
+        }, set: {
+            self.selectedImage = $0
+        }))
+        router.present(UIHostingController(rootView: imagePickerView))
+    }
+    
     public func remove(_ image: UIImage) {
         images.removeAll(where: { $0 === image })
     }
     
-//    public func createProduct() -> Product? {
-//        guard let quantity = Int(quantity) else {
-//            
-//        }
-//        
-//        guard let price = Double(price) else {
-//            
-//        }
-//        
-//        guard let category = Category(name: category)
-//
-//        Product(name: name, quantity: quantity, price: price, category: <#T##String#>, unit: <#T##String#>, barcode: <#T##String#>, imagesData: <#T##[Data]#>)
-//    }
+    // TODO: - Convert Logs to error alert
+    public func saveProduct() {
+        do {
+            try productContextManager.save(
+                name: name,
+                quantity: quantity,
+                price: price,
+                barcode: barcode,
+                images: images,
+                category: category,
+                unit: unit)
+            router.dismiss()
+        } catch {
+            Logger.log(error.localizedDescription, category: \.coreData, level: .fault)
+        }
+    }
+    
+    public func createAddCategoryViewModel() -> AddCategoryViewModel {
+        AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
+    }
 }
