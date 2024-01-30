@@ -28,7 +28,6 @@ struct CategoryField: View {
             Image(systemName: "plus.app")
                 .font(.custom(size: 20, weight: .medium))
         }
-
     }
     
     private func showAddCategory() {

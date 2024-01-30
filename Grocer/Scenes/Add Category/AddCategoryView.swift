@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct AddCategoryView: View {
-    
     @ObservedObject var viewModel: AddCategoryViewModel
-    init(viewModel: AddCategoryViewModel) {
-        self.viewModel = viewModel
-    }
     
     var body: some View {
         SheetView(title: "New Category", router: viewModel.router) {

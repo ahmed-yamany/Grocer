@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductBuilder {
+final class ProductBuilder {
     
     enum ProductBuilderError: Error, LocalizedError {
         case quantity(String)
@@ -55,7 +55,7 @@ class ProductBuilder {
         self.unitManager = unitManager
     }
     
-    func build(_ product: Product) throws {
+    public final func build(_ product: Product) throws {
         product.id = UUID()
         product.name = try buildName()
         product.quantity = try buildQuantity()

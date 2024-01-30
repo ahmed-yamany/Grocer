@@ -47,6 +47,7 @@ public final class Router {
         navigationController.popToViewController(viewController, animated: animated)
         completion()
     }
+    
     func popToRoot(animated: Bool = true, completion: @escaping () -> Void = {}) {
         navigationController.popToRootViewController(animated: animated)
         completion()

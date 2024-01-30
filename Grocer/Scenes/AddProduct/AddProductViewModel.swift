@@ -81,4 +81,8 @@ final class AddProductViewModel: ObservableObject {
     public func createAddCategoryViewModel() -> AddCategoryViewModel {
         AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
     }
+    
+    public func createAddUnitViewModel() -> AddUnitViewModel {
+        AddUnitViewModel(router: router, unitManager: productContextManager.unitManager)
+    }
 }

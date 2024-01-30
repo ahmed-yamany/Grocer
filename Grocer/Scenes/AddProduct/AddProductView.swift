@@ -19,14 +19,13 @@ struct AddProductView: View {
         ScrollView {
             VStack(spacing: 24) {
                 nameField
+                
                 HStack(spacing: 12) {
                     quantityField
                     priceField
                 }
-                HStack(spacing: 12) {
-                    categoryField
-                    unitField
-                }
+                
+                categoryField
                 barcodeField
                 productImagesView
                 
@@ -79,7 +78,7 @@ struct AddProductView: View {
         UnitField(
             unit: $viewModel.unit,
             units: viewModel.units,
-            router: viewModel.router
+            viewModel: viewModel.createAddUnitViewModel()
         )
     }
     

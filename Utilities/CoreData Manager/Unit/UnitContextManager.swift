@@ -19,9 +19,8 @@ class UnitContextManager: ContextManager<Unit> {
             throw ContextManagerError<Unit>.exits
         }
         
-        let category = try createObject()
-        category.id = UUID()
-        category.name = name
+        _ = try createObject()
+        
         try context.save()
     }
 }
