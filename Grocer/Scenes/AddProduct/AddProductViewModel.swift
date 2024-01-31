@@ -14,13 +14,11 @@ final class AddProductViewModel: ObservableObject {
     @Published var quantity: String = ""
     @Published var price: String = ""
     @Published var category: String = ""
-    @Published var unit: String = ""
     @Published var barcode: String = ""
     @Published var images: [UIImage] = []
     
     // MARK: - View State
     @Published var categories: [String] = []
-    @Published var units: [String] = []
     @Published var selectedImage = UIImage() {
         didSet {
             images.append(selectedImage)
@@ -41,7 +39,6 @@ final class AddProductViewModel: ObservableObject {
         // TODO: - Convert Logs to error alert
         do {
             self.categories = try productContextManager.categoryManager.getAll().allNames()
-            self.units = try productContextManager.unitManager.getAll().allNames()
         } catch {
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
@@ -70,19 +67,20 @@ final class AddProductViewModel: ObservableObject {
                 price: price,
                 barcode: barcode,
                 images: images,
-                category: category,
-                unit: unit)
+                category: category)
             router.dismiss()
+            self.router.presentAlert(
+                title: L10n.Alert.saved,
+                message: L10n.Alert.Product.saved,
+                withState: .success
+            )
         } catch {
+            router.presentAlert(message: error.localizedDescription, withState: .error)
             Logger.log(error.localizedDescription, category: \.coreData, level: .fault)
         }
     }
     
     public func createAddCategoryViewModel() -> AddCategoryViewModel {
         AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
-    }
-    
-    public func createAddUnitViewModel() -> AddUnitViewModel {
-        AddUnitViewModel(router: router, unitManager: productContextManager.unitManager)
     }
 }

@@ -13,6 +13,7 @@ enum ContextManagerError<ManagedObject: NSManagedObject>: Error, LocalizedError 
     case getAll
     case exits
     case name(String)
+    case categoryEmpty
  
     var errorDescription: String? {
         switch self {
@@ -20,6 +21,7 @@ enum ContextManagerError<ManagedObject: NSManagedObject>: Error, LocalizedError 
             case .getAll: "\(L10n.Coredata.Error.getAll) \(String(describing: ManagedObject.self))"
             case .exits: "\(String(describing: ManagedObject.self)) \(L10n.Coredata.Error.exists)"
             case .name(let message): "\(String(describing: ManagedObject.self)) \(message)"
+            case .categoryEmpty: L10n.Coredata.Error.categoryEmpty
         }
     }
 }

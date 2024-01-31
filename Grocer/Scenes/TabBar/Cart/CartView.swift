@@ -23,5 +23,12 @@ struct CartView: View {
 }
 
 #Preview {
-    CartView(router: Router(navigationController: .init()))
+    CartView(
+        router: Router(
+            navigationController: .init(),
+            alertRouter: .init(
+                alertView: GrocerAlertView()
+            )
+        )
+    )
 }

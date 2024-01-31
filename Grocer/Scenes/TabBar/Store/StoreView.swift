@@ -16,7 +16,13 @@ struct StoreView: View {
     
     var body: some View {
         ScrollView {
-            Text("Here we will show all the user's products")
+            Button("Click Me") {
+                viewModel.router.presentAlert(
+                    title: "Error Occured",
+                    message: "Connection error. Unable to connect to the server at present",
+                    withState: .error
+                )
+            }
         }
         .primaryDesignStyle()
         .toolbar {

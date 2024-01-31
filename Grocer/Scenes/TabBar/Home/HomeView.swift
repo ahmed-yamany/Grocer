@@ -23,5 +23,12 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(router: Router(navigationController: .init()))
+    HomeView(
+        router: Router(
+            navigationController: .init(),
+            alertRouter: .init(
+                alertView: GrocerAlertView()
+            )
+        )
+    )
 }

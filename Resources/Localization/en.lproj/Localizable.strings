@@ -8,9 +8,15 @@
 "cancel" = "Cancel";
 "save" = "Save";
 //
+"alert.saved" = "Saved Successfully";
+"alert.error" = "Error Occurred";
+"alert.warning" = "Action Required";
+"alert.product.saved" = "Action Required";
+//
 "coredata.error.createObject" = "Failed To Create";
 "coredata.error.getAll" = "Failed to get all objects of type";
 "coredata.error.exists" = "already exits";
+"coredata.error.categoryEmpty" = "Please select category for the product";
 //
 "tabBar.home" = "Home";
 "tabBar.cart" = "Cart";

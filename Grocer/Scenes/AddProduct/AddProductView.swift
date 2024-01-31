@@ -74,14 +74,6 @@ struct AddProductView: View {
                       viewModel: viewModel.createAddCategoryViewModel())
     }
     
-    private var unitField: some View {
-        UnitField(
-            unit: $viewModel.unit,
-            units: viewModel.units,
-            viewModel: viewModel.createAddUnitViewModel()
-        )
-    }
-    
     private var barcodeField: some View {
         BarCodeField(
             barcode: $viewModel.barcode,

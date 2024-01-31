@@ -29,9 +29,7 @@ final class ProductBuilder {
     public let price: String
     public let quantity: String
     public let category: String
-    public let unit: String
     public let categoryManager: CategoryContextManager
-    public let unitManager: UnitContextManager
     
     init(
         barcode: String,
@@ -40,9 +38,7 @@ final class ProductBuilder {
         price: String,
         quantity: String,
         category: String,
-        unit: String,
-        categoryManager: CategoryContextManager,
-        unitManager: UnitContextManager
+        categoryManager: CategoryContextManager
     ) {
         self.barcode = barcode
         self.images = images
@@ -50,18 +46,23 @@ final class ProductBuilder {
         self.price = price
         self.quantity = quantity
         self.category = category
-        self.unit = unit
         self.categoryManager = categoryManager
-        self.unitManager = unitManager
     }
     
     public final func build(_ product: Product) throws {
+        // try build properties before assigning them to the product
+        let name = try buildName()
+        let quantity = try buildQuantity()
+        let price = try buildPrice()
+        let barcode = try buildBarcode()
+        let category = try buildCategory()
+        
         product.id = UUID()
-        product.name = try buildName()
-        product.quantity = try buildQuantity()
-        product.price = try buildPrice()
-        product.barcode = try buildBarcode()
-        product.category = try buildCategory()
+        product.name = name
+        product.quantity = quantity
+        product.price = price
+        product.barcode = barcode
+        product.category = category
         product.images = images.pngData()
     }
     
@@ -106,10 +107,10 @@ final class ProductBuilder {
     }
     
     private func buildCategory() throws -> Category? {
-        try categoryManager.filter(by: \.name, value: category).first
-    }
-    
-    private func buildUnit() throws -> Unit? {
-        try unitManager.filter(by: \.name, value: unit).first
+        guard !category.isEmpty else {
+            throw ContextManagerError<Product>.categoryEmpty
+        }
+        
+        return try categoryManager.filter(by: \.name, value: category).first
     }
 }
