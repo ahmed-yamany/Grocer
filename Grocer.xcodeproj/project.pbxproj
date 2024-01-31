@@ -56,6 +56,7 @@
 		EE6A66E52B6A5BCA00E0D738 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A66E42B6A5BCA00E0D738 /* Constants.swift */; };
 		EE6A66E72B6A69B800E0D738 /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A66E62B6A69B800E0D738 /* AlertState.swift */; };
 		EE6A66E92B6A756000E0D738 /* AlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A66E82B6A756000E0D738 /* AlertRouter.swift */; };
+		EE6A66EE2B6AC05400E0D738 /* DelayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A66ED2B6AC05400E0D738 /* DelayButton.swift */; };
 		EE6A9A4E2B626B8700C8C178 /* Grocer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE6A9A4C2B626B8700C8C178 /* Grocer.xcdatamodeld */; };
 		EE6A9A502B626B9B00C8C178 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A9A4F2B626B9B00C8C178 /* CoreDataManager.swift */; };
 		EE6FED8F2B69931000D4130E /* GrocerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6FED8D2B69931000D4130E /* GrocerAlertView.swift */; };
@@ -142,6 +143,7 @@
 		EE6A66E42B6A5BCA00E0D738 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EE6A66E62B6A69B800E0D738 /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		EE6A66E82B6A756000E0D738 /* AlertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRouter.swift; sourceTree = "<group>"; };
+		EE6A66ED2B6AC05400E0D738 /* DelayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayButton.swift; sourceTree = "<group>"; };
 		EE6A9A4D2B626B8700C8C178 /* Grocer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Grocer.xcdatamodel; sourceTree = "<group>"; };
 		EE6A9A4F2B626B9B00C8C178 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		EE6FED8D2B69931000D4130E /* GrocerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocerAlertView.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 			children = (
 				EEC3E9AF2B61239600913AF4 /* XButton.swift */,
 				EE1DAE0A2B62E036004603A2 /* PrimaryButton.swift */,
+				EE6A66ED2B6AC05400E0D738 /* DelayButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				EE5D818C2B640A8B00222466 /* Array.swift in Sources */,
 				EE17127F2B49747B0008AEF1 /* AppRouter.swift in Sources */,
 				EE4CA8892B667A7A00BC8399 /* UnitField.swift in Sources */,
+				EE6A66EE2B6AC05400E0D738 /* DelayButton.swift in Sources */,
 				EE5D81872B63D5AB00222466 /* ProductContextManager.swift in Sources */,
 				EE1DAE0B2B62E036004603A2 /* PrimaryButton.swift in Sources */,
 				EEF59C6B2B4ACD2000415050 /* mainWindow.swift in Sources */,

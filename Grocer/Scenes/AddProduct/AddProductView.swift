@@ -10,7 +10,6 @@ import Combine
 
 struct AddProductView: View {
     @ObservedObject private var viewModel: AddProductViewModel
-    @State private var enableButton = true
     
     init(viewModel: AddProductViewModel) {
         self.viewModel = viewModel
@@ -80,15 +79,12 @@ struct AddProductView: View {
     }
     
     private var saveButton: some View {
-        Button(L10n.save) {
-            enableButton = false
+        DelayButton {
+            Text(L10n.save)
+        } action: {
             viewModel.saveProduct()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.enableButton = true
-            }
         }
         .buttonStyle(.primaryButton())
-        .disabled(!enableButton)
     }
 
     private var productImagesView: some View {

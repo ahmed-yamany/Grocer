@@ -37,6 +37,9 @@ struct PrimaryButton: ButtonStyle {
     // Accesses the environment value that indicates whether the button is enabled or not
     @Environment(\.isEnabled) private var isEnabled: Bool
     
+    @State private var enableButton = true
+
+    
     func makeBody(configuration: Configuration) -> some View {
         HStack(spacing: 8) {
             if let icon {
