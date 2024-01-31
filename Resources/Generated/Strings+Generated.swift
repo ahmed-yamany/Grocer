@@ -53,8 +53,22 @@ internal enum L10n {
       }
     }
   }
+  internal enum Alert {
+    /// Error Occurred
+    internal static let error = L10n.tr("Localizable", "alert.error", fallback: "Error Occurred")
+    /// Saved Successfully
+    internal static let saved = L10n.tr("Localizable", "alert.saved", fallback: "Saved Successfully")
+    /// Action Required
+    internal static let warning = L10n.tr("Localizable", "alert.warning", fallback: "Action Required")
+    internal enum Product {
+      /// Action Required
+      internal static let saved = L10n.tr("Localizable", "alert.product.saved", fallback: "Action Required")
+    }
+  }
   internal enum Coredata {
     internal enum Error {
+      /// Please select category for the product
+      internal static let categoryEmpty = L10n.tr("Localizable", "coredata.error.categoryEmpty", fallback: "Please select category for the product")
       /// Failed To Create
       internal static let createObject = L10n.tr("Localizable", "coredata.error.createObject", fallback: "Failed To Create")
       /// already exits

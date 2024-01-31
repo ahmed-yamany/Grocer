@@ -10,7 +10,8 @@ import Combine
 
 struct AddProductView: View {
     @ObservedObject private var viewModel: AddProductViewModel
-        
+    @State private var enableButton = true
+    
     init(viewModel: AddProductViewModel) {
         self.viewModel = viewModel
     }
@@ -29,10 +30,7 @@ struct AddProductView: View {
                 barcodeField
                 productImagesView
                 
-                Button(L10n.save) {
-                    viewModel.saveProduct()
-                }
-                .buttonStyle(.primaryButton())
+                saveButton
             }
             .padding(.horizontal, 24)
             .padding(.bottom, 80)
@@ -74,19 +72,23 @@ struct AddProductView: View {
                       viewModel: viewModel.createAddCategoryViewModel())
     }
     
-    private var unitField: some View {
-        UnitField(
-            unit: $viewModel.unit,
-            units: viewModel.units,
-            viewModel: viewModel.createAddUnitViewModel()
-        )
-    }
-    
     private var barcodeField: some View {
         BarCodeField(
             barcode: $viewModel.barcode,
             router: viewModel.router
         )
+    }
+    
+    private var saveButton: some View {
+        Button(L10n.save) {
+            enableButton = false
+            viewModel.saveProduct()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.enableButton = true
+            }
+        }
+        .buttonStyle(.primaryButton())
+        .disabled(!enableButton)
     }
 
     private var productImagesView: some View {

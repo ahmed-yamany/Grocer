@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GrocerAlertView" customModule="Grocer" customModuleProvider="target">
+            <connections>
+                <outlet property="stateImageContainer" destination="yb4-rk-BKR" id="PNt-g5-Eg8"/>
+                <outlet property="stateImageView" destination="6nM-s3-2od" id="SH7-vo-V97"/>
+                <outlet property="subtitleLabel" destination="4ch-px-Qrk" id="Hh8-GL-711"/>
+                <outlet property="titleLabel" destination="eCK-DV-DLy" id="MFc-jF-Oca"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="366" height="114"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-Dw-07d">
+                    <rect key="frame" x="16" y="8" width="334" height="98"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yb4-rk-BKR">
+                            <rect key="frame" x="0.0" y="34" width="30" height="30"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6nM-s3-2od">
+                                    <rect key="frame" x="5" y="5.9999999999999982" width="20" height="18.666666666666664"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="EA1-oJ-gvL"/>
+                                        <constraint firstAttribute="height" constant="20" id="bkF-0g-8vz"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="9g0-2g-rnX"/>
+                                <constraint firstItem="6nM-s3-2od" firstAttribute="centerX" secondItem="yb4-rk-BKR" secondAttribute="centerX" id="a1f-ye-pVr"/>
+                                <constraint firstAttribute="width" constant="30" id="khA-0N-9ch"/>
+                                <constraint firstItem="6nM-s3-2od" firstAttribute="centerY" secondItem="yb4-rk-BKR" secondAttribute="centerY" id="mnY-JY-FIp"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ayH-Ju-bXq">
+                            <rect key="frame" x="46" y="16.666666666666671" width="288" height="65"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Successfully" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCK-DV-DLy">
+                                    <rect key="frame" x="0.0" y="0.0" width="147" height="20.333333333333332"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your changes have been saved successfully" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ch-px-Qrk">
+                                    <rect key="frame" x="0.0" y="24.333333333333332" width="240" height="40.666666666666671"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Jln-Dw-07d" secondAttribute="trailing" constant="16" id="B0z-sq-nxL"/>
+                <constraint firstAttribute="bottom" secondItem="Jln-Dw-07d" secondAttribute="bottom" constant="8" id="Bd7-KP-uGM"/>
+                <constraint firstItem="Jln-Dw-07d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Q3Q-tk-dXe"/>
+                <constraint firstItem="Jln-Dw-07d" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ln9-qF-d2v"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="155.72519083969465" y="257.74647887323943"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

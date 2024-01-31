@@ -8,10 +8,9 @@
 import UIKit
 import CoreData
 
-class ProductContextManager: ContextManager<Product> {
+final class ProductContextManager: ContextManager<Product> {
     private let manager = CoreDataManager.shared
     let categoryManager = CategoryContextManager()
-    let unitManager = UnitContextManager()
     
     init() {
         super.init(context: manager.persistentContainer.viewContext)
@@ -23,8 +22,7 @@ class ProductContextManager: ContextManager<Product> {
         price: String,
         barcode: String,
         images: [UIImage],
-        category: String,
-        unit: String
+        category: String
     ) throws {
         guard try filter(by: \.barcode, value: barcode).isEmpty else {
             throw ContextManagerError<Product>.exits
@@ -37,13 +35,11 @@ class ProductContextManager: ContextManager<Product> {
             price: price,
             quantity: quantity,
             category: category,
-            unit: unit,
-            categoryManager: categoryManager,
-            unitManager: unitManager
+            categoryManager: categoryManager
         )
         
         let product: Product = try createObject()
         try productBuilder.build(product)
-        try context.save()
+        try? context.save()
     }
 }

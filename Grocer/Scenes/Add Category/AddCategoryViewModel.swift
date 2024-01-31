@@ -12,6 +12,7 @@ class AddCategoryViewModel: ObservableObject {
 
     let router: Router
     let categoryManager: CategoryContextManager
+    
     init(router: Router, categoryManager: CategoryContextManager) {
         self.router = router
         self.categoryManager = categoryManager
@@ -21,7 +22,9 @@ class AddCategoryViewModel: ObservableObject {
         do {
             try categoryManager.save(name: category)
             router.dismiss()
+            
         } catch {
+            router.presentAlert(message: error.localizedDescription, withState: .error)
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
     }

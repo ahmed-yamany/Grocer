@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -53,8 +53,15 @@
 		EE5D81892B63FF2200222466 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D81882B63FF2200222466 /* ContextManager.swift */; };
 		EE5D818C2B640A8B00222466 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D818B2B640A8B00222466 /* Array.swift */; };
 		EE5D81912B64214500222466 /* CategoryContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5D81902B64214500222466 /* CategoryContextManager.swift */; };
+		EE6A66E52B6A5BCA00E0D738 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A66E42B6A5BCA00E0D738 /* Constants.swift */; };
+		EE6A66E72B6A69B800E0D738 /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A66E62B6A69B800E0D738 /* AlertState.swift */; };
+		EE6A66E92B6A756000E0D738 /* AlertRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A66E82B6A756000E0D738 /* AlertRouter.swift */; };
 		EE6A9A4E2B626B8700C8C178 /* Grocer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE6A9A4C2B626B8700C8C178 /* Grocer.xcdatamodeld */; };
 		EE6A9A502B626B9B00C8C178 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6A9A4F2B626B9B00C8C178 /* CoreDataManager.swift */; };
+		EE6FED8F2B69931000D4130E /* GrocerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6FED8D2B69931000D4130E /* GrocerAlertView.swift */; };
+		EE6FED902B69931000D4130E /* GrocerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6FED8E2B69931000D4130E /* GrocerAlertView.xib */; };
+		EE6FED932B69965E00D4130E /* MakeConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = EE6FED922B69965E00D4130E /* MakeConstraints */; };
+		EE7D1EE42B69A1F80020C615 /* UIFont+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7D1EE32B69A1F80020C615 /* UIFont+Style.swift */; };
 		EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */; };
 		EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96530F2B4C587700FEB62E /* PickerTextField.swift */; };
 		EE9DF31B2B5D14F7007223E3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9DF31A2B5D14F7007223E3 /* Logger.swift */; };
@@ -132,8 +139,14 @@
 		EE5D81882B63FF2200222466 /* ContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		EE5D818B2B640A8B00222466 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		EE5D81902B64214500222466 /* CategoryContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryContextManager.swift; sourceTree = "<group>"; };
+		EE6A66E42B6A5BCA00E0D738 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EE6A66E62B6A69B800E0D738 /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
+		EE6A66E82B6A756000E0D738 /* AlertRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertRouter.swift; sourceTree = "<group>"; };
 		EE6A9A4D2B626B8700C8C178 /* Grocer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Grocer.xcdatamodel; sourceTree = "<group>"; };
 		EE6A9A4F2B626B9B00C8C178 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		EE6FED8D2B69931000D4130E /* GrocerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrocerAlertView.swift; sourceTree = "<group>"; };
+		EE6FED8E2B69931000D4130E /* GrocerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrocerAlertView.xib; sourceTree = "<group>"; };
+		EE7D1EE32B69A1F80020C615 /* UIFont+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Style.swift"; sourceTree = "<group>"; };
 		EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentViewController.swift; sourceTree = "<group>"; };
 		EE96530F2B4C587700FEB62E /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		EE9DF31A2B5D14F7007223E3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -154,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6FED932B69965E00D4130E /* MakeConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +236,7 @@
 				EE17125C2B4972340008AEF1 /* Fonts */,
 				EE1712672B4972760008AEF1 /* Generated */,
 				EE17126A2B4972960008AEF1 /* Localization */,
+				EE6A66E42B6A5BCA00E0D738 /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -239,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				EE17125D2B49723F0008AEF1 /* Font+Style.swift */,
+				EE7D1EE32B69A1F80020C615 /* UIFont+Style.swift */,
 				EE1712602B49723F0008AEF1 /* SFPRODISPLAY-BOLD.OTF */,
 				EE17125E2B49723F0008AEF1 /* SFPRODISPLAY-MEDIUM.OTF */,
 				EE17125F2B49723F0008AEF1 /* SFPRODISPLAY-REGULAR.OTF */,
@@ -280,6 +296,7 @@
 				EE1712922B49BD770008AEF1 /* HostingView.swift */,
 				EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */,
 				EE4CA88A2B66878000BC8399 /* SheetView.swift */,
+				EE6FED882B6992F000D4130E /* Alert */,
 				EEC3E9AE2B61237D00913AF4 /* Button */,
 				EEDE86F82B4C084A00E485F0 /* TextField */,
 			);
@@ -301,6 +318,7 @@
 		EE1712772B4973C40008AEF1 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				EE6A66EA2B6A796F00E0D738 /* Alert Router */,
 				EE17127A2B4974730008AEF1 /* Router.swift */,
 				EE17127E2B49747B0008AEF1 /* AppRouter.swift */,
 			);
@@ -432,12 +450,30 @@
 			path = "Add Unit";
 			sourceTree = "<group>";
 		};
+		EE6A66EA2B6A796F00E0D738 /* Alert Router */ = {
+			isa = PBXGroup;
+			children = (
+				EE6A66E62B6A69B800E0D738 /* AlertState.swift */,
+				EE6A66E82B6A756000E0D738 /* AlertRouter.swift */,
+			);
+			path = "Alert Router";
+			sourceTree = "<group>";
+		};
 		EE6A9A4B2B626B6C00C8C178 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
 				EE6A9A4C2B626B8700C8C178 /* Grocer.xcdatamodeld */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		EE6FED882B6992F000D4130E /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				EE6FED8D2B69931000D4130E /* GrocerAlertView.swift */,
+				EE6FED8E2B69931000D4130E /* GrocerAlertView.xib */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		EE80F6EC2B49E35800E8D71D /* UIView */ = {
@@ -512,6 +548,7 @@
 			);
 			name = Grocer;
 			packageProductDependencies = (
+				EE6FED922B69965E00D4130E /* MakeConstraints */,
 			);
 			productName = Grocer;
 			productReference = EE1DAE082B62D9EA004603A2 /* Grocer.app */;
@@ -565,6 +602,7 @@
 			);
 			mainGroup = EE1712082B496DE30008AEF1;
 			packageReferences = (
+				EE6FED912B69965E00D4130E /* XCLocalSwiftPackageReference "Packages/MakeConstraints" */,
 			);
 			productRefGroup = EE1712082B496DE30008AEF1;
 			projectDirPath = "";
@@ -591,6 +629,7 @@
 				EE1712212B496DE40008AEF1 /* LaunchScreen.storyboard in Resources */,
 				EE1712662B49723F0008AEF1 /* SFPRODISPLAY-SEMIBOLD.OTF in Resources */,
 				EE1712462B496FCD0008AEF1 /* swiftgen.yml in Resources */,
+				EE6FED902B69931000D4130E /* GrocerAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,8 +692,10 @@
 				EE4CA8812B66544600BC8399 /* ProductBuilder.swift in Sources */,
 				EE17127D2B4974730008AEF1 /* Router.swift in Sources */,
 				EEDE86FA2B4C086400E485F0 /* TextFieldState.swift in Sources */,
+				EE6A66E72B6A69B800E0D738 /* AlertState.swift in Sources */,
 				EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */,
 				EE4CA8922B66948F00BC8399 /* CategoryBuilder.swift in Sources */,
+				EE7D1EE42B69A1F80020C615 /* UIFont+Style.swift in Sources */,
 				EE4CA8902B66928400BC8399 /* AddCategoryViewModel.swift in Sources */,
 				EE2F21142B4ADF7300EC9D8F /* isHidden.swift in Sources */,
 				EE2F21122B4AD89400EC9D8F /* StoreViewModel.swift in Sources */,
@@ -674,6 +715,7 @@
 				EE1DAE0B2B62E036004603A2 /* PrimaryButton.swift in Sources */,
 				EEF59C6B2B4ACD2000415050 /* mainWindow.swift in Sources */,
 				EE2F210E2B4AD88D00EC9D8F /* CartViewModel.swift in Sources */,
+				EE6A66E92B6A756000E0D738 /* AlertRouter.swift in Sources */,
 				EE2F21192B4AE43700EC9D8F /* AddProductViewModel.swift in Sources */,
 				EE3BBBF72B5E787300B169CD /* CodeScanner.swift in Sources */,
 				EE1712152B496DE30008AEF1 /* AppDelegate.swift in Sources */,
@@ -698,7 +740,9 @@
 				EEC3E9B02B61239600913AF4 /* XButton.swift in Sources */,
 				EEDE86F72B4C07E200E485F0 /* PrimaryTextField.swift in Sources */,
 				EEFA4D922B4BFD8D0048F884 /* PrimaryDesignStyle.swift in Sources */,
+				EE6A66E52B6A5BCA00E0D738 /* Constants.swift in Sources */,
 				EE1712172B496DE30008AEF1 /* SceneDelegate.swift in Sources */,
+				EE6FED8F2B69931000D4130E /* GrocerAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -992,6 +1036,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		EE6FED912B69965E00D4130E /* XCLocalSwiftPackageReference "Packages/MakeConstraints" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/MakeConstraints;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EE6FED922B69965E00D4130E /* MakeConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MakeConstraints;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		EE6A9A4C2B626B8700C8C178 /* Grocer.xcdatamodeld */ = {

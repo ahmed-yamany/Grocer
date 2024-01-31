@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import MakeConstraints
 
 public final class Router {
     public let navigationController: UINavigationController
+    private let alertRouter: AlertRouter
     
-    public required init(navigationController: UINavigationController) {
+    public required init(navigationController: UINavigationController, alertRouter: AlertRouter) {
         self.navigationController = navigationController
+        self.alertRouter = alertRouter
     }
     
     func present(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
@@ -51,5 +54,18 @@ public final class Router {
     func popToRoot(animated: Bool = true, completion: @escaping () -> Void = {}) {
         navigationController.popToRootViewController(animated: animated)
         completion()
+    }
+    
+    func presentAlert(title: String = "", message: String, withState state: AlertState) {
+        alertRouter.present(
+            in: navigationController.view,
+            title: title,
+            message: message,
+            withState: state
+        )
+    }
+    
+    func dismissAlert() {
+        alertRouter.dismiss()
     }
 }
