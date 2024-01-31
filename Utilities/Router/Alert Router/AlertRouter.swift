@@ -19,6 +19,7 @@ public class AlertRouter {
     
     init(alertView: UIView & AlertViewProtocol) {
         self.alertView = alertView
+        addSwapGesture()
     }
     
     public func present(in view: UIView, title: String, message: String, withState state: AlertState) {
@@ -65,5 +66,15 @@ public class AlertRouter {
         } completion: { _ in
             completion()
         }
+    }
+    
+    private func addSwapGesture() {
+        let gesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwap(_:)))
+        gesture.direction = .up
+        alertView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func didSwap(_ sender: UISwipeGestureRecognizer) {
+        self.dismiss()
     }
 }
