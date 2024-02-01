@@ -18,7 +18,7 @@ final class AddProductViewModel: ObservableObject {
     @Published var images: [UIImage] = []
     
     // MARK: - View State
-    @Published var categories: [String] = []
+//    @Published var categories: [String] = []
     @Published var selectedImage = UIImage() {
         didSet {
             images.append(selectedImage)
@@ -30,18 +30,15 @@ final class AddProductViewModel: ObservableObject {
     // MARK: - Initializer
     let router: Router
     let productContextManager: ProductContextManager
+    let categoryViewModel: AddCategoryViewModel
     init(router: Router, productContextManager: ProductContextManager) {
         self.router = router
         self.productContextManager = productContextManager
+        categoryViewModel = AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
     }
     
     func onAppear() {
-        // TODO: - Convert Logs to error alert
-        do {
-            self.categories = try productContextManager.categoryManager.getAll().allNames()
-        } catch {
-            Logger.log(error.localizedDescription, category: \.default, level: .fault)
-        }
+        categoryViewModel.onAppear()
     }
     
     // MARK: - Action Methods
@@ -58,7 +55,6 @@ final class AddProductViewModel: ObservableObject {
         images.removeAll(where: { $0 === image })
     }
     
-    // TODO: - Convert Logs to error alert
     public func saveProduct() {
         do {
             try productContextManager.save(
@@ -78,9 +74,5 @@ final class AddProductViewModel: ObservableObject {
             router.presentAlert(message: error.localizedDescription, withState: .error)
             Logger.log(error.localizedDescription, category: \.coreData, level: .fault)
         }
-    }
-    
-    public func createAddCategoryViewModel() -> AddCategoryViewModel {
-        AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
     }
 }

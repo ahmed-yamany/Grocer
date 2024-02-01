@@ -60,9 +60,13 @@ internal enum L10n {
     internal static let saved = L10n.tr("Localizable", "alert.saved", fallback: "Saved Successfully")
     /// Action Required
     internal static let warning = L10n.tr("Localizable", "alert.warning", fallback: "Action Required")
+    internal enum Category {
+      /// The new category saved successfully
+      internal static let saved = L10n.tr("Localizable", "alert.category.saved", fallback: "The new category saved successfully")
+    }
     internal enum Product {
-      /// Action Required
-      internal static let saved = L10n.tr("Localizable", "alert.product.saved", fallback: "Action Required")
+      /// The new product saved successfully
+      internal static let saved = L10n.tr("Localizable", "alert.product.saved", fallback: "The new product saved successfully")
     }
   }
   internal enum Coredata {

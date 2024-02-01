@@ -16,12 +16,10 @@ struct StoreView: View {
     
     var body: some View {
         ScrollView {
-            Button("Click Me") {
-                viewModel.router.presentAlert(
-                    title: "Error Occured",
-                    message: "Connection error. Unable to connect to the server at present",
-                    withState: .error
-                )
+            VStack {
+                ForEach(viewModel.products) { product in
+                    Text(product.name ?? "no name")
+                }
             }
         }
         .primaryDesignStyle()

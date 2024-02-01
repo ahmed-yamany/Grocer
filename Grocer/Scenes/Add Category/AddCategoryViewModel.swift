@@ -9,6 +9,7 @@ import SwiftUI
 
 class AddCategoryViewModel: ObservableObject {
     @Published var category: String = ""
+    @Published var categories: [String] = []
 
     let router: Router
     let categoryManager: CategoryContextManager
@@ -18,14 +19,41 @@ class AddCategoryViewModel: ObservableObject {
         self.categoryManager = categoryManager
     }
     
+    public func onAppear() {
+        do {
+            self.categories = try categoryManager.getAll().allNames()
+        } catch {
+            router.presentAlert(
+                title: L10n.Alert.error,
+                message: error.localizedDescription,
+                withState: .error
+            )
+            Logger.log(error.localizedDescription, category: \.default, level: .fault)
+        }
+    }
+    
     public func saveCategory() {
         do {
             try categoryManager.save(name: category)
             router.dismiss()
-            
+            router.presentAlert(
+                title: L10n.Alert.saved,
+                message: L10n.Alert.Category.saved,
+                withState: .success
+            )
+            onAppear()
         } catch {
-            router.presentAlert(message: error.localizedDescription, withState: .error)
+            router.presentAlert(
+                title: L10n.Alert.error,
+                message: error.localizedDescription,
+                withState: .error
+            )
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
+    }
+    
+    func showAddCategory() {
+        let viewController = UIHostingController(rootView: AddCategoryView(viewModel: self))
+        router.presentOverFullScreen(viewController)
     }
 }

@@ -22,7 +22,7 @@ class CategoryContextManager: ContextManager<Category> {
         let builder = CategoryBuilder(name: name)
         let category = try createObject()
         try builder.build(category)
-        try context.save()
+        try? context.save()
     }
     
 }

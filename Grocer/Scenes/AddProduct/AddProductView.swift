@@ -66,9 +66,10 @@ struct AddProductView: View {
     }
     
     private var categoryField: some View {
-        CategoryField(category: $viewModel.category,
-                      categories: viewModel.categories,
-                      viewModel: viewModel.createAddCategoryViewModel())
+        CategoryField(
+            category: $viewModel.category,
+            viewModel: viewModel.categoryViewModel
+        )
     }
     
     private var barcodeField: some View {
