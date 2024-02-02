@@ -65,6 +65,8 @@ internal enum L10n {
       internal static let saved = L10n.tr("Localizable", "alert.category.saved", fallback: "The new category saved successfully")
     }
     internal enum Product {
+      /// deleted Successfully
+      internal static let deleted = L10n.tr("Localizable", "alert.product.deleted", fallback: "deleted Successfully")
       /// The new product saved successfully
       internal static let saved = L10n.tr("Localizable", "alert.product.saved", fallback: "The new product saved successfully")
     }

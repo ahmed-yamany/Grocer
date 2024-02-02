@@ -12,6 +12,7 @@
 "alert.error" = "Error Occurred";
 "alert.warning" = "Action Required";
 "alert.product.saved" = "The new product saved successfully";
+"alert.product.deleted" = "deleted Successfully";
 "alert.category.saved" = "The new category saved successfully";
 //
 "coredata.error.createObject" = "Failed To Create";

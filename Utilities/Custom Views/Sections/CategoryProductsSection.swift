@@ -7,6 +7,52 @@
 
 import SwiftUI
 
+struct OnDeleteProductActionKey: EnvironmentKey {
+    static var defaultValue: (Product) -> Void = {_ in}
+}
+
+struct OnEditProductActionKey: EnvironmentKey {
+    static var defaultValue: (Product) -> Void = {_ in}
+}
+
+struct OnAddProductToCartActionKey: EnvironmentKey {
+    static var defaultValue: (Product) -> Void = {_ in}
+}
+
+extension EnvironmentValues {
+    var onDeleteProduct: (Product) -> Void {
+        get { self[OnDeleteProductActionKey.self] }
+        set { self[OnDeleteProductActionKey.self] = newValue}
+    }
+    
+    var onEditProduct: (Product) -> Void {
+        get { self[OnEditProductActionKey.self] }
+        set { self[OnEditProductActionKey.self] = newValue}
+    }
+    
+    var onAddProductToCart: (Product) -> Void {
+        get { self[OnAddProductToCartActionKey.self] }
+        set { self[OnAddProductToCartActionKey.self] = newValue}
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func onDeleteProduct(_ action: @escaping (Product) -> Void) -> some View {
+        environment(\.onDeleteProduct, action)
+    }
+    
+    @ViewBuilder
+    func onEditProduct(_ action: @escaping (Product) -> Void) -> some View {
+        environment(\.onEditProduct, action)
+    }
+    
+    @ViewBuilder
+    func onAddProductToCart(_ action: @escaping (Product) -> Void) -> some View {
+        environment(\.onAddProductToCart, action)
+    }
+}
+
 struct SectionHeader: View {
     let title: String
     
@@ -21,14 +67,32 @@ struct SectionHeader: View {
 struct CategoryProductsSection: View {
     let category: Category
     let products: [Product]
+        
+    @Environment(\.onDeleteProduct) var onDelete
+    @Environment(\.onEditProduct) var onEdit
+    @Environment(\.onAddProductToCart) var onAddToCart
     
     var body: some View {
-        LazyVStack {
+        VStack {
             SectionHeader(title: category.name ?? "")
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 12) {
                     ForEach(products) { product in
                         ProductCell(product: product)
+                            .contextMenu {
+                                Button("Add To Cart") {
+                                    onAddToCart(product)
+                                }
+                                
+                                Button("Edit") {
+                                    onEdit(product)
+                                }
+                                
+                                Button("Delete", role: .destructive) {
+                                    onDelete(product)
+                                }
+                            }
                     }
                 }
                 .padding(.horizontal, 24)

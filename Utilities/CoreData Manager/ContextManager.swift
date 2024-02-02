@@ -71,7 +71,7 @@ class ContextManager<ManagedObject: NSManagedObject> {
     /// - Throws: An error of type `ContextManagerError` if deletion or saving fails.
     func delete(_ object: ManagedObject) throws {
         context.delete(object)
-        try context.save()
+        try? context.save()
     }
     
     /// Deletes all objects of the managed type from the context and saves the changes.
@@ -80,6 +80,6 @@ class ContextManager<ManagedObject: NSManagedObject> {
         try getAll().forEach { [weak self] object in
             self?.context.delete(object)
         }
-        try context.save()
+        try? context.save()
     }
 }

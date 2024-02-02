@@ -35,9 +35,36 @@ final class StoreViewModel: ObservableObject {
     }
     
     // MARK: - Action Methods
-
     public func showAddProducts() {
         let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager)
         router.push(UIHostingController(rootView: AddProductView(viewModel: viewModel)))
+    }
+    
+    public func delete(_ product: Product) {
+        do {
+            let name = product.name ?? ""
+            try productContextManager.delete(product)
+            onAppear()
+            router.presentAlert(
+                title: name,
+                message: L10n.Alert.Product.deleted,
+                withState: .success
+            )
+            
+        } catch {
+            router.presentAlert(
+                title: L10n.Alert.error,
+                message: error.localizedDescription,
+                withState: .error
+            )
+        }
+    }
+    
+    public func edit(_ product: Product) {
+        
+    }
+    
+    public func addToCart(_ product: Product) {
+        
     }
 }

@@ -30,6 +30,15 @@ struct StoreView: View {
         .onAppear {
             viewModel.onAppear()
         }
+        .onDeleteProduct { product in
+            viewModel.delete(product)
+        }
+        .onEditProduct { product in
+            viewModel.edit(product)
+        }
+        .onAddProductToCart { product in
+            viewModel.addToCart(product)
+        }
     }
     
     private var trailingToolBarItem: some View {
