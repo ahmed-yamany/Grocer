@@ -79,6 +79,8 @@ internal enum L10n {
       internal static let exists = L10n.tr("Localizable", "coredata.error.exists", fallback: "already exits")
       /// Failed to get all objects of type
       internal static let getAll = L10n.tr("Localizable", "coredata.error.getAll", fallback: "Failed to get all objects of type")
+      /// Upload at lest one image for the product
+      internal static let imagesEmpty = L10n.tr("Localizable", "coredata.error.imagesEmpty", fallback: "Upload at lest one image for the product")
     }
   }
   internal enum Field {

@@ -8,21 +8,28 @@
 import SwiftUI
 
 final class StoreViewModel: ObservableObject {
-    @Published var products: [Product] = []
+    
+    @Published var groupedProductsByCategory: [Category: [Product]] = [:]
     
     // MARK: - Initializer
-    let productContextManager = ProductContextManager()
+    let productContextManager: ProductContextManager
     
     let router: Router
-    init(router: Router) {
+    init(router: Router, productContextManager: ProductContextManager) {
         self.router = router
+        self.productContextManager = productContextManager
     }
-    
+
+    // TODO: - Convert Logs to error alert
     public func onAppear() {
-        // TODO: - Convert Logs to error alert
         do {
-            products = try productContextManager.getAll()
+            groupedProductsByCategory = try productContextManager.groupProductsByCategory()
         } catch {
+            router.presentAlert(
+                title: L10n.Alert.error,
+                message: error.localizedDescription,
+                withState: .error
+            )
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
     }

@@ -18,6 +18,7 @@
 "coredata.error.getAll" = "Failed to get all objects of type";
 "coredata.error.exists" = "already exits";
 "coredata.error.categoryEmpty" = "Please select category for the product";
+"coredata.error.imagesEmpty" = "Upload at lest one image for the product";
 //
 "tabBar.home" = "Home";
 "tabBar.cart" = "Cart";

@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct StoreView: View {
-    @ObservedObject private var viewModel: StoreViewModel
-    
-    init(router: Router) {
-        self.viewModel = StoreViewModel(router: router)
-    }
+    @ObservedObject var viewModel: StoreViewModel
     
     var body: some View {
         ScrollView {
-            VStack {
-                ForEach(viewModel.products) { product in
-                    Text(product.name ?? "no name")
+            LazyVStack {
+                let categories: [Category] = Array(viewModel.groupedProductsByCategory.keys)
+                ForEach(categories, id: \.self) { category in
+                    let products: [Product] = viewModel.groupedProductsByCategory[category] ?? []
+                    CategoryProductsSection(category: category, products: products)
                 }
             }
         }
         .primaryDesignStyle()
+        .toolbarTitle("Grocer Store")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 trailingToolBarItem

@@ -16,6 +16,7 @@ final class GrocerAlertView: UIView, AlertViewProtocol {
     @IBOutlet weak private var subtitleLabel: UILabel!
     private let backgroundVisualView = UIView()
     private var bottomLineView: UIView = UIView()
+    
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension Product {
+    var priceString: String {
+        String(format: "%.1f", price) + " $"
+    }
+}
