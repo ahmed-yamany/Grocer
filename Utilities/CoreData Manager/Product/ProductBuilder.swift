@@ -13,12 +13,14 @@ final class ProductBuilder {
         case quantity(String)
         case price(String)
         case barcode(String)
+        case images(String)
         
         var errorDescription: String? {
             switch self {
                 case .quantity(let message): message
                 case .price(let message): message
                 case .barcode(let message): message
+                case .images(let message): message
             }
         }
     }
@@ -56,6 +58,7 @@ final class ProductBuilder {
         let price = try buildPrice()
         let barcode = try buildBarcode()
         let category = try buildCategory()
+        let images = try buildImages()
         
         product.id = UUID()
         product.name = name
@@ -63,7 +66,7 @@ final class ProductBuilder {
         product.price = price
         product.barcode = barcode
         product.category = category
-        product.images = images.pngData()
+        product.images = images
     }
     
     private func buildName() throws -> String {
@@ -112,5 +115,13 @@ final class ProductBuilder {
         }
         
         return try categoryManager.filter(by: \.name, value: category).first
+    }
+    
+    private func buildImages() throws -> [Data] {
+        guard !images.isEmpty else {
+            throw ProductBuilderError.images(L10n.Coredata.Error.imagesEmpty)
+        }
+        
+        return images.pngData()
     }
 }

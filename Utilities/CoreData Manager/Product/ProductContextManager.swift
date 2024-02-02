@@ -42,4 +42,23 @@ final class ProductContextManager: ContextManager<Product> {
         try productBuilder.build(product)
         try? context.save()
     }
+    
+    /// Retrieves sections of products grouped by categories.
+    /// - Returns: A dictionary where keys are categories and values are arrays of products.
+    /// - Throws: An error if there's an issue fetching categories or filtering products.
+    func groupProductsByCategory() throws -> [Category: [Product]] {
+        var sections: [Category: [Product]] = [:]
+        let categories = try categoryManager.getAll()
+        
+        /// Iterate through each category and filter products for each.
+        try categories.forEach { category in
+            let products = try filter(by: \.category, value: category)
+            
+            if !products.isEmpty {
+                sections[category] = products
+            }
+        }
+        
+        return sections
+    }
 }
