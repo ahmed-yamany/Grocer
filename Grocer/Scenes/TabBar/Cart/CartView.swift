@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct CartView: View {
-    let router: Router
-    @StateObject private var viewModel = CartViewModel()
+    @ObservedObject var viewModel: CartViewModel
+    @State var searchText = ""
+    
     var body: some View {
-        ScrollView {
-            VStack {
-                
+        VStack {
+            BarCodeField(barcode: $searchText, router: viewModel.router)
+                .padding(.horizontal, 24)
+            
+            ScrollView {
+                VStack {
+                    Text("Searching for")
+                    
+                }
+                .padding(.horizontal, 24)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
         .primaryDesignStyle()
         .toolbarTitle("Cart")
@@ -23,12 +31,5 @@ struct CartView: View {
 }
 
 #Preview {
-    CartView(
-        router: Router(
-            navigationController: .init(),
-            alertRouter: .init(
-                alertView: GrocerAlertView()
-            )
-        )
-    )
+    TabBarView()
 }

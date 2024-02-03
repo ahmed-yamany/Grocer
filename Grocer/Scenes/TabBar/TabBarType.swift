@@ -55,8 +55,13 @@ enum TabBarType: String, CaseIterable, Hashable {
     private func cartView() -> some View {
         let alertView = GrocerAlertView()
         let alertRouter = AlertRouter(alertView: alertView)
+        
         let router = Router(navigationController: UINavigationController(), alertRouter: alertRouter)
-        let controller = UIHostingController(rootView: CartView(router: router))
+        let productManager = ProductContextManager()
+        
+        let viewModel = CartViewModel(router: router, productContextManager: productManager)
+        let controller = UIHostingController(rootView: CartView(viewModel: viewModel))
+        
         router.push(controller)
         return HostingView(rootController: router.navigationController)
     }
@@ -69,11 +74,9 @@ enum TabBarType: String, CaseIterable, Hashable {
         let productManager = ProductContextManager()
         
         let viewModel = StoreViewModel(router: router, productContextManager: productManager)
-        
         let controller = UIHostingController(rootView: StoreView(viewModel: viewModel))
         
         router.push(controller)
-        
         return HostingView(rootController: router.navigationController)
     }
 }

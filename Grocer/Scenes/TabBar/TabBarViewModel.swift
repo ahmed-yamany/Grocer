@@ -10,6 +10,6 @@ import SwiftUI
 class TabBarViewModel: ObservableObject {
     static let shared = TabBarViewModel()
     
-    @Published var selectedTab: TabBarType = .store
+    @Published var selectedTab: TabBarType = .cart
     @Published var tabBarIsHidden: Bool = false
 }
