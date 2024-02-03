@@ -9,9 +9,11 @@
 "save" = "Save";
 //
 "alert.saved" = "Saved Successfully";
+"alert.edited" = "Edited Successfully";
 "alert.error" = "Error Occurred";
 "alert.warning" = "Action Required";
 "alert.product.saved" = "The new product saved successfully";
+"alert.product.edit" = "The new product Edited successfully";
 "alert.product.deleted" = "deleted Successfully";
 "alert.category.saved" = "The new category saved successfully";
 //

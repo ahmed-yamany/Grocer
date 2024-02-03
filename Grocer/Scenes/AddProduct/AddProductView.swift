@@ -123,10 +123,10 @@ struct AddProductView: View {
             title: Text(L10n.AddProduct.AddImage.title),
             buttons: [
                 .default(Text(L10n.AddProduct.AddImage.Picker.camera)) {
-                    viewModel.showImagePicker(forType: .camera)
+                    viewModel.showImagePicker(forSourceType: .camera)
                 },
                 .default(Text(L10n.AddProduct.AddImage.Picker.image)) {
-                    viewModel.showImagePicker(forType: .photoLibrary)
+                    viewModel.showImagePicker(forSourceType: .photoLibrary)
                 },
                 .destructive(Text(L10n.cancel))
             ]

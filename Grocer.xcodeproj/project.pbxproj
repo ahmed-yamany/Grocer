@@ -290,11 +290,11 @@
 		EE1712742B4973A10008AEF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EE446DFF2B6D2E0C0002914A /* Product.swift */,
 				EE5D818B2B640A8B00222466 /* Array.swift */,
 				EEF59C692B4ACD1200415050 /* UIApplication */,
 				EE80F6EC2B49E35800E8D71D /* UIView */,
 				EE1712802B4976740008AEF1 /* UIViewController */,
-				EE446DFF2B6D2E0C0002914A /* Product.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

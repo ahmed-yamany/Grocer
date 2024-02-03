@@ -15,8 +15,10 @@ final class ProductContextManager: ContextManager<Product> {
     init() {
         super.init(context: manager.persistentContainer.viewContext)
     }
+    
+//    private func build(_ product: Product)
 
-    func save(
+    func createNewProduct(
         name: String,
         quantity: String,
         price: String,
@@ -28,6 +30,28 @@ final class ProductContextManager: ContextManager<Product> {
             throw ContextManagerError<Product>.exits
         }
         
+        let product: Product = try createObject()
+        
+        try update(
+            product,
+            name: name,
+            quantity: quantity,
+            price: price,
+            barcode: barcode,
+            images: images,
+            category: category
+        )
+    }
+    
+    func update(
+        _ product: Product,
+        name: String,
+        quantity: String,
+        price: String,
+        barcode: String,
+        images: [UIImage],
+        category: String
+    ) throws {
         let productBuilder: ProductBuilder = ProductBuilder(
             barcode: barcode,
             images: images,
@@ -38,7 +62,6 @@ final class ProductContextManager: ContextManager<Product> {
             categoryManager: categoryManager
         )
         
-        let product: Product = try createObject()
         try productBuilder.build(product)
         try? context.save()
     }

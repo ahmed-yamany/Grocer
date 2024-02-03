@@ -30,7 +30,7 @@ struct ProductCell: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             HStack {
-                label(imageSystemName: "tag.fill", text: product.priceString)
+                label(imageSystemName: "tag.fill", text: product.priceString + " $")
                 label(imageSystemName: "shippingbox.fill", text: String(product.quantity))
             }
         }

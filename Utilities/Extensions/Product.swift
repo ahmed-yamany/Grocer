@@ -9,6 +9,10 @@ import Foundation
 
 extension Product {
     var priceString: String {
-        String(format: "%.1f", price) + " $"
+        String(format: "%.1f", price)
+    }
+    
+    var quantityString: String {
+        String(quantity)
     }
 }

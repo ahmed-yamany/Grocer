@@ -18,12 +18,12 @@ final class AddProductViewModel: ObservableObject {
     @Published var images: [UIImage] = []
     
     // MARK: - View State
-//    @Published var categories: [String] = []
     @Published var selectedImage = UIImage() {
         didSet {
             images.append(selectedImage)
         }
     }
+    
     @Published var showImagePicker = false
     @Published var showAddImageActionSheet: Bool = false
     
@@ -31,10 +31,22 @@ final class AddProductViewModel: ObservableObject {
     let router: Router
     let productContextManager: ProductContextManager
     let categoryViewModel: AddCategoryViewModel
+    var product: Product?
     init(router: Router, productContextManager: ProductContextManager) {
         self.router = router
         self.productContextManager = productContextManager
         categoryViewModel = AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
+    }
+    
+    convenience init(router: Router, productContextManager: ProductContextManager, product: Product) {
+        self.init(router: router, productContextManager: productContextManager)
+        self.product = product
+        name = product.name ?? ""
+        price = product.priceString
+        quantity = product.quantityString
+        category = product.category?.name ?? ""
+        barcode = product.barcode ?? ""
+        images = (product.images ?? []).toUIImages()
     }
     
     func onAppear() {
@@ -42,22 +54,33 @@ final class AddProductViewModel: ObservableObject {
     }
     
     // MARK: - Action Methods
-    func showImagePicker(forType type: UIImagePickerController.SourceType) {
-        let imagePickerView = ImagePicker(sourceType: type, selectedImage: .init(get: {
-            return self.selectedImage
-        }, set: {
-            self.selectedImage = $0
-        }))
+    func showImagePicker(forSourceType sourceType: UIImagePickerController.SourceType) {
+        let imagePickerView = ImagePicker(
+            sourceType: sourceType,
+            selectedImage: .init(get: {
+                return self.selectedImage
+            }, set: {
+                self.selectedImage = $0
+            })
+        )
         router.present(UIHostingController(rootView: imagePickerView))
     }
     
-    public func remove(_ image: UIImage) {
+    func remove(_ image: UIImage) {
         images.removeAll(where: { $0 === image })
     }
     
-    public func saveProduct() {
+    func saveProduct() {
+        if let product {
+            update(product)
+        } else {
+            createNewProduct()
+        }
+    }
+    
+    private func createNewProduct() {
         do {
-            try productContextManager.save(
+            try productContextManager.createNewProduct(
                 name: name,
                 quantity: quantity,
                 price: price,
@@ -68,6 +91,28 @@ final class AddProductViewModel: ObservableObject {
             self.router.presentAlert(
                 title: L10n.Alert.saved,
                 message: L10n.Alert.Product.saved,
+                withState: .success
+            )
+        } catch {
+            router.presentAlert(message: error.localizedDescription, withState: .error)
+            Logger.log(error.localizedDescription, category: \.coreData, level: .fault)
+        }
+    }
+    
+    private func update(_ product: Product) {
+        do {
+            try productContextManager.update(product,
+                                             name: name,
+                                             quantity: quantity,
+                                             price: price,
+                                             barcode: barcode,
+                                             images: images,
+                                             category: category
+            )
+            router.dismiss()
+            self.router.presentAlert(
+                title: L10n.Alert.edited,
+                message: L10n.Alert.Product.edit,
                 withState: .success
             )
         } catch {

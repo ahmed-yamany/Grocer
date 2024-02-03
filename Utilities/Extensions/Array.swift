@@ -16,7 +16,7 @@ extension Array where Element == UIImage {
 }
 
 extension Array where Element == Data {
-    func  toUIImages() -> [UIImage?] {
+    func  toUIImages() -> [UIImage] {
         // swiftlint: disable force_unwrapping
         map { UIImage(data: $0) }.filter { $0 != nil }.map { $0! }
         // swiftlint: enable force_unwrapping

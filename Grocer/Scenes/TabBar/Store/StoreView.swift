@@ -43,7 +43,7 @@ struct StoreView: View {
     
     private var trailingToolBarItem: some View {
         Button {
-            viewModel.showAddProducts()
+            viewModel.addProduct()
         } label: {
             Image(.iconAddProduct)
                 .resizable()

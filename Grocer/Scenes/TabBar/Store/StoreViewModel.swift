@@ -19,7 +19,7 @@ final class StoreViewModel: ObservableObject {
         self.router = router
         self.productContextManager = productContextManager
     }
-
+    
     // TODO: - Convert Logs to error alert
     public func onAppear() {
         do {
@@ -35,16 +35,17 @@ final class StoreViewModel: ObservableObject {
     }
     
     // MARK: - Action Methods
-    public func showAddProducts() {
+    public func addProduct() {
         let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager)
-        router.push(UIHostingController(rootView: AddProductView(viewModel: viewModel)))
+        showAddProductView(with: viewModel)
     }
     
-    public func delete(_ product: Product) {
+    func delete(_ product: Product) {
         do {
             let name = product.name ?? ""
             try productContextManager.delete(product)
-            onAppear()
+            
+            onAppear()  // to reload date after deleting the product
             router.presentAlert(
                 title: name,
                 message: L10n.Alert.Product.deleted,
@@ -60,11 +61,16 @@ final class StoreViewModel: ObservableObject {
         }
     }
     
-    public func edit(_ product: Product) {
+    func edit(_ product: Product) {
+        let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager, product: product)
+        showAddProductView(with: viewModel)
+    }
+    
+    func addToCart(_ product: Product) {
         
     }
     
-    public func addToCart(_ product: Product) {
-        
+    private func showAddProductView(with viewModel: AddProductViewModel) {
+        router.push(UIHostingController(rootView: AddProductView(viewModel: viewModel)))
     }
 }
