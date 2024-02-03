@@ -10,11 +10,17 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum L10n {
+  /// Add To Cart
+  internal static let addToCart = L10n.tr("Localizable", "addToCart", fallback: "Add To Cart")
   /// Localizable.strings
   ///   Grocer
   /// 
   ///   Created by Ahmed Yamany on 06/01/2024.
   internal static let cancel = L10n.tr("Localizable", "cancel", fallback: "Cancel")
+  /// Delete
+  internal static let delete = L10n.tr("Localizable", "delete", fallback: "Delete")
+  /// Edit
+  internal static let edit = L10n.tr("Localizable", "edit", fallback: "Edit")
   /// Save
   internal static let save = L10n.tr("Localizable", "save", fallback: "Save")
   internal enum AddProduct {
@@ -102,6 +108,10 @@ internal enum L10n {
     internal static let quantity = L10n.tr("Localizable", "field.quantity", fallback: "Quantity")
     /// Unit
     internal static let unit = L10n.tr("Localizable", "field.unit", fallback: "Unit")
+  }
+  internal enum Store {
+    /// Grocer Store
+    internal static let title = L10n.tr("Localizable", "store.title", fallback: "Grocer Store")
   }
   internal enum TabBar {
     /// Cart

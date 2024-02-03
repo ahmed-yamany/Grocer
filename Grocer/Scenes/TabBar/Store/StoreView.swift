@@ -21,7 +21,7 @@ struct StoreView: View {
             }
         }
         .primaryDesignStyle()
-        .toolbarTitle("Grocer Store")
+        .toolbarTitle(L10n.Store.title)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 trailingToolBarItem

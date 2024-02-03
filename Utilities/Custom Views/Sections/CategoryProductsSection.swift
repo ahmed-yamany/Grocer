@@ -81,15 +81,15 @@ struct CategoryProductsSection: View {
                     ForEach(products) { product in
                         ProductCell(product: product)
                             .contextMenu {
-                                Button("Add To Cart") {
+                                Button(L10n.addToCart) {
                                     onAddToCart(product)
                                 }
                                 
-                                Button("Edit") {
+                                Button(L10n.edit) {
                                     onEdit(product)
                                 }
                                 
-                                Button("Delete", role: .destructive) {
+                                Button(L10n.delete, role: .destructive) {
                                     onDelete(product)
                                 }
                             }
