@@ -11,9 +11,9 @@ struct AddCategoryView: View {
     @ObservedObject var viewModel: AddCategoryViewModel
     
     var body: some View {
-        SheetView(title: "New Category", router: viewModel.router) {
+        SheetView(title: L10n.AddCategory.title, router: viewModel.router) {
             VStack(spacing: 48) {
-                PrimaryTextField(title: "Name", text: $viewModel.category, fieldView: {
+                PrimaryTextField(title: L10n.Field.name, text: $viewModel.category, fieldView: {
                     TextField("", text: $viewModel.category)
                 })
                 .keyboardType(.default)

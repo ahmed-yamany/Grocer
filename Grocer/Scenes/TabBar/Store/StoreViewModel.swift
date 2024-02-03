@@ -49,7 +49,7 @@ final class StoreViewModel: ObservableObject {
             router.presentAlert(
                 title: name,
                 message: L10n.Alert.Product.deleted,
-                withState: .success
+                withState: .warning
             )
             
         } catch {

@@ -23,6 +23,10 @@ internal enum L10n {
   internal static let edit = L10n.tr("Localizable", "edit", fallback: "Edit")
   /// Save
   internal static let save = L10n.tr("Localizable", "save", fallback: "Save")
+  internal enum AddCategory {
+    /// New Category
+    internal static let title = L10n.tr("Localizable", "addCategory.title", fallback: "New Category")
+  }
   internal enum AddProduct {
     /// Add Product
     internal static let title = L10n.tr("Localizable", "addProduct.title", fallback: "Add Product")

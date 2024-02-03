@@ -32,6 +32,7 @@ final class AddProductViewModel: ObservableObject {
     let productContextManager: ProductContextManager
     let categoryViewModel: AddCategoryViewModel
     var product: Product?
+    
     init(router: Router, productContextManager: ProductContextManager) {
         self.router = router
         self.productContextManager = productContextManager
@@ -49,11 +50,11 @@ final class AddProductViewModel: ObservableObject {
         images = (product.images ?? []).toUIImages()
     }
     
+    // MARK: - Action Methods
     func onAppear() {
         categoryViewModel.onAppear()
     }
     
-    // MARK: - Action Methods
     func showImagePicker(forSourceType sourceType: UIImagePickerController.SourceType) {
         let imagePickerView = ImagePicker(
             sourceType: sourceType,

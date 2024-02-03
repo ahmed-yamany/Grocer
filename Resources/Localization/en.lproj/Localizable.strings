@@ -44,6 +44,8 @@
 "addProduct.error.barcode.empty" = "Product BarCode: mustn't be empty";
 "addProduct.error.barcode.count" = "Product BarCode: must be greater than 8 characters";
 //
+"addCategory.title" = "New Category";
+//
 "field.name" = "Name";
 "field.quantity" = "Quantity";
 "field.price" = "Price";

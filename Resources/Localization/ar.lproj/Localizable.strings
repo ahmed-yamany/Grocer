@@ -5,3 +5,49 @@
   Created by Ahmed Yamany on 06/01/2024.
   
 */
+
+"cancel" = "الغاء";
+"حفظ" = "حفظ";
+"delete" = "حذف";
+"edit" = "تعديل";
+"addToCart" = "أضف إلى سلة التسوق";
+//
+"alert.saved" = "تم الحفظ بنجاح";
+"alert.edited" = "تم التعديل بنجاح";
+"alert.error" = "حدث خطأ";
+"alert.warning" = "الإجراء مطلوب";
+"alert.product.saved" = "تم حفظ المنتج الجديد بنجاح";
+"alert.product.edit" = "تم تحرير المنتج الجديد بنجاح";
+"alert.product.deleted" = "تم الحذف بنجاح";
+"alert.category.saved" = "تم حفظ الفئة الجديدة بنجاح";
+//
+"coredata.error.createObject" = "فشل الإنشاء";
+"coredata.error.getAll" = "فشل الحصول على كافة الكائنات من النوع";
+"coredata.error.exists" = "تم الخروج بالفعل";
+"coredata.error.categoryEmpty" = "يُرجى تحديد فئة المنتج";
+"coredata.error.imagesEmpty" = "قم بتحميل صورة واحدة على الأقل للمنتج";
+//
+"tabBar.home" = "الصفحة الرئيسية";
+"tabBar.cart" = "عربة التسوق";
+"tabBar.store" = "المتجر";
+//
+"store.title" = "متجر بقالة";
+//
+"addProduct.title" = "إضافة منتج";
+"addProduct.addImage.title" = "أضف صورة المنتج";
+"addProduct.addImage.picker.camera" = "افتح الكاميرا";
+"addProduct.addImage.picker.image" = "اختر من مكتبة الصور";
+//
+"addProduct.error.name.empty" = "الاسم: يجب ألا يكون فارغًا";
+"addProduct.error.name.count" = "الاسم: يجب أن يكون أكبر من 3 أحرف";
+"addProduct.error.quantity.cast" = "كمية المنتج: يجب أن تكون عددًا صحيحًا";
+"addProduct.error.price.cast" = "سعر المنتج: يجب أن يكون رقمًا عشريًا";
+"addProduct.error.barcode.empty" = "الرمز الشريطي للمنتج: لا يجب أن يكون فارغًا";
+"addProduct.error.barcode.count" = "الرمز الشريطي للمنتج: يجب أن يكون أكبر من 8 أحرف";
+//
+"field.name" = "الاسم";
+"field.quantity" = "الكمية";
+"field.price" = "السعر";
+"field.category" = "الفئة";
+"field.unit" = "الوحدة";
+"field.barCode" = "الرمز الشريطي";
