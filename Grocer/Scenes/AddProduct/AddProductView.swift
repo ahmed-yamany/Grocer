@@ -9,18 +9,16 @@ import SwiftUI
 import Combine
 
 struct AddProductView: View {
-    @ObservedObject private var viewModel: AddProductViewModel
+    @ObservedObject var viewModel: AddProductViewModel
     
-    init(viewModel: AddProductViewModel) {
-        self.viewModel = viewModel
-    }
-    
+    @State private var showAddImageActionSheet: Bool = false
+
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
                 nameField
                 
-                HStack(spacing: 12) {
+                HStack(spacing: .Constants.cellSpacing) {
                     quantityField
                     priceField
                 }
@@ -31,7 +29,7 @@ struct AddProductView: View {
                 
                 saveButton
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, .Constants.contentPadding)
             .padding(.bottom, 80)
             .padding(.top, 40)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
@@ -101,19 +99,19 @@ struct AddProductView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.grInputField)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .clipShape(RoundedRectangle(cornerRadius: .Constants.cornerRadius))
     }
     
     private var uploadImageView: some View {
         Button {
-            viewModel.showAddImageActionSheet = true
+            showAddImageActionSheet = true
         } label: {
             Image(.assetProductImageAdd)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding().padding()
         }
-        .actionSheet(isPresented: $viewModel.showAddImageActionSheet) {
+        .actionSheet(isPresented: $showAddImageActionSheet) {
             uploadImageActionSheet
         }
     }
@@ -137,12 +135,12 @@ struct AddProductView: View {
     private func productImageCell(_ image: UIImage) -> some View {
         Image(uiImage: image)
             .resizable()
-            .mask(RoundedRectangle(cornerRadius: 12))
+            .mask(RoundedRectangle(cornerRadius: .Constants.cornerRadius))
             .frame(height: 200)
             .overlay(alignment: .topTrailing) {
               XButton(action: { viewModel.remove(image) })
             }
-            .padding(8)
+            .padding(.Constants.cellPadding)
     }
 }
 

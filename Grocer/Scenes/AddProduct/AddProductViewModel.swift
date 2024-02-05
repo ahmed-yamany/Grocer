@@ -18,14 +18,11 @@ final class AddProductViewModel: ObservableObject {
     @Published var images: [UIImage] = []
     
     // MARK: - View State
-    @Published var selectedImage = UIImage() {
+    @Published private var selectedImage = UIImage() {
         didSet {
             images.append(selectedImage)
         }
     }
-    
-    @Published var showImagePicker = false
-    @Published var showAddImageActionSheet: Bool = false
     
     // MARK: - Initializer
     let router: Router
@@ -33,13 +30,20 @@ final class AddProductViewModel: ObservableObject {
     let categoryViewModel: AddCategoryViewModel
     var product: Product?
     
-    init(router: Router, productContextManager: ProductContextManager) {
+    init(
+        router: Router,
+        productContextManager: ProductContextManager
+    ) {
         self.router = router
         self.productContextManager = productContextManager
         categoryViewModel = AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
     }
     
-    convenience init(router: Router, productContextManager: ProductContextManager, product: Product) {
+    convenience init(
+        router: Router,
+        productContextManager: ProductContextManager,
+        product: Product
+    ) {
         self.init(router: router, productContextManager: productContextManager)
         self.product = product
         name = product.name ?? ""
@@ -50,11 +54,12 @@ final class AddProductViewModel: ObservableObject {
         images = (product.images ?? []).toUIImages()
     }
     
-    // MARK: - Action Methods
+    // MARK: - OnAppear
     func onAppear() {
         categoryViewModel.onAppear()
     }
     
+    // MARK: - Action Methods
     func showImagePicker(forSourceType sourceType: UIImagePickerController.SourceType) {
         let imagePickerView = ImagePicker(
             sourceType: sourceType,
@@ -92,8 +97,7 @@ final class AddProductViewModel: ObservableObject {
             self.router.presentAlert(
                 title: L10n.Alert.saved,
                 message: L10n.Alert.Product.saved,
-                withState: .success
-            )
+                withState: .success)
         } catch {
             router.presentAlert(message: error.localizedDescription, withState: .error)
             Logger.log(error.localizedDescription, category: \.coreData, level: .fault)
@@ -108,8 +112,7 @@ final class AddProductViewModel: ObservableObject {
                                              price: price,
                                              barcode: barcode,
                                              images: images,
-                                             category: category
-            )
+                                             category: category)
             router.dismiss()
             self.router.presentAlert(
                 title: L10n.Alert.edited,

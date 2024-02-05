@@ -14,13 +14,19 @@ final class StoreViewModel: ObservableObject {
     // MARK: - Initializer
     let productContextManager: ProductContextManager
     let router: Router
-    
-    init(router: Router, productContextManager: ProductContextManager) {
+    let cartInterface: CartInterface
+
+    init(
+        router: Router,
+        productContextManager: ProductContextManager,
+        cartInterface: CartInterface
+    ) {
         self.router = router
         self.productContextManager = productContextManager
+        self.cartInterface = cartInterface
     }
-    
-    // TODO: - Convert Logs to error alert
+        
+    // MARK: - OnAppear
     public func onAppear() {
         do {
             groupedProductsByCategory = try productContextManager.groupProductsByCategory()
@@ -35,7 +41,7 @@ final class StoreViewModel: ObservableObject {
     }
     
     // MARK: - Action Methods
-    public func addProduct() {
+    func addProduct() {
         let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager)
         showAddProductView(with: viewModel)
     }
@@ -67,7 +73,7 @@ final class StoreViewModel: ObservableObject {
     }
     
     func addToCart(_ product: Product) {
-        
+        cartInterface.increase(product)
     }
     
     private func showAddProductView(with viewModel: AddProductViewModel) {

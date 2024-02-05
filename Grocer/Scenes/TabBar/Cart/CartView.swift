@@ -9,24 +9,30 @@ import SwiftUI
 
 struct CartView: View {
     @ObservedObject var viewModel: CartViewModel
-    @State var searchText = ""
     
     var body: some View {
-        VStack {
-            BarCodeField(barcode: $searchText, router: viewModel.router)
-                .padding(.horizontal, 24)
+        VStack(spacing: .Constants.cellSpacing) {
+            BarCodeField(barcode: $viewModel.barcode, router: viewModel.router)
+                .padding(.horizontal, .Constants.contentPadding)
             
             ScrollView {
-                VStack {
-                    Text("Searching for")
-                    
+                LazyVStack(spacing: .Constants.cellSpacing) {
+                    ForEach(viewModel.getProducts()) { product in
+                        let count = viewModel.getCount(of: product)
+                        if count > 0 {
+                            ProductCartCell(product: product, count: count)
+                        }
+                    }
                 }
-                .padding(.horizontal, 24)
+                .padding(.horizontal, .Constants.contentPadding)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             }
         }
         .primaryDesignStyle()
         .toolbarTitle("Cart")
+        .onAppear {
+            viewModel.onAppear()
+        }
     }
 }
 

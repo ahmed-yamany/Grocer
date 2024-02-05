@@ -12,7 +12,7 @@ struct ProductCell: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image(uiImage: getFirstImage())
+            Image(uiImage: product.firstImage())
                 .resizable()
                 .aspectRatio(contentMode: .fill)
             
@@ -24,33 +24,36 @@ struct ProductCell: View {
     }
     
     private var productDetails: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        ProductCellContent(product: product)
+            .padding(.vertical, 4)
+            .padding(.horizontal, 8)
+            .frame(width: 140, height: 60, alignment: .topLeading)
+            .background(.ultraThinMaterial)
+    }
+}
+
+struct ProductCellContent: View {
+    let product: Product
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: .Constants.cellPadding) {
             Text(product.name ?? "")
                 .font(.medium(weight: .bold))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             HStack {
-                label(imageSystemName: "tag.fill", text: product.priceString + " $")
-                label(imageSystemName: "shippingbox.fill", text: String(product.quantity))
+                ProductCellLabel(imageSystemName: "tag.fill", text: product.priceString + " $")
+                ProductCellLabel(imageSystemName: "shippingbox.fill", text: String(product.quantity))
             }
         }
-        .imageScale(.small)
-        .padding(.vertical, 4)
-        .padding(.horizontal, 8)
-        .frame(width: 140, height: 60, alignment: .topLeading)
-        .background(.ultraThinMaterial)
     }
+}
+
+struct ProductCellLabel: View {
+    let imageSystemName: String
+    let text: String
     
-    private func getFirstImage() -> UIImage {
-        guard let image = product.images?.toUIImages().first as? UIImage else {
-            return UIImage()
-        }
-        
-        return image
-    }
-    
-    @ViewBuilder
-    private func label(imageSystemName: String, text: String) -> some View {
+    var body: some View {
         HStack(spacing: 2) {
             Image(systemName: imageSystemName)
             Text(text)
