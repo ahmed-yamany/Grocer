@@ -5,7 +5,7 @@
 //  Created by Ahmed Yamany on 02/02/2024.
 //
 
-import Foundation
+import UIKit
 
 extension Product {
     var priceString: String {
@@ -14,5 +14,15 @@ extension Product {
     
     var quantityString: String {
         String(quantity)
+    }
+}
+
+extension Product {
+    func firstImage() -> UIImage {
+        guard let image = images?.toUIImages().first as? UIImage else {
+            return UIImage()
+        }
+        
+        return image
     }
 }
