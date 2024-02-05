@@ -18,5 +18,12 @@ extension View {
             .font(Font.medium(weight: .regular))
             .tint(Color.grTextSecondary)
             .accentColor(Color.grTextSecondary)
+            .onTapGesture {
+                hideKeyboard()
+            }
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
