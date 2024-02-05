@@ -59,7 +59,12 @@ enum TabBarType: String, CaseIterable, Hashable {
         let router = Router(navigationController: UINavigationController(), alertRouter: alertRouter)
         let productManager = ProductContextManager()
         
-        let viewModel = CartViewModel(router: router, productContextManager: productManager)
+        let viewModel = CartViewModel(
+            router: router,
+            productContextManager: productManager,
+            cartInterface: cartInterface
+        )
+        
         let controller = UIHostingController(rootView: CartView(viewModel: viewModel))
         
         router.push(controller)
@@ -73,10 +78,20 @@ enum TabBarType: String, CaseIterable, Hashable {
         let router = Router(navigationController: UINavigationController(), alertRouter: alertRouter)
         let productManager = ProductContextManager()
         
-        let viewModel = StoreViewModel(router: router, productContextManager: productManager)
+        let viewModel = StoreViewModel(
+            router: router,
+            productContextManager: productManager,
+            cartInterface: cartInterface
+        )
+        
         let controller = UIHostingController(rootView: StoreView(viewModel: viewModel))
         
         router.push(controller)
         return HostingView(rootController: router.navigationController)
     }
+    
+    private var cartInterface: CartInterface {
+        TabBarViewModel.shared
+    }
+    
 }

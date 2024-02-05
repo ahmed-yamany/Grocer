@@ -7,9 +7,14 @@
 
 import SwiftUI
 
-class TabBarViewModel: ObservableObject {
-    static let shared = TabBarViewModel()
+class TabBarViewModel: ObservableObject, CartInterface {
+    
+    @ObservedObject static var shared = TabBarViewModel()
     
     @Published var selectedTab: TabBarType = .cart
     @Published var tabBarIsHidden: Bool = false
+    
+    // MARK: - CartInterface
+    @Published var products: [Product: Int] = [:]
+    var productsPublisher: Published<[Product: Int]>.Publisher { $products }
 }
