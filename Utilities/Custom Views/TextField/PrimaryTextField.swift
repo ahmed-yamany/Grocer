@@ -44,9 +44,9 @@ struct PrimaryTextField<FieldView: View>: View {
                 .padding([.horizontal], 18)
                 .frame(height: 56)
                 .background(Color.grInputField)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .clipShape(RoundedRectangle(cornerRadius: .Constants.cornerRadius))
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
+                    RoundedRectangle(cornerRadius: .Constants.cornerRadius)
                         .stroke(lineWidth: 2)
                         .fill(state.fillColor)
                 }

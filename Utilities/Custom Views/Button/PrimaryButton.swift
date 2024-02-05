@@ -52,7 +52,7 @@ struct PrimaryButton: ButtonStyle {
         .frame(maxWidth: .infinity)
         .frame(height: buttonSize.height)
         .background(getBackgroundColor(configuration: configuration))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .clipShape(RoundedRectangle(cornerRadius: .Constants.cornerRadius))
     }
     
     // Determines the background color of the button based on its configuration

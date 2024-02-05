@@ -68,6 +68,7 @@
 		EE7D1EE42B69A1F80020C615 /* UIFont+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7D1EE32B69A1F80020C615 /* UIFont+Style.swift */; };
 		EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */; };
 		EE8EBB082B7150FB00209EE0 /* CartInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB072B7150FB00209EE0 /* CartInterface.swift */; };
+		EE8EBB0A2B71681700209EE0 /* CGFloat+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB092B71681700209EE0 /* CGFloat+Constants.swift */; };
 		EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96530F2B4C587700FEB62E /* PickerTextField.swift */; };
 		EE9DF31B2B5D14F7007223E3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9DF31A2B5D14F7007223E3 /* Logger.swift */; };
 		EEB00C9E2B5FCE3E000DFDA2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */; };
@@ -158,6 +159,7 @@
 		EE7D1EE32B69A1F80020C615 /* UIFont+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Style.swift"; sourceTree = "<group>"; };
 		EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentViewController.swift; sourceTree = "<group>"; };
 		EE8EBB072B7150FB00209EE0 /* CartInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInterface.swift; sourceTree = "<group>"; };
+		EE8EBB092B71681700209EE0 /* CGFloat+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Constants.swift"; sourceTree = "<group>"; };
 		EE96530F2B4C587700FEB62E /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		EE9DF31A2B5D14F7007223E3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				EEF59C692B4ACD1200415050 /* UIApplication */,
 				EE80F6EC2B49E35800E8D71D /* UIView */,
 				EE1712802B4976740008AEF1 /* UIViewController */,
+				EE8EBB092B71681700209EE0 /* CGFloat+Constants.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				EEF59C6B2B4ACD2000415050 /* mainWindow.swift in Sources */,
 				EE2F210E2B4AD88D00EC9D8F /* CartViewModel.swift in Sources */,
 				EE6A66E92B6A756000E0D738 /* AlertRouter.swift in Sources */,
+				EE8EBB0A2B71681700209EE0 /* CGFloat+Constants.swift in Sources */,
 				EE2F21192B4AE43700EC9D8F /* AddProductViewModel.swift in Sources */,
 				EE3BBBF72B5E787300B169CD /* CodeScanner.swift in Sources */,
 				EE1712152B496DE30008AEF1 /* AppDelegate.swift in Sources */,

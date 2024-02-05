@@ -60,7 +60,7 @@ struct SectionHeader: View {
         Text(title)
             .font(.Large(weight: .bold))
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 24)
+            .padding(.horizontal, .Constants.contentPadding)
     }
 }
 
@@ -77,7 +77,7 @@ struct CategoryProductsSection: View {
             SectionHeader(title: category.name ?? "")
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 12) {
+                LazyHStack(spacing: .Constants.cellSpacing) {
                     ForEach(products) { product in
                         ProductCell(product: product)
                             .contextMenu {
@@ -95,7 +95,7 @@ struct CategoryProductsSection: View {
                             }
                     }
                 }
-                .padding(.horizontal, 24)
+                .padding(.horizontal, .Constants.contentPadding)
             }
             .frame(height: 170)
         }

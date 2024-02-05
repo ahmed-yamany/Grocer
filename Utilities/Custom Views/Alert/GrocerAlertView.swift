@@ -43,7 +43,7 @@ final class GrocerAlertView: UIView, AlertViewProtocol {
 // MARK: - Configurations
 private extension GrocerAlertView {
     func configureUI() {
-        layer.cornerRadius = 12
+        layer.cornerRadius = .Constants.cornerRadius
         heightAnchor.constraint(greaterThanOrEqualToConstant: 72).isActive = true
         widthConstraints(.screenBounds.width - (24 * 2))
         makeBackgroundBlur()
