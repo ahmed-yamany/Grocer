@@ -69,6 +69,7 @@
 		EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */; };
 		EE8EBB082B7150FB00209EE0 /* CartInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB072B7150FB00209EE0 /* CartInterface.swift */; };
 		EE8EBB0A2B71681700209EE0 /* CGFloat+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB092B71681700209EE0 /* CGFloat+Constants.swift */; };
+		EE8EBB0C2B716A7A00209EE0 /* NibUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB0B2B716A7A00209EE0 /* NibUIView.swift */; };
 		EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96530F2B4C587700FEB62E /* PickerTextField.swift */; };
 		EE9DF31B2B5D14F7007223E3 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9DF31A2B5D14F7007223E3 /* Logger.swift */; };
 		EEB00C9E2B5FCE3E000DFDA2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */; };
@@ -160,6 +161,7 @@
 		EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentViewController.swift; sourceTree = "<group>"; };
 		EE8EBB072B7150FB00209EE0 /* CartInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInterface.swift; sourceTree = "<group>"; };
 		EE8EBB092B71681700209EE0 /* CGFloat+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Constants.swift"; sourceTree = "<group>"; };
+		EE8EBB0B2B716A7A00209EE0 /* NibUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibUIView.swift; sourceTree = "<group>"; };
 		EE96530F2B4C587700FEB62E /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		EE9DF31A2B5D14F7007223E3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				EEDE86F82B4C084A00E485F0 /* TextField */,
 				EE446E042B6D2E5B0002914A /* Sections */,
 				EE446E032B6D2E480002914A /* Cells */,
+				EE8EBB0B2B716A7A00209EE0 /* NibUIView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				EE4CA8812B66544600BC8399 /* ProductBuilder.swift in Sources */,
 				EE17127D2B4974730008AEF1 /* Router.swift in Sources */,
 				EEDE86FA2B4C086400E485F0 /* TextFieldState.swift in Sources */,
+				EE8EBB0C2B716A7A00209EE0 /* NibUIView.swift in Sources */,
 				EE6A66E72B6A69B800E0D738 /* AlertState.swift in Sources */,
 				EE9653102B4C587700FEB62E /* PickerTextField.swift in Sources */,
 				EE4CA8922B66948F00BC8399 /* CategoryBuilder.swift in Sources */,

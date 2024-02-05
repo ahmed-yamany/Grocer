@@ -8,7 +8,7 @@
 import UIKit
 import MakeConstraints
 
-final class GrocerAlertView: UIView, AlertViewProtocol {
+final class GrocerAlertView: NibUIView, AlertViewProtocol {
     // MARK: IBOutlet
     @IBOutlet weak private var stateImageContainer: UIView!
     @IBOutlet weak private var stateImageView: UIImageView!
@@ -20,13 +20,11 @@ final class GrocerAlertView: UIView, AlertViewProtocol {
     // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        loadNib()
         configureUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        loadNib()
         configureUI()
     }
     
@@ -97,15 +95,5 @@ private extension GrocerAlertView {
     func setupSubtitleLabel() {
         subtitleLabel.textColor = .grTextPrimary
         subtitleLabel.font = .medium(weight: .regular)
-    }
-}
-
-private extension GrocerAlertView {
-    func loadNib() {
-        // swiftlint:disable all
-        let view = Bundle.main.loadNibNamed(String(describing: Self.self), owner: self, options: nil)![0] as! UIView
-        addSubview(view)
-        view.frame = bounds
-        // swiftlint:enable all
     }
 }
