@@ -13,7 +13,7 @@ class CartViewModel: ObservableObject {
     @Published var barcode: String = ""
     @Published var products: [Product: Int] = [:]
     
-    var cancelable = Set<AnyCancellable>()
+    var anyCancelableSet = Set<AnyCancellable>()
     
     // MARK: - Initializer
     let productContextManager: ProductContextManager
@@ -30,6 +30,7 @@ class CartViewModel: ObservableObject {
         self.cartInterface = cartInterface
         
         bindProductsFromCartInterface()
+        bindBarCode()
     }
     
     func onAppear() {
@@ -56,6 +57,39 @@ class CartViewModel: ObservableObject {
         cartInterface.productsPublisher.sink { products in
             self.products = products
         }
-        .store(in: &cancelable)
+        .store(in: &anyCancelableSet)
+    }
+    
+    private func bindBarCode() {
+        $barcode.sink { [weak self] barcode in
+            self?.tryGetAndIncrementProduct(by: barcode)
+        }
+        .store(in: &anyCancelableSet)
+    }
+    
+    private func tryGetAndIncrementProduct(by barcode: String) {
+        guard barcode.count < 8 else {
+            Logger.log("barcode is les than 8", category: \.codeScanner, level: .info)
+            return
+        }
+        
+        do {
+            guard let product = try self.productContextManager.filter(by: \.barcode, value: barcode).first else {
+                router.presentAlert(
+                    title: L10n.Alert.warning,
+                    message: "Didn't find product with this barcode",
+                    withState: .warning
+                )
+                return
+            }
+            
+            self.increase(product)
+        } catch {
+            router.presentAlert(
+                title: L10n.Alert.error,
+                message: error.localizedDescription,
+                withState: .error
+            )
+        }
     }
 }
