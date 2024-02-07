@@ -11,7 +11,8 @@ struct ProductCartCell: View {
     let product: Product
     let count: Int
     
-    @State var value = 1
+    @Environment(\.onIncrementProductCart) private var onIncrementProductCart
+    @Environment(\.onDecrementProductCart) private var onDecrementProductCart
     
     var body: some View {
         HStack(alignment: .top, spacing: .Constants.cellSpacing) {
@@ -23,7 +24,7 @@ struct ProductCartCell: View {
             
             VStack(alignment: .leading, spacing: .Constants.cellPadding) {
                 ProductCellContent(product: product)
-                
+                Spacer()
                 stepperView
             }
         }
@@ -31,13 +32,51 @@ struct ProductCartCell: View {
         .padding(.Constants.cellPadding)
         .background(.grInputField)
         .clipShape(RoundedRectangle(cornerRadius: .Constants.cornerRadius))
-        .onAppear {
-            value = count
-        }
     }
     
     var stepperView: some View {
-        Text("\(value)")
+        HStack {
+            Text("Count: \(count)")
+            
+            Spacer()
+            
+            StepperView(onIncrement: {
+                onIncrementProductCart(product)
+            }, onDecrement: {
+                onDecrementProductCart(product)
+            })
+        }
+    }
+}
+
+struct OnIncrementProductCartKey: EnvironmentKey {
+    static var defaultValue: (Product) -> Void = {_ in}
+}
+
+struct OnDecrementProductCartKey: EnvironmentKey {
+    static var defaultValue: (Product) -> Void = {_ in}
+}
+
+extension EnvironmentValues {
+    var onIncrementProductCart: (Product) -> Void {
+        get { self[OnIncrementProductCartKey.self] }
+        set { self[OnIncrementProductCartKey.self] = newValue }
     }
     
+    var onDecrementProductCart: (Product) -> Void {
+        get { self[OnDecrementProductCartKey.self] }
+        set { self[OnDecrementProductCartKey.self] = newValue }
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func onIncrementProductCart(_ action: @escaping (Product) -> Void) -> some View {
+        environment(\.onIncrementProductCart, action)
+    }
+    
+    @ViewBuilder
+    func onDecrementProductCart(_ action: @escaping (Product) -> Void) -> some View {
+        environment(\.onDecrementProductCart, action)
+    }
 }

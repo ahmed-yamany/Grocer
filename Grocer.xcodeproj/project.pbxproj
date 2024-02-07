@@ -67,6 +67,7 @@
 		EE6FED932B69965E00D4130E /* MakeConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = EE6FED922B69965E00D4130E /* MakeConstraints */; };
 		EE7D1EE42B69A1F80020C615 /* UIFont+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7D1EE32B69A1F80020C615 /* UIFont+Style.swift */; };
 		EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */; };
+		EE8537292B74230E006F17B9 /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8537282B74230E006F17B9 /* StepperView.swift */; };
 		EE8EBB082B7150FB00209EE0 /* CartInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB072B7150FB00209EE0 /* CartInterface.swift */; };
 		EE8EBB0A2B71681700209EE0 /* CGFloat+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB092B71681700209EE0 /* CGFloat+Constants.swift */; };
 		EE8EBB0C2B716A7A00209EE0 /* NibUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EBB0B2B716A7A00209EE0 /* NibUIView.swift */; };
@@ -160,6 +161,7 @@
 		EE6FED8E2B69931000D4130E /* GrocerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrocerAlertView.xib; sourceTree = "<group>"; };
 		EE7D1EE32B69A1F80020C615 /* UIFont+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Style.swift"; sourceTree = "<group>"; };
 		EE80F6ED2B49E36F00E8D71D /* parentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parentViewController.swift; sourceTree = "<group>"; };
+		EE8537282B74230E006F17B9 /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		EE8EBB072B7150FB00209EE0 /* CartInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInterface.swift; sourceTree = "<group>"; };
 		EE8EBB092B71681700209EE0 /* CGFloat+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Constants.swift"; sourceTree = "<group>"; };
 		EE8EBB0B2B716A7A00209EE0 /* NibUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibUIView.swift; sourceTree = "<group>"; };
@@ -313,8 +315,9 @@
 			children = (
 				EE8EBB0B2B716A7A00209EE0 /* NibUIView.swift */,
 				EE1712922B49BD770008AEF1 /* HostingView.swift */,
-				EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */,
 				EE4CA88A2B66878000BC8399 /* SheetView.swift */,
+				EEB00C9D2B5FCE3E000DFDA2 /* ImagePicker.swift */,
+				EE8537282B74230E006F17B9 /* StepperView.swift */,
 				EE6FED882B6992F000D4130E /* Alert */,
 				EEC3E9AE2B61237D00913AF4 /* Button */,
 				EEDE86F82B4C084A00E485F0 /* TextField */,
@@ -770,6 +773,7 @@
 				EE1712902B49BC200008AEF1 /* HomeViewModel.swift in Sources */,
 				EE6A9A502B626B9B00C8C178 /* CoreDataManager.swift in Sources */,
 				EE446E002B6D2E0C0002914A /* Product.swift in Sources */,
+				EE8537292B74230E006F17B9 /* StepperView.swift in Sources */,
 				EEB00C9E2B5FCE3E000DFDA2 /* ImagePicker.swift in Sources */,
 				EE8EBB082B7150FB00209EE0 /* CartInterface.swift in Sources */,
 				EE80F6EE2B49E36F00E8D71D /* parentViewController.swift in Sources */,

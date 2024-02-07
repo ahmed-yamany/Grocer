@@ -30,8 +30,15 @@ struct CartView: View {
         }
         .primaryDesignStyle()
         .toolbarTitle("Cart")
+        .animation(.easeInOut, value: viewModel.products)
         .onAppear {
             viewModel.onAppear()
+        }
+        .onIncrementProductCart { product in
+            viewModel.increase(product)
+        }
+        .onDecrementProductCart { product in
+            viewModel.decrease(product)
         }
     }
 }
