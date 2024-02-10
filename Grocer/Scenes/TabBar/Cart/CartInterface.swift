@@ -18,6 +18,9 @@ protocol CartInterface: AnyObject {
 }
 
 extension CartInterface {
+    func resetProducts() {
+        products.removeAll()
+    }
     
     /// Increases the quantity of a product in the cart by 1.
     ///

@@ -30,7 +30,6 @@ class CartViewModel: ObservableObject {
         self.cartInterface = cartInterface
         
         bindProductsFromCartInterface()
-        bindBarCode()
     }
     
     func onAppear() {
@@ -60,16 +59,14 @@ class CartViewModel: ObservableObject {
         .store(in: &anyCancelableSet)
     }
     
-    private func bindBarCode() {
-        $barcode.sink { [weak self] barcode in
-            self?.tryGetAndIncrementProduct(by: barcode)
-        }
-        .store(in: &anyCancelableSet)
-    }
-    
-    private func tryGetAndIncrementProduct(by barcode: String) {
-        guard barcode.count < 8 else {
-            Logger.log("barcode is les than 8", category: \.codeScanner, level: .info)
+    func searchProduct() {
+        guard barcode.count > 8 else {
+            router.presentAlert(
+                title: L10n.Alert.error,
+                message: "barcode is less than 8",
+                withState: .error
+            )
+            Logger.log("barcode is less than 8", category: \.codeScanner, level: .info)
             return
         }
         
@@ -77,13 +74,15 @@ class CartViewModel: ObservableObject {
             guard let product = try self.productContextManager.filter(by: \.barcode, value: barcode).first else {
                 router.presentAlert(
                     title: L10n.Alert.warning,
-                    message: "Didn't find product with this barcode",
+                    message: "Couldn't find a product with this barcode",
                     withState: .warning
                 )
+                resetBarcode()
                 return
             }
             
             self.increase(product)
+            resetBarcode()
         } catch {
             router.presentAlert(
                 title: L10n.Alert.error,
@@ -92,4 +91,10 @@ class CartViewModel: ObservableObject {
             )
         }
     }
+    
+    private func resetBarcode() {
+        self.barcode.removeAll()
+        self.barcode = ""
+    }
+    
 }
