@@ -66,6 +66,17 @@ final class ProductContextManager: ContextManager<Product> {
         try? context.save()
     }
     
+    func checkout(_ products: [Product: Int]) throws {
+        try products.forEach { product, quantity in
+            try self.checkout(product, with: quantity)
+        }
+    }
+    
+    func checkout(_ product: Product, with quantity: Int) throws {
+        product.quantity -= Int32(quantity)
+        try context.save()
+    }
+    
     /// Retrieves sections of products grouped by categories.
     /// - Returns: A dictionary where keys are categories and values are arrays of products.
     /// - Throws: An error if there's an issue fetching categories or filtering products.

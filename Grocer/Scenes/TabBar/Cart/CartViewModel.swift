@@ -59,24 +59,17 @@ class CartViewModel: ObservableObject {
         .store(in: &anyCancelableSet)
     }
     
+    // TODO: - try to fix this code
     func searchProduct() {
         guard barcode.count > 8 else {
-            router.presentAlert(
-                title: L10n.Alert.error,
-                message: "barcode is less than 8",
-                withState: .error
-            )
+            showErrorAlert(with: "barcode is less than 8")
             Logger.log("barcode is less than 8", category: \.codeScanner, level: .info)
             return
         }
         
         do {
             guard let product = try self.productContextManager.filter(by: \.barcode, value: barcode).first else {
-                router.presentAlert(
-                    title: L10n.Alert.warning,
-                    message: "Couldn't find a product with this barcode",
-                    withState: .warning
-                )
+                showErrorAlert(with: "Couldn't find a product with this barcode")
                 resetBarcode()
                 return
             }
@@ -84,17 +77,30 @@ class CartViewModel: ObservableObject {
             self.increase(product)
             resetBarcode()
         } catch {
-            router.presentAlert(
-                title: L10n.Alert.error,
-                message: error.localizedDescription,
-                withState: .error
-            )
+            showErrorAlert(with: error.localizedDescription)
+        }
+    }
+    
+    func checkOutButtonTapped() {
+        do {
+            try productContextManager.checkout(products)
+            cartInterface.resetProducts()
+        } catch {
+            showErrorAlert(with: error.localizedDescription)
         }
     }
     
     private func resetBarcode() {
         self.barcode.removeAll()
         self.barcode = ""
+    }
+    
+    private func showErrorAlert(with message: String) {
+        router.presentAlert(
+            title: L10n.Alert.error,
+            message: message,
+            withState: .error
+        )
     }
     
 }
