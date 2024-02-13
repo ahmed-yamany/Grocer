@@ -44,9 +44,17 @@ extension CartInterface {
     private func adjustQuantity(for product: Product, delta: Int) {
         if let currentQuantity = products[product] {
             let newQuantity = max(0, currentQuantity + delta)
+           update(product, with: newQuantity)
+        } else {
+            update(product, with: max(0, delta))
+        }
+    }
+    
+    private func update(_ product: Product, with newQuantity: Int) {
+        if newQuantity > 0 {
             products[product] = newQuantity
         } else {
-            products[product] = max(0, delta)
+            products.removeValue(forKey: product)
         }
     }
 }
