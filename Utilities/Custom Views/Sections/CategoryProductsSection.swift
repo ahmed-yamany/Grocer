@@ -79,20 +79,21 @@ struct CategoryProductsSection: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: .Constants.cellSpacing) {
                     ForEach(products) { product in
-                        ProductCell(product: product)
-                            .contextMenu {
-                                Button(L10n.addToCart) {
-                                    onAddToCart(product)
-                                }
-                                
-                                Button(L10n.edit) {
-                                    onEdit(product)
-                                }
-                                
-                                Button(L10n.delete, role: .destructive) {
-                                    onDelete(product)
-                                }
+                        Menu {
+                            Button(L10n.addToCart) {
+                                onAddToCart(product)
                             }
+                            
+                            Button(L10n.edit) {
+                                onEdit(product)
+                            }
+                            
+                            Button(L10n.delete, role: .destructive) {
+                                onDelete(product)
+                            }
+                        } label: {
+                            ProductCell(product: product)
+                        }
                     }
                 }
                 .padding(.horizontal, .Constants.contentPadding)
