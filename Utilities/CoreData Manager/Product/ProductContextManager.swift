@@ -16,8 +16,6 @@ final class ProductContextManager: ContextManager<Product> {
         super.init(context: manager.persistentContainer.viewContext)
     }
     
-//    private func build(_ product: Product)
-
     func createNewProduct(
         name: String,
         quantity: String,
