@@ -46,9 +46,20 @@ struct CartView: View {
     }
     
     private var contentView: some View {
+        VStack {
+            let products = viewModel.getProducts()
+            if products.isEmpty {
+               EmptyView(text: "Your Cart is Empty")
+            } else {
+                productsView(products)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func productsView(_ products: [Product]) -> some View {
         ScrollView {
             LazyVStack(spacing: .Constants.cellSpacing) {
-                let products = viewModel.getProducts()
                 ForEach(products) { product in
                     let count = viewModel.getCount(of: product)
                     if count > 0 {
@@ -56,24 +67,20 @@ struct CartView: View {
                     }
                 }
                 
-                showCheckOutButton(whenEmpty: products.isEmpty)
+                checkOutButton
             }
-            .padding(.horizontal, .Constants.contentPadding)
-            .padding(.bottom, .Constants.tabBarHeight)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
+        .padding(.horizontal, .Constants.contentPadding)
+        .padding(.bottom, .Constants.tabBarHeight)
     }
     
     @ViewBuilder
-    private func showCheckOutButton(whenEmpty isEmpty: Bool) -> some View {
-        if !isEmpty {
-            Button("Check Out") {
-                viewModel.checkOutButtonTapped()
-            }
-            .buttonStyle(.primaryButton())
-        } else {
-            // show image
+    private var checkOutButton: some View {
+        Button("Check Out") {
+            viewModel.checkOutButtonTapped()
         }
+        .buttonStyle(.primaryButton())
     }
 }
 

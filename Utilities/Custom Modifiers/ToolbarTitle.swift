@@ -13,7 +13,7 @@ extension View {
         toolbar {
             ToolbarItem(placement: .principal) {
                 Text(title)
-                    .font(.h5)
+                    .font(.h4)
                     .foregroundColor(.grTextSecondary)
             }
         }
