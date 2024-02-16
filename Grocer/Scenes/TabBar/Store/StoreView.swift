@@ -12,6 +12,8 @@ struct StoreView: View {
     
     var body: some View {
         VStack {
+            searchView
+            
             let categories: [Category] = viewModel.categories
             if categories.isEmpty {
                 EmptyView(text: L10n.Store.empty)
@@ -60,6 +62,19 @@ struct StoreView: View {
         .onAddProductToCart { product in
             viewModel.addToCart(product)
         }
+    }
+    
+    private var searchView: some View {
+        HStack(spacing: .Constants.cellSpacing) {
+            PrimaryTextField(title: L10n.Store.search, text: $viewModel.searchText) {
+                TextField("", text: $viewModel.searchText)
+            }
+
+            SearchButton {
+                viewModel.search()
+            }
+        }
+        .padding(.horizontal, .Constants.contentPadding)
     }
 }
 

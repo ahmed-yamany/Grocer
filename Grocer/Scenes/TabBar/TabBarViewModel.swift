@@ -11,7 +11,7 @@ class TabBarViewModel: ObservableObject, CartInterface {
     
     @ObservedObject static var shared = TabBarViewModel()
     
-    @Published var selectedTab: TabBarType = .cart
+    @Published var selectedTab: TabBarType = .store
     @Published var tabBarIsHidden: Bool = false
     
     // MARK: - CartInterface

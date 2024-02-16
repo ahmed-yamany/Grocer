@@ -63,7 +63,16 @@ class ContextManager<ManagedObject: NSManagedObject> {
     /// - Returns: An array of filtered managed objects.
     /// - Throws: An error of type `ContextManagerError` if filtering or fetching fails.
     func filter<T: Equatable>(by keyPath: KeyPath<ManagedObject, T>, value: T) throws -> [ManagedObject] {
-        try getAll().filter { $0[keyPath: keyPath] == value }
+        let allObjects = try getAll()
+        return filter(allObjects, by: keyPath, value: value)
+    }
+    
+    func filter<T: Equatable>(_ objects: [ManagedObject], by keyPath: KeyPath<ManagedObject, T>, value: T) -> [ManagedObject] {
+        objects.filter { $0[keyPath: keyPath] == value }
+    }
+
+    func contains(by keyPath: KeyPath<ManagedObject, String?>, value: String) throws -> [ManagedObject] {
+        try getAll().filter { $0[keyPath: keyPath]?.contains(value) ?? false}
     }
     
     /// Deletes the specified object from the context and saves the changes.

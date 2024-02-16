@@ -93,4 +93,19 @@ final class ProductUseCase: ContextManager<Product> {
         
         return sections
     }
+    
+    func filterGroupedProducts(by keyPath: KeyPath<Product, String?>, value: String) throws -> [Category: [Product]] {
+        var sections: [Category: [Product]] = [:]
+        
+        let groupedCategories = try groupProductsByCategory()
+        
+        groupedCategories.forEach { category, products in
+            let newProducts: [Product] = filter(products, by: \.category, value: category)
+            if !newProducts.isEmpty {
+                sections[category] = newProducts
+            }
+        }
+
+        return sections
+    }
 }

@@ -32,15 +32,10 @@ struct CartView: View {
     private var searchView: some View {
         HStack(spacing: .Constants.cellSpacing) {
             BarCodeField(barcode: $viewModel.barcode, router: viewModel.router)
-            
-            DelayButton {
-                Image(systemName: "magnifyingglass")
-                    .font(.XLarge(weight: .semibold))
-            } action: {
+
+            SearchButton {
                 viewModel.searchProduct()
             }
-            .buttonStyle(.primaryButton(size: .large))
-            .frame(width: ButtonSize.large.height)
         }
         .padding(.horizontal, .Constants.contentPadding)
     }

@@ -130,6 +130,8 @@ internal enum L10n {
   internal enum Store {
     /// Your Store is Empty Start Adding Products by clicking the plus button
     internal static let empty = L10n.tr("Localizable", "store.empty", fallback: "Your Store is Empty Start Adding Products by clicking the plus button")
+    /// Search Product Name
+    internal static let search = L10n.tr("Localizable", "store.search", fallback: "Search Product Name")
     /// Grocer Store
     internal static let title = L10n.tr("Localizable", "store.title", fallback: "Grocer Store")
   }

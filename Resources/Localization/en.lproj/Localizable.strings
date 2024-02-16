@@ -32,6 +32,7 @@
 //
 "store.title" = "Grocer Store";
 "store.empty" = "Your Store is Empty Start Adding Products by clicking the plus button";
+"store.search" = "Search Product Name";
 //
 "cart.title" = "Cart";
 "cart.checkout" = "Check Out";

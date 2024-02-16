@@ -78,6 +78,7 @@
 		EEC3E9B02B61239600913AF4 /* XButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3E9AF2B61239600913AF4 /* XButton.swift */; };
 		EEC3E9B22B61273400913AF4 /* BarCodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC3E9B12B61273400913AF4 /* BarCodeField.swift */; };
 		EECA0B5D2B7FED93006B3330 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECA0B5C2B7FED93006B3330 /* EmptyView.swift */; };
+		EECA0B5F2B800430006B3330 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECA0B5E2B800430006B3330 /* SearchButton.swift */; };
 		EEDE86F52B4C06D000E485F0 /* ToolbarTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F42B4C06D000E485F0 /* ToolbarTitle.swift */; };
 		EEDE86F72B4C07E200E485F0 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F62B4C07E200E485F0 /* PrimaryTextField.swift */; };
 		EEDE86FA2B4C086400E485F0 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDE86F92B4C086400E485F0 /* TextFieldState.swift */; };
@@ -173,6 +174,7 @@
 		EEC3E9AF2B61239600913AF4 /* XButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XButton.swift; sourceTree = "<group>"; };
 		EEC3E9B12B61273400913AF4 /* BarCodeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarCodeField.swift; sourceTree = "<group>"; };
 		EECA0B5C2B7FED93006B3330 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		EECA0B5E2B800430006B3330 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		EEDE86F42B4C06D000E485F0 /* ToolbarTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTitle.swift; sourceTree = "<group>"; };
 		EEDE86F62B4C07E200E485F0 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		EEDE86F92B4C086400E485F0 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				EEC3E9AF2B61239600913AF4 /* XButton.swift */,
 				EE1DAE0A2B62E036004603A2 /* PrimaryButton.swift */,
 				EE6A66ED2B6AC05400E0D738 /* DelayButton.swift */,
+				EECA0B5E2B800430006B3330 /* SearchButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				EE6A66EE2B6AC05400E0D738 /* DelayButton.swift in Sources */,
 				EE5D81872B63D5AB00222466 /* ProductUseCase.swift in Sources */,
 				EE1DAE0B2B62E036004603A2 /* PrimaryButton.swift in Sources */,
+				EECA0B5F2B800430006B3330 /* SearchButton.swift in Sources */,
 				EEF59C6B2B4ACD2000415050 /* mainWindow.swift in Sources */,
 				EE2F210E2B4AD88D00EC9D8F /* CartViewModel.swift in Sources */,
 				EE6A66E92B6A756000E0D738 /* AlertRouter.swift in Sources */,

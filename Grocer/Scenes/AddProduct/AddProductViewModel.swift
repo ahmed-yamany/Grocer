@@ -109,12 +109,12 @@ final class AddProductViewModel: ObservableObject {
     private func update(_ product: Product) {
         do {
             try productUseCase.update(product,
-                                             name: name,
-                                             quantity: quantity,
-                                             price: price,
-                                             barcode: barcode,
-                                             images: images,
-                                             category: category)
+                                      name: name,
+                                      quantity: quantity,
+                                      price: price,
+                                      barcode: barcode,
+                                      images: images,
+                                      category: category)
             router.dismiss()
             self.router.presentAlert(
                 title: L10n.Alert.edited,

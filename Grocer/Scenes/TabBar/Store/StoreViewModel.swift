@@ -16,6 +16,8 @@ final class StoreViewModel: ObservableObject {
     }
     @Published var categories: [Category] = []
     
+    @Published var searchText: String = ""
+    
     // MARK: - Initializer
     let productUseCase: ProductUseCase
     let router: Router
@@ -85,6 +87,19 @@ final class StoreViewModel: ObservableObject {
     func addToCart(_ product: Product) {
         cartInterface.increase(product)
         Logger.log("add to cart \(product.name ?? "")", category: \.default, level: .info)
+    }
+    
+    func search() {
+        do {
+            groupedProductsByCategory = try productUseCase.filterGroupedProducts(by: \.name, value: searchText)
+        } catch {
+            router.presentAlert(
+                title: L10n.Alert.error,
+                message: error.localizedDescription,
+                withState: .error
+            )
+            Logger.log(error.localizedDescription, category: \.default, level: .fault)
+        }
     }
     
     private func showAddProductView(with viewModel: AddProductViewModel) {
