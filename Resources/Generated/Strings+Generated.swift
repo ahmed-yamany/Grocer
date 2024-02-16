@@ -88,8 +88,8 @@ internal enum L10n {
   internal enum Cart {
     /// Check Out
     internal static let checkout = L10n.tr("Localizable", "cart.checkout", fallback: "Check Out")
-    /// Your Cart is Empty
-    internal static let empty = L10n.tr("Localizable", "cart.empty", fallback: "Your Cart is Empty")
+    /// Your Cart is Empty, start selling Products by searching for a product using its barcode
+    internal static let empty = L10n.tr("Localizable", "cart.empty", fallback: "Your Cart is Empty, start selling Products by searching for a product using its barcode")
     /// Cart
     internal static let title = L10n.tr("Localizable", "cart.title", fallback: "Cart")
     internal enum Error {
@@ -128,6 +128,8 @@ internal enum L10n {
     internal static let unit = L10n.tr("Localizable", "field.unit", fallback: "Unit")
   }
   internal enum Store {
+    /// Your Store is Empty Start Adding Products by clicking the plus button
+    internal static let empty = L10n.tr("Localizable", "store.empty", fallback: "Your Store is Empty Start Adding Products by clicking the plus button")
     /// Grocer Store
     internal static let title = L10n.tr("Localizable", "store.title", fallback: "Grocer Store")
   }

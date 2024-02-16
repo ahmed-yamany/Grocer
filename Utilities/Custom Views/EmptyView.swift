@@ -11,16 +11,19 @@ struct EmptyView: View {
     let text: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: .Constants.cellSpacing) {
             Spacer()
             Image(.assetEmpty)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 200, height: 200)
+                .frame(height: 200)
             Text(text)
                 .font(.h6)
+                .multilineTextAlignment(.center)
             Spacer()
         }
+        .padding(.horizontal, .Constants.contentPadding)
         .padding(.bottom, .Constants.tabBarHeight * 2)
+        
     }
 }

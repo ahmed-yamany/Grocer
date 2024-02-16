@@ -11,13 +11,12 @@ struct StoreView: View {
     @ObservedObject var viewModel: StoreViewModel
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                let categories: [Category] = Array(viewModel.groupedProductsByCategory.keys)
-                ForEach(categories, id: \.self) { category in
-                    let products: [Product] = viewModel.groupedProductsByCategory[category] ?? []
-                    CategoryProductsSection(category: category, products: products)
-                }
+        VStack {
+            let categories: [Category] = viewModel.categories
+            if categories.isEmpty {
+                EmptyView(text: L10n.Store.empty)
+            } else {
+                categoriesView(categories)
             }
         }
         .primaryDesignStyle()
@@ -30,15 +29,6 @@ struct StoreView: View {
         .onAppear {
             viewModel.onAppear()
         }
-        .onDeleteProduct { product in
-            viewModel.delete(product)
-        }
-        .onEditProduct { product in
-            viewModel.edit(product)
-        }
-        .onAddProductToCart { product in
-            viewModel.addToCart(product)
-        }
     }
     
     private var trailingToolBarItem: some View {
@@ -48,6 +38,27 @@ struct StoreView: View {
             Image(.iconAddProduct)
                 .resizable()
                 .frame(width: 25, height: 25)
+        }
+    }
+    
+    @ViewBuilder
+    private func categoriesView(_ categories: [Category] ) -> some View {
+        ScrollView {
+            LazyVStack {
+                ForEach(categories, id: \.self) { category in
+                    let products: [Product] = viewModel.groupedProductsByCategory[category] ?? []
+                    CategoryProductsSection(category: category, products: products)
+                }
+            }
+        }
+        .onDeleteProduct { product in
+            viewModel.delete(product)
+        }
+        .onEditProduct { product in
+            viewModel.edit(product)
+        }
+        .onAddProductToCart { product in
+            viewModel.addToCart(product)
         }
     }
 }

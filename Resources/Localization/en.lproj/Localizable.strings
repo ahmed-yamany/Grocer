@@ -31,10 +31,11 @@
 "tabBar.store" = "Store";
 //
 "store.title" = "Grocer Store";
+"store.empty" = "Your Store is Empty Start Adding Products by clicking the plus button";
 //
 "cart.title" = "Cart";
 "cart.checkout" = "Check Out";
-"cart.empty" = "Your Cart is Empty";
+"cart.empty" = "Your Cart is Empty, start selling Products by searching for a product using its barcode";
 "cart.error.barcode" = "barcode is less than 8";
 "cart.error.product" = "Couldn't find a product with this barcode";
 //

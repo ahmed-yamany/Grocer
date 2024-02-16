@@ -9,7 +9,12 @@ import SwiftUI
 
 final class StoreViewModel: ObservableObject {
     
-    @Published var groupedProductsByCategory: [Category: [Product]] = [:]
+    @Published var groupedProductsByCategory: [Category: [Product]] = [:] {
+        didSet {
+            categories = Array(groupedProductsByCategory.keys).sorted(by: { ($0.name ?? "") > ($1.name ?? "")})
+        }
+    }
+    @Published var categories: [Category] = []
     
     // MARK: - Initializer
     let productContextManager: ProductContextManager

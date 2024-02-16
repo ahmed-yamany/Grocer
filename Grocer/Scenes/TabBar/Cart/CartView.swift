@@ -77,7 +77,7 @@ struct CartView: View {
     
     @ViewBuilder
     private var checkOutButton: some View {
-        Button(L10n.Cart.empty) {
+        Button(L10n.Cart.checkout) {
             viewModel.checkOutButtonTapped()
         }
         .buttonStyle(.primaryButton())
