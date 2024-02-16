@@ -31,7 +31,7 @@ final class ProductBuilder {
     public let price: String
     public let quantity: String
     public let category: String
-    public let categoryManager: CategoryContextManager
+    public let categoryManager: CategoryUseCase
     
     init(
         barcode: String,
@@ -40,7 +40,7 @@ final class ProductBuilder {
         price: String,
         quantity: String,
         category: String,
-        categoryManager: CategoryContextManager
+        categoryManager: CategoryUseCase
     ) {
         self.barcode = barcode
         self.images = images

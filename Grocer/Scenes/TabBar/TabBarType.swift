@@ -57,7 +57,7 @@ enum TabBarType: String, CaseIterable, Hashable {
         let alertRouter = AlertRouter(alertView: alertView)
         
         let router = Router(navigationController: UINavigationController(), alertRouter: alertRouter)
-        let productManager = ProductContextManager()
+        let productManager = ProductUseCase()
         
         let viewModel = CartViewModel(
             router: router,
@@ -76,11 +76,11 @@ enum TabBarType: String, CaseIterable, Hashable {
         let alertRouter = AlertRouter(alertView: alertView)
         
         let router = Router(navigationController: UINavigationController(), alertRouter: alertRouter)
-        let productManager = ProductContextManager()
+        let usecase = ProductUseCase()
         
         let viewModel = StoreViewModel(
             router: router,
-            productContextManager: productManager,
+            productUseCase: usecase,
             cartInterface: cartInterface
         )
         

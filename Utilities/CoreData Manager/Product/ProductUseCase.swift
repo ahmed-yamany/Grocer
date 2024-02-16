@@ -8,9 +8,9 @@
 import UIKit
 import CoreData
 
-final class ProductContextManager: ContextManager<Product> {
+final class ProductUseCase: ContextManager<Product> {
     private let manager = CoreDataManager.shared
-    let categoryManager = CategoryContextManager()
+    let categoryUseCase = CategoryUseCase()
     
     init() {
         super.init(context: manager.persistentContainer.viewContext)
@@ -57,7 +57,7 @@ final class ProductContextManager: ContextManager<Product> {
             price: price,
             quantity: quantity,
             category: category,
-            categoryManager: categoryManager
+            categoryManager: categoryUseCase
         )
         
         try productBuilder.build(product)
@@ -80,7 +80,7 @@ final class ProductContextManager: ContextManager<Product> {
     /// - Throws: An error if there's an issue fetching categories or filtering products.
     func groupProductsByCategory() throws -> [Category: [Product]] {
         var sections: [Category: [Product]] = [:]
-        let categories = try categoryManager.getAll()
+        let categories = try categoryUseCase.getAll()
         
         /// Iterate through each category and filter products for each.
         try categories.forEach { category in

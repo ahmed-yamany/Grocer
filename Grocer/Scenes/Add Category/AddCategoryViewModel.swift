@@ -12,9 +12,9 @@ class AddCategoryViewModel: ObservableObject {
     @Published var categories: [String] = []
 
     let router: Router
-    let categoryManager: CategoryContextManager
+    let categoryManager: CategoryUseCase
     
-    init(router: Router, categoryManager: CategoryContextManager) {
+    init(router: Router, categoryManager: CategoryUseCase) {
         self.router = router
         self.categoryManager = categoryManager
     }

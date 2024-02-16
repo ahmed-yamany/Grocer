@@ -27,7 +27,6 @@ struct StoreView: View {
             }
         }
         .onAppear {
-            Logger.log("Store View onApear", category: \.default, level: .info)
             viewModel.onAppear()
         }
     }

@@ -16,13 +16,13 @@ class CartViewModel: ObservableObject {
     var anyCancelableSet = Set<AnyCancellable>()
     
     // MARK: - Initializer
-    let productContextManager: ProductContextManager
+    let productContextManager: ProductUseCase
     let router: Router
     let cartInterface: CartInterface
     
     init(
         router: Router,
-        productContextManager: ProductContextManager,
+        productContextManager: ProductUseCase,
         cartInterface: CartInterface
     ) {
         self.router = router

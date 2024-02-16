@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class CategoryContextManager: ContextManager<Category> {
+class CategoryUseCase: ContextManager<Category> {
     private let manager = CoreDataManager.shared
     
     init() {

@@ -17,24 +17,24 @@ final class StoreViewModel: ObservableObject {
     @Published var categories: [Category] = []
     
     // MARK: - Initializer
-    let productContextManager: ProductContextManager
+    let productUseCase: ProductUseCase
     let router: Router
     let cartInterface: CartInterface
 
     init(
         router: Router,
-        productContextManager: ProductContextManager,
+        productUseCase: ProductUseCase,
         cartInterface: CartInterface
     ) {
         self.router = router
-        self.productContextManager = productContextManager
+        self.productUseCase = productUseCase
         self.cartInterface = cartInterface
     }
         
     // MARK: - OnAppear
     public func onAppear() {
         do {
-            groupedProductsByCategory = try productContextManager.groupProductsByCategory()
+            groupedProductsByCategory = try productUseCase.groupProductsByCategory()
         } catch {
             router.presentAlert(
                 title: L10n.Alert.error,
@@ -48,7 +48,7 @@ final class StoreViewModel: ObservableObject {
     
     // MARK: - Action Methods
     func addProduct() {
-        let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager)
+        let viewModel = AddProductViewModel(router: router, productUseCase: productUseCase)
         showAddProductView(with: viewModel)
         Logger.log("add product", category: \.default, level: .info)
     }
@@ -56,7 +56,7 @@ final class StoreViewModel: ObservableObject {
     func delete(_ product: Product) {
         do {
             let name = product.name ?? ""
-            try productContextManager.delete(product)
+            try productUseCase.delete(product)
             
             onAppear()  // to reload date after deleting the product
             router.presentAlert(
@@ -77,7 +77,7 @@ final class StoreViewModel: ObservableObject {
     }
     
     func edit(_ product: Product) {
-        let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager, product: product)
+        let viewModel = AddProductViewModel(router: router, productUseCase: productUseCase, product: product)
         showAddProductView(with: viewModel)
         Logger.log("Edit product \(product.name ?? "")", category: \.default, level: .info)
     }

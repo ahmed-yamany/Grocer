@@ -26,25 +26,25 @@ final class AddProductViewModel: ObservableObject {
     
     // MARK: - Initializer
     let router: Router
-    let productContextManager: ProductContextManager
+    let productUseCase: ProductUseCase
     let categoryViewModel: AddCategoryViewModel
     var product: Product?
     
     init(
         router: Router,
-        productContextManager: ProductContextManager
+        productUseCase: ProductUseCase
     ) {
         self.router = router
-        self.productContextManager = productContextManager
-        categoryViewModel = AddCategoryViewModel(router: router, categoryManager: productContextManager.categoryManager)
+        self.productUseCase = productUseCase
+        categoryViewModel = AddCategoryViewModel(router: router, categoryManager: productUseCase.categoryUseCase)
     }
     
     convenience init(
         router: Router,
-        productContextManager: ProductContextManager,
+        productUseCase: ProductUseCase,
         product: Product
     ) {
-        self.init(router: router, productContextManager: productContextManager)
+        self.init(router: router, productUseCase: productUseCase)
         self.product = product
         name = product.name ?? ""
         price = product.priceString
@@ -88,7 +88,7 @@ final class AddProductViewModel: ObservableObject {
     
     private func createNewProduct() {
         do {
-            try productContextManager.createNewProduct(
+            try productUseCase.createNewProduct(
                 name: name,
                 quantity: quantity,
                 price: price,
@@ -108,7 +108,7 @@ final class AddProductViewModel: ObservableObject {
     
     private func update(_ product: Product) {
         do {
-            try productContextManager.update(product,
+            try productUseCase.update(product,
                                              name: name,
                                              quantity: quantity,
                                              price: price,
