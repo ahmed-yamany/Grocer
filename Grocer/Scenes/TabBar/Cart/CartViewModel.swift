@@ -62,14 +62,14 @@ class CartViewModel: ObservableObject {
     // TODO: - try to fix this code
     func searchProduct() {
         guard barcode.count > 8 else {
-            showErrorAlert(with: "barcode is less than 8")
-            Logger.log("barcode is less than 8", category: \.codeScanner, level: .info)
+            showErrorAlert(with: L10n.Cart.Error.barcode)
+            Logger.log(L10n.Cart.Error.barcode, category: \.codeScanner, level: .info)
             return
         }
         
         do {
             guard let product = try self.productContextManager.filter(by: \.barcode, value: barcode).first else {
-                showErrorAlert(with: "Couldn't find a product with this barcode")
+                showErrorAlert(with: L10n.Cart.Error.product)
                 resetBarcode()
                 return
             }
@@ -92,7 +92,6 @@ class CartViewModel: ObservableObject {
     
     private func resetBarcode() {
         self.barcode.removeAll()
-        self.barcode = ""
     }
     
     private func showErrorAlert(with message: String) {
@@ -102,5 +101,4 @@ class CartViewModel: ObservableObject {
             withState: .error
         )
     }
-    
 }

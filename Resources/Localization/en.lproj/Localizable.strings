@@ -32,6 +32,12 @@
 //
 "store.title" = "Grocer Store";
 //
+"cart.title" = "Cart";
+"cart.checkout" = "Check Out";
+"cart.empty" = "Your Cart is Empty";
+"cart.error.barcode" = "barcode is less than 8";
+"cart.error.product" = "Couldn't find a product with this barcode";
+//
 "addProduct.title" = "Add Product";
 "addProduct.addImage.title" = "Add Product Image";
 "addProduct.addImage.picker.camera" = "Open Camera";

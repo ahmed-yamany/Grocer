@@ -85,6 +85,20 @@ internal enum L10n {
       internal static let saved = L10n.tr("Localizable", "alert.product.saved", fallback: "The new product saved successfully")
     }
   }
+  internal enum Cart {
+    /// Check Out
+    internal static let checkout = L10n.tr("Localizable", "cart.checkout", fallback: "Check Out")
+    /// Your Cart is Empty
+    internal static let empty = L10n.tr("Localizable", "cart.empty", fallback: "Your Cart is Empty")
+    /// Cart
+    internal static let title = L10n.tr("Localizable", "cart.title", fallback: "Cart")
+    internal enum Error {
+      /// barcode is less than 8
+      internal static let barcode = L10n.tr("Localizable", "cart.error.barcode", fallback: "barcode is less than 8")
+      /// Couldn't find a product with this barcode
+      internal static let product = L10n.tr("Localizable", "cart.error.product", fallback: "Couldn't find a product with this barcode")
+    }
+  }
   internal enum Coredata {
     internal enum Error {
       /// Please select category for the product

@@ -16,7 +16,7 @@ struct CartView: View {
             contentView
         }
         .primaryDesignStyle()
-        .toolbarTitle("Cart")
+        .toolbarTitle(L10n.Cart.title)
         .animation(.easeInOut, value: viewModel.products)
         .onAppear {
             viewModel.onAppear()
@@ -49,7 +49,7 @@ struct CartView: View {
         VStack {
             let products = viewModel.getProducts()
             if products.isEmpty {
-               EmptyView(text: "Your Cart is Empty")
+                EmptyView(text: L10n.Cart.empty)
             } else {
                 productsView(products)
             }
@@ -77,7 +77,7 @@ struct CartView: View {
     
     @ViewBuilder
     private var checkOutButton: some View {
-        Button("Check Out") {
+        Button(L10n.Cart.empty) {
             viewModel.checkOutButtonTapped()
         }
         .buttonStyle(.primaryButton())
