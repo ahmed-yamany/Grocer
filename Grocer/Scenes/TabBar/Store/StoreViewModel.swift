@@ -43,12 +43,14 @@ final class StoreViewModel: ObservableObject {
             )
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
+        Logger.log("Store View onAppear", category: \.default, level: .info)
     }
     
     // MARK: - Action Methods
     func addProduct() {
         let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager)
         showAddProductView(with: viewModel)
+        Logger.log("add product", category: \.default, level: .info)
     }
     
     func delete(_ product: Product) {
@@ -69,16 +71,20 @@ final class StoreViewModel: ObservableObject {
                 message: error.localizedDescription,
                 withState: .error
             )
+            Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
+        Logger.log("delete product \(product.name ?? "")", category: \.default, level: .info)
     }
     
     func edit(_ product: Product) {
         let viewModel = AddProductViewModel(router: router, productContextManager: productContextManager, product: product)
         showAddProductView(with: viewModel)
+        Logger.log("Edit product \(product.name ?? "")", category: \.default, level: .info)
     }
     
     func addToCart(_ product: Product) {
         cartInterface.increase(product)
+        Logger.log("add to cart \(product.name ?? "")", category: \.default, level: .info)
     }
     
     private func showAddProductView(with viewModel: AddProductViewModel) {

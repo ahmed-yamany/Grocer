@@ -31,6 +31,7 @@ struct BarCodeField: View {
         let coordinator = Coordinator(parent: self)
         let controller = BarCodeScannerViewController(router: router, delegate: coordinator)
         router.present(controller)
+        Logger.log("start bar code scanner", category: \.default, level: .fault)
     }
     
     class Coordinator: BarCodeScannerDelegate {
@@ -41,6 +42,7 @@ struct BarCodeField: View {
         }
         
         func scanned(_ barcode: String) {
+            Logger.log("scanned barcode \(barcode)", category: \.default, level: .fault)
             parent.barcode = barcode
         }
     }

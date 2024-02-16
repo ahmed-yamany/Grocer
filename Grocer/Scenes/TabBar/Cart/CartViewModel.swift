@@ -33,7 +33,7 @@ class CartViewModel: ObservableObject {
     }
     
     func onAppear() {
-        
+        Logger.log("Cart View onAppear", category: \.default, level: .info)
     }
     
     func getProducts() -> [Product] {
@@ -46,10 +46,12 @@ class CartViewModel: ObservableObject {
     
     func increase(_ product: Product) {
         cartInterface.increase(product)
+        Logger.log("\(product.name ?? "") added to cart", category: \.default, level: .info)
     }
     
     func decrease(_ product: Product) {
         cartInterface.decrease(product)
+        Logger.log("\(product.name ?? "") removed from cart", category: \.default, level: .info)
     }
     
     private func bindProductsFromCartInterface() {
@@ -79,6 +81,7 @@ class CartViewModel: ObservableObject {
         } catch {
             showErrorAlert(with: error.localizedDescription)
         }
+        Logger.log("searched for \(barcode)", category: \.default, level: .info)
     }
     
     func checkOutButtonTapped() {

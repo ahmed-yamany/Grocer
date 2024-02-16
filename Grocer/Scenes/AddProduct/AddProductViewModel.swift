@@ -79,8 +79,10 @@ final class AddProductViewModel: ObservableObject {
     func saveProduct() {
         if let product {
             update(product)
+            Logger.log("update product \(product.name ?? "")", category: \.default, level: .fault)
         } else {
             createNewProduct()
+            Logger.log("create new product", category: \.default, level: .fault)
         }
     }
     

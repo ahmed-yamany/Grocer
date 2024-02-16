@@ -20,6 +20,7 @@ class AddCategoryViewModel: ObservableObject {
     }
     
     public func onAppear() {
+        Logger.log("add category on Appear", category: \.default, level: .fault)
         do {
             self.categories = try categoryManager.getAll().allNames()
         } catch {
@@ -50,10 +51,12 @@ class AddCategoryViewModel: ObservableObject {
             )
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
+        Logger.log("save category", category: \.default, level: .fault)
     }
     
     func showAddCategory() {
         let viewController = UIHostingController(rootView: AddCategoryView(viewModel: self))
         router.presentOverFullScreen(viewController)
+        Logger.log("show add category", category: \.default, level: .fault)
     }
 }
