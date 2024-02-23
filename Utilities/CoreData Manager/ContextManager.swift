@@ -45,10 +45,7 @@ class ContextManager<ManagedObject: NSManagedObject> {
         }
         return object
     }
-    
-    /// Retrieves all objects of the managed type from the context.
-    /// - Returns: An array of all managed objects.
-    /// - Throws: An error of type `ContextManagerError` if fetching fails.
+
     func getAll() throws -> [ManagedObject] {
         guard let all = try context.fetch(ManagedObject.fetchRequest()) as? [ManagedObject] else {
             throw ContextManagerError<ManagedObject>.getAll
@@ -56,13 +53,7 @@ class ContextManager<ManagedObject: NSManagedObject> {
         return all
     }
     
-    /// Filters objects based on a specified key path and value.
-    /// - Parameters:
-    ///   - keyPath: The key path to be used for filtering.
-    ///   - value: The value to match during filtering.
-    /// - Returns: An array of filtered managed objects.
-    /// - Throws: An error of type `ContextManagerError` if filtering or fetching fails.
-    func filter<T: Equatable>(by keyPath: KeyPath<ManagedObject, T>, value: T) throws -> [ManagedObject] {
+    func filterAll<T: Equatable>(by keyPath: KeyPath<ManagedObject, T>, value: T) throws -> [ManagedObject] {
         let allObjects = try getAll()
         return filter(allObjects, by: keyPath, value: value)
     }
@@ -71,20 +62,24 @@ class ContextManager<ManagedObject: NSManagedObject> {
         objects.filter { $0[keyPath: keyPath] == value }
     }
 
-    func contains(by keyPath: KeyPath<ManagedObject, String?>, value: String) throws -> [ManagedObject] {
-        try getAll().filter { $0[keyPath: keyPath]?.contains(value) ?? false}
+    func filterAll(by keyPath: KeyPath<ManagedObject, String?>, contains value: String) throws -> [ManagedObject] {
+        let all = try getAll()
+        return filter(all, keyPath, contains: value)
     }
     
-    /// Deletes the specified object from the context and saves the changes.
-    /// - Parameter object: The object to be deleted.
-    /// - Throws: An error of type `ContextManagerError` if deletion or saving fails.
+    func filter(
+        _ objects: [ManagedObject],
+        _ keyPath: KeyPath<ManagedObject, String?>,
+        contains value: String
+    ) -> [ManagedObject] {
+        objects.filter { $0[keyPath: keyPath]?.lowercased().contains(value.lowercased()) ?? false}
+    }
+    
     func delete(_ object: ManagedObject) throws {
         context.delete(object)
         try? context.save()
     }
-    
-    /// Deletes all objects of the managed type from the context and saves the changes.
-    /// - Throws: An error of type `ContextManagerError` if deletion or saving fails.
+
     func deleteAll() throws {
         try getAll().forEach { [weak self] object in
             self?.context.delete(object)

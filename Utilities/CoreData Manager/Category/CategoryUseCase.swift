@@ -16,7 +16,7 @@ class CategoryUseCase: ContextManager<Category> {
     }
     
     func save(name: String) throws {
-        guard try filter(by: \.name, value: name).isEmpty else {
+        guard try filterAll(by: \.name, value: name).isEmpty else {
             throw ContextManagerError<Category>.exits
         }
         let builder = CategoryBuilder(name: name)

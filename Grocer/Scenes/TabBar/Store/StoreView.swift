@@ -67,14 +67,28 @@ struct StoreView: View {
     private var searchView: some View {
         HStack(spacing: .Constants.cellSpacing) {
             PrimaryTextField(title: L10n.Store.search, text: $viewModel.searchText) {
-                TextField("", text: $viewModel.searchText)
+                HStack {
+                    TextField("", text: $viewModel.searchText)
+                    
+                    if !viewModel.searchText.isEmpty {
+                        resetSearchButton
+                    }
+                }
             }
-
+            
             SearchButton {
-                viewModel.search()
             }
         }
         .padding(.horizontal, .Constants.contentPadding)
+    }
+    
+    private var resetSearchButton: some View {
+        Button {
+            viewModel.resetSearch()
+        } label: {
+            Image(systemName: "x.circle")
+                .font(.medium(weight: .medium))
+        }
     }
 }
 

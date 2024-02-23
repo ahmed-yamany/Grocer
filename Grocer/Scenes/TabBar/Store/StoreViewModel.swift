@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Combine
 
 final class StoreViewModel: ObservableObject {
-    
+    // MARK: - Properties
     @Published var groupedProductsByCategory: [Category: [Product]] = [:] {
         didSet {
             categories = Array(groupedProductsByCategory.keys).sorted(by: { ($0.name ?? "") > ($1.name ?? "")})
@@ -18,11 +19,13 @@ final class StoreViewModel: ObservableObject {
     
     @Published var searchText: String = ""
     
+    var cancellable = Set<AnyCancellable>()
+    
     // MARK: - Initializer
     let productUseCase: ProductUseCase
     let router: Router
     let cartInterface: CartInterface
-
+    
     init(
         router: Router,
         productUseCase: ProductUseCase,
@@ -31,18 +34,15 @@ final class StoreViewModel: ObservableObject {
         self.router = router
         self.productUseCase = productUseCase
         self.cartInterface = cartInterface
+        bindSearchText()
     }
-        
+    
     // MARK: - OnAppear
-    public func onAppear() {
+    func onAppear() {
         do {
             groupedProductsByCategory = try productUseCase.groupProductsByCategory()
         } catch {
-            router.presentAlert(
-                title: L10n.Alert.error,
-                message: error.localizedDescription,
-                withState: .error
-            )
+            showErrorAlert(error.localizedDescription)
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
         Logger.log("Store View onAppear", category: \.default, level: .info)
@@ -68,11 +68,7 @@ final class StoreViewModel: ObservableObject {
             )
             
         } catch {
-            router.presentAlert(
-                title: L10n.Alert.error,
-                message: error.localizedDescription,
-                withState: .error
-            )
+            showErrorAlert(error.localizedDescription)
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
         Logger.log("delete product \(product.name ?? "")", category: \.default, level: .info)
@@ -89,20 +85,44 @@ final class StoreViewModel: ObservableObject {
         Logger.log("add to cart \(product.name ?? "")", category: \.default, level: .info)
     }
     
-    func search() {
+    func resetSearch() {
+        searchText.removeAll()
+    }
+    
+    // MARK: - Private Methods
+    private func bindSearchText() {
+        $searchText
+            .delay(for: 1, scheduler: RunLoop.main)
+            .sink { [weak self] text in
+                self?.search(for: text)
+            }
+            .store(in: &cancellable)
+    }
+    
+    private func search(for text: String) {
+        guard !text.isEmpty else {
+            onAppear()
+            Logger.log("search text is empty", category: \.default, level: .info)
+            return
+        }
+        
         do {
-            groupedProductsByCategory = try productUseCase.filterGroupedProducts(by: \.name, value: searchText)
+            groupedProductsByCategory = try productUseCase.filterGroupedProducts(by: \.name, value: text)
         } catch {
-            router.presentAlert(
-                title: L10n.Alert.error,
-                message: error.localizedDescription,
-                withState: .error
-            )
+            showErrorAlert(error.localizedDescription)
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
         }
     }
     
     private func showAddProductView(with viewModel: AddProductViewModel) {
         router.push(UIHostingController(rootView: AddProductView(viewModel: viewModel)))
+    }
+    
+    private func showErrorAlert(_ message: String) {
+        router.presentAlert(
+            title: L10n.Alert.error,
+            message: message,
+            withState: .error
+        )
     }
 }

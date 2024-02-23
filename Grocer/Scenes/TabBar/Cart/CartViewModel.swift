@@ -70,7 +70,7 @@ class CartViewModel: ObservableObject {
         }
         
         do {
-            guard let product = try self.productContextManager.filter(by: \.barcode, value: barcode).first else {
+            guard let product = try self.productContextManager.filterAll(by: \.barcode, value: barcode).first else {
                 showErrorAlert(with: L10n.Cart.Error.product)
                 resetBarcode()
                 return

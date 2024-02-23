@@ -114,7 +114,7 @@ final class ProductBuilder {
             throw ContextManagerError<Product>.categoryEmpty
         }
         
-        return try categoryManager.filter(by: \.name, value: category).first
+        return try categoryManager.filterAll(by: \.name, value: category).first
     }
     
     private func buildImages() throws -> [Data] {

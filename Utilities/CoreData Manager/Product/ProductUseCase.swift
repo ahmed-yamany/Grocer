@@ -24,7 +24,7 @@ final class ProductUseCase: ContextManager<Product> {
         images: [UIImage],
         category: String
     ) throws {
-        guard try filter(by: \.barcode, value: barcode).isEmpty else {
+        guard try filterAll(by: \.barcode, value: barcode).isEmpty else {
             throw ContextManagerError<Product>.exits
         }
         
@@ -84,7 +84,7 @@ final class ProductUseCase: ContextManager<Product> {
         
         /// Iterate through each category and filter products for each.
         try categories.forEach { category in
-            let products = try filter(by: \.category, value: category)
+            let products = try filterAll(by: \.category, value: category)
             
             if !products.isEmpty {
                 sections[category] = products
@@ -97,15 +97,16 @@ final class ProductUseCase: ContextManager<Product> {
     func filterGroupedProducts(by keyPath: KeyPath<Product, String?>, value: String) throws -> [Category: [Product]] {
         var sections: [Category: [Product]] = [:]
         
-        let groupedCategories = try groupProductsByCategory()
+        let groupedCategories: [Category: [Product]] = try groupProductsByCategory()
         
         groupedCategories.forEach { category, products in
-            let newProducts: [Product] = filter(products, by: \.category, value: category)
+            let newProducts: [Product] = filter(products, keyPath, contains: value)
+            
             if !newProducts.isEmpty {
                 sections[category] = newProducts
             }
         }
-
+        
         return sections
     }
 }

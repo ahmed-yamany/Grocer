@@ -15,7 +15,7 @@ class UnitContextManager: ContextManager<Unit> {
     }
     
     func save(name: String) throws {
-        guard try filter(by: \.name, value: name).isEmpty else {
+        guard try filterAll(by: \.name, value: name).isEmpty else {
             throw ContextManagerError<Unit>.exits
         }
         
