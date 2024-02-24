@@ -53,28 +53,6 @@ class ContextManager<ManagedObject: NSManagedObject> {
         return all
     }
     
-    func filterAll<T: Equatable>(by keyPath: KeyPath<ManagedObject, T>, value: T) throws -> [ManagedObject] {
-        let allObjects = try getAll()
-        return filter(allObjects, by: keyPath, value: value)
-    }
-    
-    func filter<T: Equatable>(_ objects: [ManagedObject], by keyPath: KeyPath<ManagedObject, T>, value: T) -> [ManagedObject] {
-        objects.filter { $0[keyPath: keyPath] == value }
-    }
-
-    func filterAll(by keyPath: KeyPath<ManagedObject, String?>, contains value: String) throws -> [ManagedObject] {
-        let all = try getAll()
-        return filter(all, keyPath, contains: value)
-    }
-    
-    func filter(
-        _ objects: [ManagedObject],
-        _ keyPath: KeyPath<ManagedObject, String?>,
-        contains value: String
-    ) -> [ManagedObject] {
-        objects.filter { $0[keyPath: keyPath]?.lowercased().contains(value.lowercased()) ?? false}
-    }
-    
     func delete(_ object: ManagedObject) throws {
         context.delete(object)
         try? context.save()
@@ -85,5 +63,30 @@ class ContextManager<ManagedObject: NSManagedObject> {
             self?.context.delete(object)
         }
         try? context.save()
+    }
+    
+    func filterAll<T: Equatable>(by keyPath: KeyPath<ManagedObject, T>, value: T) throws -> [ManagedObject] {
+        let allObjects = try getAll()
+        return filter(allObjects, by: keyPath, value: value)
+    }
+    
+    func filter<T: Equatable>(_ objects: [ManagedObject], by keyPath: KeyPath<ManagedObject, T>, value: T) -> [ManagedObject] {
+        return objects.filter { $0[keyPath: keyPath] == value }
+    }
+    
+    func filterAll<T: StringConvertible>(
+        by keyPath: KeyPath<ManagedObject, T>,
+        contains value: String
+    ) throws -> [ManagedObject] {
+        let all = try getAll()
+        return filter(all, keyPath, contains: value)
+    }
+    
+    func filter<T: StringConvertible>(
+        _ objects: [ManagedObject],
+        _ keyPath: KeyPath<ManagedObject, T>,
+        contains value: String
+    ) -> [ManagedObject] {
+        objects.filter { $0[keyPath: keyPath].stringValue.lowercased().contains(value.lowercased())}
     }
 }

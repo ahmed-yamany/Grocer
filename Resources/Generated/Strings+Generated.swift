@@ -127,6 +127,10 @@ internal enum L10n {
     /// Unit
     internal static let unit = L10n.tr("Localizable", "field.unit", fallback: "Unit")
   }
+  internal enum Filter {
+    /// Filter
+    internal static let title = L10n.tr("Localizable", "filter.title", fallback: "Filter")
+  }
   internal enum Store {
     /// Your Store is Empty Start Adding Products by clicking the plus button
     internal static let empty = L10n.tr("Localizable", "store.empty", fallback: "Your Store is Empty Start Adding Products by clicking the plus button")

@@ -76,7 +76,8 @@ struct StoreView: View {
                 }
             }
             
-            SearchButton {
+            FilterButton {
+                viewModel.filterButtonTapped()
             }
         }
         .padding(.horizontal, .Constants.contentPadding)

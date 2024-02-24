@@ -15,6 +15,8 @@ public final class Router {
     public required init(navigationController: UINavigationController, alertRouter: AlertRouter) {
         self.navigationController = navigationController
         self.alertRouter = alertRouter
+        navigationController.navigationBar.backIndicatorImage = .iconBack
+        navigationController.navigationBar.backIndicatorTransitionMaskImage = .iconBack
     }
     
     func present(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
@@ -42,6 +44,7 @@ public final class Router {
     }
     
     func push(_ viewController: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
+        viewController.navigationItem.backButtonTitle = ""
         navigationController.pushViewController(viewController, animated: animated)
         completion()
     }

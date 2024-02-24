@@ -54,6 +54,8 @@
 //
 "addCategory.title" = "New Category";
 //
+"filter.title" = "Filter";
+//
 "field.name" = "Name";
 "field.quantity" = "Quantity";
 "field.price" = "Price";

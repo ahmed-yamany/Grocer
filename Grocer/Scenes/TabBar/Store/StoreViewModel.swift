@@ -18,6 +18,7 @@ final class StoreViewModel: ObservableObject {
     @Published var categories: [Category] = []
     
     @Published var searchText: String = ""
+    @Published var filter: ProductFilterCases = .name
     
     var cancellable = Set<AnyCancellable>()
     
@@ -89,6 +90,12 @@ final class StoreViewModel: ObservableObject {
         searchText.removeAll()
     }
     
+    func filterButtonTapped() {
+        let filterView = StoreFilterView(delegate: self, router: router)
+        let viewController = UIHostingController(rootView: filterView)
+        self.router.presentOverFullScreen(viewController)
+    }
+    
     // MARK: - Private Methods
     private func bindSearchText() {
         $searchText
@@ -107,10 +114,22 @@ final class StoreViewModel: ObservableObject {
         }
         
         do {
-            groupedProductsByCategory = try productUseCase.filterGroupedProducts(by: \.name, value: text)
+            groupedProductsByCategory = try filterGroupedProducts(text)
+            
         } catch {
             showErrorAlert(error.localizedDescription)
             Logger.log(error.localizedDescription, category: \.default, level: .fault)
+        }
+    }
+    
+    private func filterGroupedProducts(_ text: String) throws -> [Category: [Product]] {
+        switch filter {
+            case .name:
+                return try productUseCase.filterGroupedProducts(by: \.name, value: text)
+            case .price:
+                return try productUseCase.filterGroupedProducts(by: \.priceString, value: text)
+            case .quantity:
+                return try productUseCase.filterGroupedProducts(by: \.quantityString, value: text)
         }
     }
     
@@ -124,5 +143,11 @@ final class StoreViewModel: ObservableObject {
             message: message,
             withState: .error
         )
+    }
+}
+
+extension StoreViewModel: StoreFilterDelegate {
+    func storeFilter(didSelect item: ProductFilterCases) {
+        filter = item
     }
 }

@@ -94,7 +94,10 @@ final class ProductUseCase: ContextManager<Product> {
         return sections
     }
     
-    func filterGroupedProducts(by keyPath: KeyPath<Product, String?>, value: String) throws -> [Category: [Product]] {
+    func filterGroupedProducts<T: StringConvertible>(
+        by keyPath: KeyPath<Product, T>,
+        value: String
+    ) throws -> [Category: [Product]] {
         var sections: [Category: [Product]] = [:]
         
         let groupedCategories: [Category: [Product]] = try groupProductsByCategory()
